@@ -34,6 +34,29 @@ This application is a Laravel application and its main Laravel ecosystems packag
 - Generate slugs in the model’s `booted()` lifecycle (on create, and when appropriate on update if slug is empty). Prevent slug changes after publication when business rules require it (see `App\Models\Post` for reference).
 - Keep a single, reusable approach for unique slug generation consistent with `Post::generateUniqueSlug()`.
 
+### Git Branch Naming
+- Pattern: `{number}-{feature-kebab}-vX.Y.Z-{breaking|major|patch}` (lowercase, hyphen-separated, descriptive).
+- Change types → SemVer bumps:
+  - `breaking` → MAJOR (`X+1.0.0`), incompatible changes.
+  - `major` → MINOR (`X.Y+1.0`), new features, non-breaking.
+  - `patch` (aka `minor` here) → PATCH (`X.Y.Z+1`), fixes/maintenance.
+- Guidance:
+  - Start with an issue/task number for traceability.
+  - Keep `feature-kebab` concise and specific.
+  - Put intended next SemVer in the name and tag that version on merge.
+  - Optional pre-release suffixes: `-alpha`, `-beta`, `-rc` before change type, e.g., `0123-user-slugs-v1.2.0-rc-major`.
+- Examples:
+  - `0123-user-slugs-v1.2.0-major`
+  - `0456-remove-tenancy-v2.0.0-breaking`
+  - `0789-service-slugs-v1.2.1-patch`
+
+### Git Hooks & Version Workflow
+- Git hook: `.githooks/pre-push` validates branch names against the pattern above. Configure locally:
+  - `git config core.hooksPath .githooks`
+- Version file: `VERSION` contains the current SemVer (X.Y.Z).
+- Next version helper: `bin/next-version [breaking|major|patch]` outputs the next SemVer based on `VERSION`.
+  - Example: `php bin/next-version major` → `1.1.0` if `VERSION` is `1.0.0`.
+
 ## Verification Scripts
 - Do not create verification scripts or tinker when tests cover that functionality and prove it works. Unit and feature tests are more important.
 

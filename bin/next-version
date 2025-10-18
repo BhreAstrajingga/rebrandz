@@ -1,0 +1,45 @@
+#!/usr/bin/env php
+<?php
+
+// Simple next-version suggester based on change type.
+// Usage: bin/next-version [breaking|major|patch]
+
+if (PHP_SAPI !== 'cli') {
+    fwrite(STDERR, "This script must be run from CLI." . PHP_EOL);
+    exit(1);
+}
+
+$type = $argv[1] ?? null;
+if (! in_array($type, ['breaking', 'major', 'patch'], true)) {
+    fwrite(STDERR, "Usage: bin/next-version [breaking|major|patch]" . PHP_EOL);
+    exit(2);
+}
+
+$versionFile = __DIR__ . '/../VERSION';
+if (! file_exists($versionFile)) {
+    fwrite(STDERR, "VERSION file not found." . PHP_EOL);
+    exit(3);
+}
+
+$current = trim((string) file_get_contents($versionFile));
+if (! preg_match('/^(\d+)\.(\d+)\.(\d+)$/', $current, $m)) {
+    fwrite(STDERR, "Invalid VERSION format. Expected X.Y.Z" . PHP_EOL);
+    exit(4);
+}
+
+$major = (int) $m[1];
+$minor = (int) $m[2];
+$patch = (int) $m[3];
+
+switch ($type) {
+    case 'breaking':
+        $major += 1; $minor = 0; $patch = 0; break;
+    case 'major':
+        $minor += 1; $patch = 0; break;
+    case 'patch':
+        $patch += 1; break;
+}
+
+$next = sprintf('%d.%d.%d', $major, $minor, $patch);
+echo $next . PHP_EOL;
+

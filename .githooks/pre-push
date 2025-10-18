@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+# Validate current branch name against pattern:
+# {number}-{feature-kebab}-vX.Y.Z[-alpha|-beta|-rc]-{breaking|major|patch}
+
+branch="$(git rev-parse --abbrev-ref HEAD)"
+
+pattern='^[0-9]{3,}-[a-z0-9]+(?:-[a-z0-9]+)*-v[0-9]+\.[0-9]+\.[0-9]+(?:-(?:alpha|beta|rc))?-(breaking|major|patch)$'
+
+if [[ ! "$branch" =~ $pattern ]]; then
+  cat <<MSG
+✗ Invalid branch name: "$branch"
+
+Expected: {number}-{feature-kebab}-vX.Y.Z(-alpha|-beta|-rc)?-{breaking|major|patch}
+Examples:
+  0123-user-slugs-v1.2.0-major
+  0456-remove-tenancy-v2.0.0-breaking
+  0789-service-slugs-v1.2.1-patch
+
+Tip: git checkout -b 0123-your-feature-v1.0.0-major
+MSG
+  exit 1
+fi
+
+exit 0
+
