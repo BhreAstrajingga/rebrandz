@@ -48,3 +48,13 @@
 
 ###  [breaking_changes]
 - Removed custom tenancy panel/provider and tenancy middleware stack
+## 0001-multi-tenancy-v1.1.0-major
+### [update]
+- Remove tenancy migrations: 2025_10_16_000100_create_tenants_table.php, 2025_10_16_000200_add_tenant_id_to_users_table.php
+- Keep cleanup migration 2025_10_19_020943_drop_tenancy_tables_and_columns.php to ensure environments drop artifacts
+
+### [new_features/whats-new]
+- N/A
+
+###  [breaking_changes]
+- N/A
