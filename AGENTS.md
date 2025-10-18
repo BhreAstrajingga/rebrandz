@@ -57,6 +57,19 @@ This application is a Laravel application and its main Laravel ecosystems packag
 - Next version helper: `bin/next-version [breaking|major|patch]` outputs the next SemVer based on `VERSION`.
   - Example: `php bin/next-version major` → `1.1.0` if `VERSION` is `1.0.0`.
 
+### Version Control Log
+- Before committing to any branch, update `# Version Control.md` with a new section for the current branch name.
+  - Document updates, new features, and breaking changes in concise bullet points.
+  - Keep entries specific and actionable; link to files/paths when helpful.
+- Every commit must have a clear title and a descriptive body summarizing the intent and key changes.
+
+### Tenancy Roles & Permissions
+- Tenant-level roles/permissions are owned by the tenant owner (Subscriber) and apply only within that tenant.
+- Use Spatie Permission as the foundation with teams enabled; map team to `Tenant` and use `tenant_id` as the team foreign key.
+- Root/global roles are separate (e.g., RootAdmin, Support) and must not leak into tenant scope.
+- In the Tenant panel, provide management for: per-tenant roles, permissions, and role assignment to tenant users.
+- Optional: Use Filament Shield for scaffolding on top of Spatie, ensuring compatibility with Filament v4.
+
 ## Verification Scripts
 - Do not create verification scripts or tinker when tests cover that functionality and prove it works. Unit and feature tests are more important.
 

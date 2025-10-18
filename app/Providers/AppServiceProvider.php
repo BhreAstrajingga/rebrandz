@@ -8,7 +8,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\Facades\Gate;
 use App\Models\User;
-use App\Support\CurrentTenant;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -17,9 +16,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        $this->app->singleton(CurrentTenant::class, function (): CurrentTenant {
-            return new CurrentTenant();
-        });
+        // Removed custom tenancy container binding.
     }
 
     /**
