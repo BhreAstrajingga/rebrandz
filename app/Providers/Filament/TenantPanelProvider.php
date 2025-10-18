@@ -3,6 +3,9 @@
 namespace App\Providers\Filament;
 
 use App\Models\Tenant;
+use Filament\Pages\Dashboard;
+use App\Filament\Pages\TenantHome;
+use Filament\Facades\Filament;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\AuthenticateSession;
 use Filament\Http\Middleware\DisableBladeIconComponents;
@@ -29,6 +32,13 @@ class TenantPanelProvider extends PanelProvider
             ->colors([
                 'primary' => Color::Blue,
             ])
+            ->pages([
+                TenantHome::class,
+            ])
+            ->homeUrl(function (): ?string {
+                $tenant = Filament::getTenant();
+                return $tenant ? TenantHome::getUrl(tenant: $tenant, panel: 'tenant') : null;
+            })
             ->middleware([
                 EncryptCookies::class,
                 AddQueuedCookiesToResponse::class,

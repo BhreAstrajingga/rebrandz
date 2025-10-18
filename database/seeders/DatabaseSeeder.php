@@ -22,7 +22,8 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
 
-        // Tenancy disabled: seed only users and posts.
+        // Seed tenants then users and posts.
+        $this->call(TenantSeeder::class);
         $this->call(UsersSeeder::class);
         $this->call(PostSeeder::class);
     }

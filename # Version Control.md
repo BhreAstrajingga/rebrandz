@@ -19,3 +19,14 @@
 
 ###  [breaking_changes]
 - Removed previous drop-tenancy cleanup migration to restore official schema
+## 0001-multi-tenancy-v1.1.0-major
+### [update]
+- Tenant panel now only exposes a minimal home page (no resource discovery)
+- Added TenantHome page and view as tenant landing
+- Seeders updated: added TenantSeeder and linked customer to tenant
+
+### [new_features/whats-new]
+- TenantHome page with current tenant display
+
+###  [breaking_changes]
+- Tenants cannot access admin resources (Customers, Posts, Services, Service Plans, User Subscriptions)
