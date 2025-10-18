@@ -1,18 +1,30 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-# Validate current branch name against pattern:
-# {number}-{feature-kebab}-vX.Y.Z[-alpha|-beta|-rc]-{breaking|major|patch}
+# Validate pushed branch names against pattern:
+# {number}-{feature-kebab}-vX.Y.Z[-alpha|-beta|-rc]-{breaking|major|minor|patch}
 
-branch="$(git rev-parse --abbrev-ref HEAD)"
+pattern='^[0-9]{3,}-[a-z0-9]+(?:-[a-z0-9]+)*-v[0-9]+\.[0-9]+\.[0-9]+(?:-(?:alpha|beta|rc))?-(breaking|major|minor|patch)$'
 
-pattern='^[0-9]{3,}-[a-z0-9]+(?:-[a-z0-9]+)*-v[0-9]+\.[0-9]+\.[0-9]+(?:-(?:alpha|beta|rc))?-(breaking|major|patch)$'
+invalid=()
+while read -r local_ref local_sha remote_ref remote_sha; do
+  # Only validate branches (ignore tags or other refs)
+  if [[ "$local_ref" == refs/heads/* ]]; then
+    branch="${local_ref#refs/heads/}"
+    if [[ ! "$branch" =~ $pattern ]]; then
+      invalid+=("$branch")
+    fi
+  fi
+done
 
-if [[ ! "$branch" =~ $pattern ]]; then
-  cat <<MSG
-✗ Invalid branch name: "$branch"
+if (( ${#invalid[@]} > 0 )); then
+  printf "✗ Invalid branch name(s):\n"
+  for b in "${invalid[@]}"; do
+    printf "  - %s\n" "$b"
+  done
+  cat <<'MSG'
 
-Expected: {number}-{feature-kebab}-vX.Y.Z(-alpha|-beta|-rc)?-{breaking|major|patch}
+Expected: {number}-{feature-kebab}-vX.Y.Z(-alpha|-beta|-rc)?-{breaking|major|minor|patch}
 Examples:
   0123-user-slugs-v1.2.0-major
   0456-remove-tenancy-v2.0.0-breaking
@@ -24,4 +36,3 @@ MSG
 fi
 
 exit 0
-
