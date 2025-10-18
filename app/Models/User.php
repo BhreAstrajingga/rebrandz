@@ -4,14 +4,16 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Filament\Models\Contracts\FilamentUser;
+use Filament\Models\Contracts\HasTenants;
 use Filament\Panel;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
 
-class User extends Authenticatable implements FilamentUser
+class User extends Authenticatable implements FilamentUser, HasTenants
 {
     /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory, Notifiable;
@@ -26,7 +28,7 @@ class User extends Authenticatable implements FilamentUser
         'slug',
         'email',
         'password',
-        'user_type', //admin, customer
+        'user_type', // admin, customer
     ];
 
     /**
@@ -77,10 +79,16 @@ class User extends Authenticatable implements FilamentUser
         $slug = $base;
         $i = 1;
         while (static::where('slug', $slug)->exists()) {
-            $slug = $base . '-' . $i;
+            $slug = $base.'-'.$i;
             $i++;
         }
+
         return $slug;
+    }
+
+    public function tenant(): BelongsTo
+    {
+        return $this->belongsTo(Tenant::class);
     }
 
     public function canAccessPanel(Panel $panel): bool
@@ -91,8 +99,34 @@ class User extends Authenticatable implements FilamentUser
             return (string) $this->user_type === 'admin';
         }
 
-        // Tenancy removed: only 'admin' panel is available.
+        if ($panelId === 'tenant') {
+            return in_array((string) $this->user_type, ['customer', 'admin'], true);
+        }
 
         return false;
+    }
+
+    public function canAccessTenant(\Illuminate\Database\Eloquent\Model $tenant): bool
+    {
+        if ((string) $this->user_type === 'admin') {
+            return true;
+        }
+
+        return (int) $this->tenant_id === (int) $tenant->getKey();
+    }
+
+    public function getTenants(Panel $panel): array|Collection
+    {
+        if ((string) $this->user_type === 'admin') {
+            return \App\Models\Tenant::query()->orderBy('name')->get();
+        }
+
+        if ($this->tenant_id) {
+            $tenant = \App\Models\Tenant::find($this->tenant_id);
+
+            return $tenant ? collect([$tenant]) : collect();
+        }
+
+        return collect();
     }
 }

@@ -62,6 +62,7 @@ This application is a Laravel application and its main Laravel ecosystems packag
   - Document updates, new features, and breaking changes in concise bullet points.
   - Keep entries specific and actionable; link to files/paths when helpful.
 - Every commit must have a clear title and a descriptive body summarizing the intent and key changes.
+- Commit under my command/when asked to commit
 
 ### Tenancy Roles & Permissions
 - Tenant-level roles/permissions are owned by the tenant owner (Subscriber) and apply only within that tenant.
