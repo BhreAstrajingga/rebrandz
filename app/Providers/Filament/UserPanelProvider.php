@@ -2,7 +2,13 @@
 
 namespace App\Providers\Filament;
 
+use App\Filament\Pages\AppsSettings;
+use App\Filament\Pages\BillingInvoices;
+use App\Filament\Pages\BillingPaymentMethods;
+use App\Filament\Pages\Pricing;
 use App\Filament\Pages\SubscriberHome;
+use App\Filament\Pages\SupportTickets;
+use App\Filament\Pages\TenantOverview;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\AuthenticateSession;
 use Filament\Http\Middleware\DisableBladeIconComponents;
@@ -34,6 +40,12 @@ class UserPanelProvider extends PanelProvider
             ->homeUrl(fn (): ?string => \App\Filament\Pages\SubscriberHome::getUrl(panel: 'user'))
             ->pages([
                 SubscriberHome::class,
+                Pricing::class,
+                BillingInvoices::class,
+                BillingPaymentMethods::class,
+                AppsSettings::class,
+                SupportTickets::class,
+                TenantOverview::class,
             ])
             ->middleware([
                 EncryptCookies::class,
@@ -51,5 +63,3 @@ class UserPanelProvider extends PanelProvider
             ]);
     }
 }
-
-

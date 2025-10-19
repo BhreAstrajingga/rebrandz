@@ -45,3 +45,17 @@
 ###  [breaking_changes]
 - Tenant UI removed temporarily; tenant routes will be reintroduced later
 
+
+## 0002-user-subscriber-foundation-v1.1.0-major
+### [update]
+- Add User panel placeholder pages: Pricing, Billing (Invoices/Payment Methods), Apps Settings, Support Tickets, Tenant Overview
+- Register new pages in UserPanelProvider and set home to SubscriberHome
+- Fix Filament v4 types: navigationGroup typed as \\UnitEnum|string|null across pages
+- Add blade views for each page with empty states
+
+### [new_features/whats-new]
+- User panel navigation skeleton ready for business modules
+
+###  [breaking_changes]
+- None
+

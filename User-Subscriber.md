@@ -14,10 +14,30 @@ yang dimaksud Subscriber adalah User yang telah memiliki satu atau lebih langgan
 ## Dashboard
 - CTA Register tenant jika belum memiliki tenant. hidden jika sudah ada.
 
-## Menu
+## Side Menu
+### Pricing
+### Billing
+- Invoice (LIST)
+- Payment Method (CRUD)
+
+### Apps
+* Business Profile
+* sub menu ini kelak akan berisi inti aplikasi bisnisnya. tergantung akan menjadi aplikasi apa nanti, bisa POS, QRCode Service, PDF Service, Sistem Informasi Rumah Sakit, dan lain lain.
+* Setting => kira-kira apa yang bisa kita setting
+
 ### Tenant
-- visible jika sudah memiliki, hidden sebaliknya
+- visible jika sudah memiliki (makna: diaktifkan), hidden sebaliknya
 - Tenant sub menu:
-    * Setting => kira-kira apa yang bisa kita setting
-    * Profile
-    * lainnya kemudian
+    * sub menu ini kelak akan berisi inti aplikasi bisnisnya. tergantung akan menjadi aplikasi apa nanti, bisa POS, QRCode Service, PDF Service, Sistem Informasi Rumah Sakit, dan lain lain
+
+### Support
+- Mailing-Tickets
+- FAQ
+- How To
+- Report Issue (?)
+- About Service/Apps
+- Eula (?)
+- etc (?)
+
+## User Menu
+- User Profile

@@ -1,4 +1,4 @@
-﻿# Agent Guidelines for `saas_starterkit`
+﻿# Agent Guidelines
 
 These principles are authoritative guidance for any agentic work in this repository. Their scope covers the entire directory tree.
 
@@ -29,10 +29,9 @@ These principles are authoritative guidance for any agentic work in this reposit
 
 ## Scope and Precedence
 
-- Scope file ini: seluruh repo `saas_starterkit`.
+- Scope file ini: seluruh repo ini.
 - Instruksi langsung dari user atau sistem memiliki prioritas lebih tinggi daripada file ini.
 - Jika ada AGENTS.md yang lebih dalam dengan instruksi berbeda, yang lebih dalam mengambil prioritas pada cakupannya.
-
 
 ## Tujuan
 
@@ -48,16 +47,16 @@ Membangun SaaS starterkit siap pakai dengan:
 - Layer utama
 - Panel:
     - Admin Panel (panel provider)
+    - User Panel
     - Tenant Panel
 
 ## Fitur minimum
 
 - Tenant registration: User daftar → record tenant + user
 - Multi-tenant scope: GlobalScope `tenant_id` di model
-- Authentication: Laravel Fortify
 - Role & permission: Spatie Permission package
-- Filament multi-panel: `AdminPanel` + `TenantPanel` terpisah
-- Browser/Device Session (Jetstream)
+- Filament multi-panel: `AdminPanel`, `UserPanel`, `TenantPanel` terpisah
+- Browser/Device Session (Jetstream) untuk semua user_type (tanpa kecuali)
 - Subscription: modul billing dummy (Stripe / Midtrans stub, dan yang berlaku di Indonesia)
 - Domain/Subdomain routing: wildcard `*.app.test`
 - API token: Laravel Sanctum
@@ -67,10 +66,8 @@ Membangun SaaS starterkit siap pakai dengan:
 
 ## MVP
 
-- User bisa daftar → otomatis jadi tenant aktif
-- Tenant login → akses Filament tenant panel
-- Data terisolasi antar tenant
+- User bisa daftar
+- User bisa membuat Tenant
 - Admin bisa suspend / delete tenant
 - Browser/device session; user bisa logout session di perangkat lain
-
 - Secure login & registration: bot-proof / human-only (rate limiting, captcha-ready)
