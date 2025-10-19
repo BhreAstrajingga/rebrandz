@@ -30,3 +30,18 @@
 
 ###  [breaking_changes]
 - Tenants cannot access admin resources (Customers, Posts, Services, Service Plans, User Subscriptions)
+
+## 0001-multi-tenancy-v1.1.0-major
+### [update]
+- Add Filament User panel at /user with web guard + registration
+- Set User panel home to SubscriberHome; create SubscriberHome page + view
+- Add public auth redirects: /login and /register -> User panel auth routes
+- Update User::canAccessPanel to allow 'user' for customer
+- Remove Tenant panel and TenantHome (schema/model remain intact)
+
+### [new_features/whats-new]
+- Subscriber dashboard with contextual CTA: Create Tenant (if none) or My Tenant (if exists)
+
+###  [breaking_changes]
+- Tenant UI removed temporarily; tenant routes will be reintroduced later
+

@@ -99,6 +99,10 @@ class User extends Authenticatable implements FilamentUser, HasTenants
             return (string) $this->user_type === 'admin';
         }
 
+        if ($panelId === 'user') {
+            return (string) $this->user_type === 'customer';
+        }
+
         if ($panelId === 'tenant') {
             return in_array((string) $this->user_type, ['customer', 'admin'], true);
         }

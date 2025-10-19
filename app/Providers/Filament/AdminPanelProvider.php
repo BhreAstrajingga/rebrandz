@@ -35,6 +35,7 @@ class AdminPanelProvider extends PanelProvider
             ->viteTheme('resources/css/filament/admin/theme.css')
             ->login()
             ->loginRouteSlug('wakwaw')
+            ->registration()
             ->colors([
                 'primary' => Color::Amber,
             ])

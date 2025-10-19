@@ -2,10 +2,7 @@
 
 namespace App\Providers\Filament;
 
-use App\Models\Tenant;
-use Filament\Pages\Dashboard;
-use App\Filament\Pages\TenantHome;
-use Filament\Facades\Filament;
+use App\Filament\Pages\SubscriberHome;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\AuthenticateSession;
 use Filament\Http\Middleware\DisableBladeIconComponents;
@@ -20,25 +17,24 @@ use Illuminate\Routing\Middleware\SubstituteBindings;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
 
-class TenantPanelProvider extends PanelProvider
+class UserPanelProvider extends PanelProvider
 {
     public function panel(Panel $panel): Panel
     {
         return $panel
-            ->id('tenant')
-            ->path('tenant')
+            ->id('user')
+            ->path('user')
             ->login()
-            ->tenant(Tenant::class, 'slug', 'tenant')
+            ->registration()
+            ->authGuard('web')
+            ->authPasswordBroker('users')
             ->colors([
                 'primary' => Color::Blue,
             ])
+            ->homeUrl(fn (): ?string => \App\Filament\Pages\SubscriberHome::getUrl(panel: 'user'))
             ->pages([
-                TenantHome::class,
+                SubscriberHome::class,
             ])
-            ->homeUrl(function (): ?string {
-                $tenant = Filament::getTenant();
-                return $tenant ? TenantHome::getUrl(tenant: $tenant, panel: 'tenant') : null;
-            })
             ->middleware([
                 EncryptCookies::class,
                 AddQueuedCookiesToResponse::class,
@@ -55,3 +51,5 @@ class TenantPanelProvider extends PanelProvider
             ]);
     }
 }
+
+

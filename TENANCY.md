@@ -15,6 +15,18 @@ adalah kita. yang akan mengelola aplikasi secara keseluruhan, tenant, subscripti
 
 ### Subscriber
 Subscriber adalah user yang mendaftar untuk berlangganan service/layanan yang disediakan. setiap subscriber bisa bertindak sebagai individu yang akan menggunakan layanan untuk dirinya sendiri secara langsung, maupun juga bisa sebagai tenant owner (membuat/memiliki Tenant). Subscriber ini bertindak sebagai superadmin di tanent miliknya jika ia memiliki tanent. Di dalam tanent tersebut, subscriber bisa menambahkan penggunanya sendiri. sehingga seperti ini: User Type Subscriber->hasOne Tenants->hasMany Users.
+    A. Subscriber usecase
+        - Login atau Registrasi jika belum memiliki akun;
+        - Landing ke subscriber home (route top level). berisi menu-menu untuk payment, subscription, main dashboard (pengukuran subscription), dan lainnya di level subscriber, menu link ke tenant (jika sudah memiliki tenant).
+        - ada menu atau CTA untuk membuat/mendaftarkan tenant jika belum memiliki tenant. klik membuka form registrasi tenant, sukses, redirect ke tenant yang baru dibuat
+        - landing ke Owers Dashboard (route owners)
+        - menu Tenant Management
+        - menu Apps (inti aplikasi. route apps level)
+    B. Tenant staff/officer use case
+        - login di route apps level, misal: tenant/laravel/login
+        - dashboard
+        - menu-menu utama
+    
 
 ### Roles & Permissions (Tenant Scope)
 - Roles dan permissions pada level tenant dimiliki dan diatur oleh Tenant Owner (Subscriber) dan hanya berlaku dalam tenant tersebut.

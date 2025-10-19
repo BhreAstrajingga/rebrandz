@@ -40,3 +40,9 @@ Route::middleware(['throttle:blog-public'])->group(function () {
 });
 
 // Browser sessions management moved to Filament Page
+
+
+// Public auth redirects to User panel auth routes
+Route::get('/login', fn () => redirect()->route('filament.user.auth.login'))->name('login');
+Route::get('/register', fn () => redirect()->route('filament.user.auth.register'))->name('register');
+
