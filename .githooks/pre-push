@@ -2,36 +2,20 @@
 set -euo pipefail
 
 # Validate pushed branch names against pattern:
-# {number}-{feature-kebab}-vX.Y.Z(-alpha|-beta|-rc)?-{breaking|major|minor|patch}
+# {number}-{feature-kebab}-vX.Y.Z[-alpha|-beta|-rc]-{breaking|major|minor|patch}
 
-pattern='^[0-9]{3,}-[a-z0-9]+(?:-[a-z0-9]+){0,5}-v[0-9]+\.[0-9]+\.[0-9]+(?:-(?:alpha|beta|rc))?-(breaking|major|minor|patch)$'
+pattern='^[0-9]{3,}-[a-z0-9]+(?:-[a-z0-9]+)*-v[0-9]+\.[0-9]+\.[0-9]+(?:-(?:alpha|beta|rc))?-(breaking|major|minor|patch)$'
 
 invalid=()
-uppercase=()
-
 while read -r local_ref local_sha remote_ref remote_sha; do
+  # Only validate branches (ignore tags or other refs)
   if [[ "$local_ref" == refs/heads/* ]]; then
     branch="${local_ref#refs/heads/}"
-
-    if [[ "$branch" =~ [A-Z] ]]; then
-      uppercase+=("$branch")
-      continue
-    fi
-
     if [[ ! "$branch" =~ $pattern ]]; then
       invalid+=("$branch")
     fi
   fi
 done
-
-if (( ${#uppercase[@]} > 0 )); then
-  printf "✗ Invalid branch name(s) — contains uppercase letters:\n"
-  for b in "${uppercase[@]}"; do
-    printf "  - %s\n" "$b"
-  done
-  printf "\nPlease use lowercase only.\n"
-  exit 1
-fi
 
 if (( ${#invalid[@]} > 0 )); then
   printf "✗ Invalid branch name(s):\n"
