@@ -1,0 +1,9 @@
+@import "tailwindcss";
+
+/* Basic card styles for pricing grid */
+.pricing-card { @apply rounded border border-gray-200 p-4 bg-white shadow-sm; }
+.pricing-title { @apply text-lg font-semibold; }
+.pricing-subtitle { @apply text-xs text-gray-600; }
+.pricing-list { @apply mt-3 text-sm space-y-1; }
+.pricing-cta { @apply mt-4 px-3 py-2 rounded bg-primary-600 text-white; }
+

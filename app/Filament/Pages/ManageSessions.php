@@ -112,15 +112,4 @@ class ManageSessions extends Page implements HasTable
                 }),
         ];
     }
-
-    // public function getUserMenuItems(): array
-    // {
-    //     return [
-    //         UserMenuAction::make()
-    //             ->label('Browser Sessions')
-    //             ->url(static::getUrl())
-    //             ->icon(Heroicon::OutlinedDevicePhoneMobile)
-    //             ->visible(fn (): bool => Auth::check()),
-    //     ];
-    // }
 }

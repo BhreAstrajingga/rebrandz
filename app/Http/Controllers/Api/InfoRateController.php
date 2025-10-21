@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\API;
+namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Http;
@@ -143,7 +143,7 @@ class InfoRateController extends Controller
 
     private function createXPath(string $html): ?\DOMXPath
     {
-        $dom = new \DOMDocument();
+        $dom = new \DOMDocument;
         $internalErrors = libxml_use_internal_errors(true);
         $loaded = $dom->loadHTML($html);
         libxml_clear_errors();
