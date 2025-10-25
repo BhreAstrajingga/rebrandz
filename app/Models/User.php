@@ -94,17 +94,18 @@ class User extends Authenticatable implements FilamentUser, HasTenants
     public function canAccessPanel(Panel $panel): bool
     {
         $panelId = $panel->getId();
+        $type = (string) $this->user_type;
 
         if ($panelId === 'admin') {
-            return (string) $this->user_type === 'admin';
+            return in_array($type, ['system', 'admin'], true);
         }
 
         if ($panelId === 'user') {
-            return (string) $this->user_type === 'customer';
+            return $type === 'customer';
         }
 
         if ($panelId === 'tenant') {
-            return in_array((string) $this->user_type, ['customer', 'admin'], true);
+            return in_array($type, ['customer', 'system', 'admin'], true);
         }
 
         return false;
@@ -112,7 +113,9 @@ class User extends Authenticatable implements FilamentUser, HasTenants
 
     public function canAccessTenant(\Illuminate\Database\Eloquent\Model $tenant): bool
     {
-        if ((string) $this->user_type === 'admin') {
+        $type = (string) $this->user_type;
+
+        if (in_array($type, ['system', 'admin'], true)) {
             return true;
         }
 
@@ -121,7 +124,9 @@ class User extends Authenticatable implements FilamentUser, HasTenants
 
     public function getTenants(Panel $panel): array|Collection
     {
-        if ((string) $this->user_type === 'admin') {
+        $type = (string) $this->user_type;
+
+        if (in_array($type, ['system', 'admin'], true)) {
             return \App\Models\Tenant::query()->orderBy('name')->get();
         }
 

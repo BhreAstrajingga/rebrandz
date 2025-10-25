@@ -20,7 +20,6 @@ Route::get('/', function (Request $request) {
     return view('welcome', compact('posts', 'hasMoreBlogPosts'));
 });
 
-
 Route::get('/profile-payload', [CompanyProfileController::class, 'profilePayload'])
     ->name('profile.payload');
 
@@ -41,8 +40,8 @@ Route::middleware(['throttle:blog-public'])->group(function () {
 
 // Browser sessions management moved to Filament Page
 
-
-// Public auth redirects to User panel auth routes
-Route::get('/login', fn () => redirect()->route('filament.user.auth.login'))->name('login');
-Route::get('/register', fn () => redirect()->route('filament.user.auth.register'))->name('register');
-
+// Central Filament-based login & register pages
+Route::get('/login', \App\Filament\Pages\Auth\Login::class)->name('login');
+Route::get('/register', \App\Filament\Pages\Auth\Register::class)->name('register');
+// Central password reset routes (root-level)
+Route::get('/password-reset/request', \App\Filament\Pages\PasswordReset\RequestPasswordReset::class)->name('password.request');

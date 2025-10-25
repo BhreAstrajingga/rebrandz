@@ -11,11 +11,13 @@ use App\Filament\Pages\Pricing;
 use App\Filament\Pages\SubscriberHome;
 use App\Filament\Pages\SupportTickets;
 use App\Filament\Pages\TenantOverview;
+use App\Filament\Pages\CreateTenant;
 use Filament\Actions\Action;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\AuthenticateSession;
 use Filament\Http\Middleware\DisableBladeIconComponents;
 use Filament\Http\Middleware\DispatchServingFilamentEvent;
+use Filament\Pages\Dashboard;
 use Filament\Panel;
 use Filament\PanelProvider;
 use Filament\Support\Colors\Color;
@@ -35,8 +37,9 @@ class UserPanelProvider extends PanelProvider
             ->id('user')
             ->path('user')
             ->viteTheme('resources/css/filament/admin/theme.css')
-            ->login()
+            ->login(false)
             ->registration(Register::class)
+            ->passwordReset()
             ->authGuard('web')
             ->authPasswordBroker('users')
             ->userMenuItems([
@@ -48,9 +51,11 @@ class UserPanelProvider extends PanelProvider
             ->colors([
                 'primary' => Color::Blue,
             ])
-            ->homeUrl(fn (): ?string => \App\Filament\Pages\SubscriberHome::getUrl(panel: 'user'))
+            // ->homeUrl(fn (): ?string => \App\Filament\Pages\SubscriberHome::getUrl(panel: 'user'))
             ->pages([
-                SubscriberHome::class,
+                \App\Filament\Pages\UserDashboard::class,
+                CreateTenant::class,
+                // SubscriberHome::class,
                 Pricing::class,
                 BillingInvoices::class,
                 BillingPaymentMethods::class,
@@ -75,4 +80,3 @@ class UserPanelProvider extends PanelProvider
             ]);
     }
 }
-
