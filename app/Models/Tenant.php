@@ -3,6 +3,8 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Str;
 
@@ -12,6 +14,7 @@ class Tenant extends Model
         'name',
         'slug',
         'domain',
+        'owner_id',
     ];
 
     protected static function booted(): void
@@ -46,6 +49,18 @@ class Tenant extends Model
 
     public function users(): HasMany
     {
+        // Legacy direct relation, kept for backward compatibility
         return $this->hasMany(User::class);
+    }
+
+    public function owner(): BelongsTo
+    {
+        return $this->belongsTo(User::class, 'owner_id');
+    }
+
+    public function members(): BelongsToMany
+    {
+        return $this->belongsToMany(User::class, 'tenant_user')
+            ->withTimestamps();
     }
 }

@@ -91,6 +91,12 @@ class User extends Authenticatable implements FilamentUser, HasTenants
         return $this->belongsTo(Tenant::class);
     }
 
+    public function tenants(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
+    {
+        return $this->belongsToMany(Tenant::class, 'tenant_user')
+            ->withTimestamps();
+    }
+
     public function canAccessPanel(Panel $panel): bool
     {
         $panelId = $panel->getId();
