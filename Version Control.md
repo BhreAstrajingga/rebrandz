@@ -63,3 +63,9 @@
 - Add business categories migration and model
 - Ensure slugs follow Post::generateUniqueSlug() pattern
 - No breaking changes; tenant scope unchanged
+
+## 0123-business-categories-v1.2.0-major
+- Add BusinessCategorySeeder with canonical categories list
+- Wire seeder into DatabaseSeeder (runs after Users)
+- Ensure slug uniqueness for categories
+
