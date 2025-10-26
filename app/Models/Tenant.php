@@ -64,4 +64,14 @@ class Tenant extends Model
         return $this->belongsToMany(User::class, 'tenant_user')
             ->withTimestamps();
     }
+
+    public function branches(): HasMany
+    {
+        return $this->hasMany(Branch::class);
+    }
+
+    public function serviceAddOns(): HasMany
+    {
+        return $this->hasMany(TenantServiceAddOn::class);
+    }
 }

@@ -58,11 +58,16 @@ class UserSubscription extends Model
     ];
 
     protected $casts = [
-        'start_date'     => 'datetime',
-        'end_date'       => 'datetime',
-        'trial_ends_at'  => 'datetime',
-        'cancelled_at'   => 'datetime',
+        'start_date' => 'datetime',
+        'end_date' => 'datetime',
+        'trial_ends_at' => 'datetime',
+        'cancelled_at' => 'datetime',
     ];
+
+    public function tenant(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    {
+        return $this->belongsTo(Tenant::class);
+    }
 
     protected static function booted(): void
     {
@@ -97,7 +102,6 @@ class UserSubscription extends Model
         });
     }
 
-
     public static function determineStatus($subscription): string
     {
         $now = now();
@@ -120,7 +124,6 @@ class UserSubscription extends Model
 
         return 'EXPIRED';
     }
-
 
     // Subscription milik seorang user
     public function customer()
