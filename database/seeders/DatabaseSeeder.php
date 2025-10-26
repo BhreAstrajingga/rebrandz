@@ -21,9 +21,9 @@ class DatabaseSeeder extends Seeder
         // ]);
 
         // Seed tenants then users and posts.
-        $this->call(TenantSeeder::class);
-        $this->call(UsersSeeder::class);
+        // $this->call(TenantSeeder::class);
+        // $this->call(UsersSeeder::class);
         $this->call(BusinessCategorySeeder::class);
-        $this->call(PostSeeder::class);
+        // $this->call(PostSeeder::class);
     }
 }
