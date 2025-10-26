@@ -19,6 +19,7 @@ class Tenant extends Model
 
     protected static function booted(): void
     {
+        static::observe(\App\Observers\TenantObserver::class);
         static::creating(function (Tenant $tenant): void {
             if (empty($tenant->slug)) {
                 $tenant->slug = static::generateUniqueSlug($tenant->name ?: Str::random(6));
