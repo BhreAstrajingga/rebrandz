@@ -59,3 +59,8 @@
 ###  [breaking_changes]
 - None
 
+
+## 0123-business-categories-v1.2.0-major
+- Add business categories migration and model
+- Ensure slugs follow Post::generateUniqueSlug() pattern
+- No breaking changes; tenant scope unchanged
