@@ -37,7 +37,7 @@ class ServicePosSeeder extends Seeder
                 ['service_id' => $service->id, 'name' => $p['name']],
                 [
                     'price' => $p['price_monthly'],
-                    'interval' => 'month',
+                    'interval' => 'monthly',
                     'duration' => 1,
                     'features' => $p['features'],
                     'is_active' => true,
@@ -47,7 +47,7 @@ class ServicePosSeeder extends Seeder
                 ['service_id' => $service->id, 'name' => $p['name'].' Yearly'],
                 [
                     'price' => $p['price_yearly'],
-                    'interval' => 'year',
+                    'interval' => 'yearly',
                     'duration' => 1,
                     'features' => $p['features'],
                     'is_active' => true,
