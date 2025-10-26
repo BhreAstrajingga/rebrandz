@@ -62,8 +62,7 @@ class UserPanelProvider extends PanelProvider
                 AppsSettings::class,
                 SupportTickets::class,
                 ManageTenantMembers::class,
-                
-                \\App\\Filament\\Pages\\ManageBranches::class,
+                \App\Filament\Pages\ManageBranches::class,
             ])
             ->middleware([
                 EncryptCookies::class,
