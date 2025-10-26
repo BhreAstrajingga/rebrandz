@@ -6,18 +6,16 @@ use App\Filament\Pages\AppsSettings;
 use App\Filament\Pages\Auth\Register;
 use App\Filament\Pages\BillingInvoices;
 use App\Filament\Pages\BillingPaymentMethods;
+use App\Filament\Pages\CreateTenant;
 use App\Filament\Pages\ManageSessions;
 use App\Filament\Pages\Pricing;
 use App\Filament\Pages\SubscriberHome;
 use App\Filament\Pages\SupportTickets;
-use App\Filament\Pages\TenantOverview;
-use App\Filament\Pages\CreateTenant;
 use Filament\Actions\Action;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\AuthenticateSession;
 use Filament\Http\Middleware\DisableBladeIconComponents;
 use Filament\Http\Middleware\DispatchServingFilamentEvent;
-use Filament\Pages\Dashboard;
 use Filament\Panel;
 use Filament\PanelProvider;
 use Filament\Support\Colors\Color;
@@ -62,8 +60,7 @@ class UserPanelProvider extends PanelProvider
                 BillingPaymentMethods::class,
                 AppsSettings::class,
                 SupportTickets::class,
-                
-                App\\Filament\\Pages\\ManageTenantMembers::class,
+                \App\Filament\Pages\ManageTenantMembers::class,
                 ManageSessions::class,
             ])
             ->middleware([
