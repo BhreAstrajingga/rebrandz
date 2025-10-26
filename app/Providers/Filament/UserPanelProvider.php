@@ -62,7 +62,8 @@ class UserPanelProvider extends PanelProvider
                 BillingPaymentMethods::class,
                 AppsSettings::class,
                 SupportTickets::class,
-                TenantOverview::class,
+                
+                \\App\\Filament\\Pages\\ManageTenantMembers::class,
                 ManageSessions::class,
             ])
             ->middleware([
