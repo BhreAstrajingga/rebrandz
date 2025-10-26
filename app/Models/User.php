@@ -148,4 +148,9 @@ class User extends Authenticatable implements FilamentUser, HasTenants
 
         return collect();
     }
+
+    public function profile(): \Illuminate\Database\Eloquent\Relations\HasOne
+    {
+        return $this->hasOne(MemberProfile::class, 'user_id');
+    }
 }

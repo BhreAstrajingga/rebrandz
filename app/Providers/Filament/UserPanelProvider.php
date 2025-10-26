@@ -7,6 +7,7 @@ use App\Filament\Pages\Auth\Register;
 use App\Filament\Pages\BillingInvoices;
 use App\Filament\Pages\BillingPaymentMethods;
 use App\Filament\Pages\CreateTenant;
+use App\Filament\Pages\ManageBranches;
 use App\Filament\Pages\ManageSessions;
 use App\Filament\Pages\ManageTenantMembers;
 use App\Filament\Pages\Pricing;
@@ -62,7 +63,8 @@ class UserPanelProvider extends PanelProvider
                 AppsSettings::class,
                 SupportTickets::class,
                 ManageTenantMembers::class,
-                \App\Filament\Pages\ManageBranches::class,
+                ManageSessions::class,
+                ManageBranches::class,
             ])
             ->middleware([
                 EncryptCookies::class,
