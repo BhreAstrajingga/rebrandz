@@ -63,7 +63,7 @@ class UserPanelProvider extends PanelProvider
                 AppsSettings::class,
                 SupportTickets::class,
                 
-                \\App\\Filament\\Pages\\ManageTenantMembers::class,
+                App\\Filament\\Pages\\ManageTenantMembers::class,
                 ManageSessions::class,
             ])
             ->middleware([
