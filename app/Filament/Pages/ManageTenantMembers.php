@@ -44,6 +44,10 @@ class ManageTenantMembers extends Page
         }
 
         $tenant = Tenant::query()->with(['members', 'branches'])->find($this->tenantId);
+        // Hanya Tenant Owner yang boleh akses halaman ini
+        if (! $tenant || (int) $tenant->owner_id !== (int) ($user?->id)) {
+            abort(403);
+        }
         $this->members = $tenant?->members ?? collect();
         $this->branches = $tenant?->branches ?? collect();
     }
@@ -129,7 +133,12 @@ class ManageTenantMembers extends Page
     public static function shouldRegisterNavigation(): bool
     {
         $user = Filament::auth()->user();
+        if (Filament::getCurrentPanel()?->getId() !== 'user' || ! $user?->tenant_id) {
+            return false;
+        }
 
-        return Filament::getCurrentPanel()?->getId() === 'user' && (bool) ($user?->tenant_id);
+        $tenant = Tenant::query()->select(['id', 'owner_id'])->find((int) $user->tenant_id);
+
+        return (bool) ($tenant && (int) $tenant->owner_id === (int) $user->id);
     }
 }

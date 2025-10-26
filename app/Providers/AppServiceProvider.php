@@ -2,12 +2,12 @@
 
 namespace App\Providers;
 
-use Illuminate\Support\ServiceProvider;
+use App\Models\User;
 use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\Facades\Gate;
-use App\Models\User;
+use Illuminate\Support\Facades\RateLimiter;
+use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -35,7 +35,7 @@ class AppServiceProvider extends ServiceProvider
 
             $limits = [];
             if ($email !== '') {
-                $limits[] = Limit::perMinute(5)->by($ipKey . '|' . $email);
+                $limits[] = Limit::perMinute(5)->by($ipKey.'|'.$email);
             }
 
             $limits[] = Limit::perMinute(120)->by($ipKey);
@@ -50,10 +50,32 @@ class AppServiceProvider extends ServiceProvider
             $limits = [];
             $limits[] = Limit::perMinute(60)->by($ip);
             if ($ua === '') {
-                $limits[] = Limit::perMinute(20)->by('no-ua|' . $ip);
+                $limits[] = Limit::perMinute(20)->by('no-ua|'.$ip);
             }
 
             return $limits;
         });
     }
 }
+// Tenant access: only tenant owner can access tenant-level management
+Gate::define('access-tenant', function (User $user, int $tenantId): bool {
+    return (int) optional(\App\Models\Tenant::query()->select(['id', 'owner_id'])->find($tenantId))->owner_id === (int) $user->id;
+});
+
+// Branch access: owner or branch member can access branch-scoped actions
+Gate::define('access-branch', function (User $user, int $branchId): bool {
+    $tenantId = (int) ($user->tenant_id ?? 0);
+    $branch = optional(\App\Models\Branch::query()->select(['id', 'tenant_id'])->find($branchId));
+    if ((int) $branch->tenant_id !== $tenantId) {
+        return false;
+    }
+
+    // Owner can access all branches in their tenant
+    $tenant = optional(\App\Models\Tenant::query()->select(['id', 'owner_id'])->find($tenantId));
+    if ((int) $tenant->owner_id === (int) $user->id) {
+        return true;
+    }
+
+    // Branch member must exist in branch_user pivot
+    return \DB::table('branch_user')->where('branch_id', $branchId)->where('user_id', $user->id)->exists();
+});
