@@ -59,9 +59,12 @@ class BusinessCategoryListWidget extends TableWidget
             ->columns([
                 TextColumn::make('name')->label('Category')
                     ->action(function (BusinessCategory $record) {
-                        // Update selection directly to ensure immediate re-render
+                        // Update selection directly for immediate highlight
                         $this->selectedCategoryId = (int) $record->getKey();
                         $this->dispatch('$refresh');
+
+                        // Notify the form widget to load the selected category
+                        $this->dispatch('category-selected', ['id' => (int) $record->getKey()]);
                     }),
             ])
             ->filters([
