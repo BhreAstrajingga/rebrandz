@@ -1,6 +1,8 @@
 <div>
     <x-filament::section collapsible>
-        <x-slot name="heading">New Category</x-slot>
+        <x-slot name="heading">
+            {{ $categoryId ? ($data['name'] ?? 'Category') : 'New Form' }}
+        </x-slot>
         <form wire:submit="save">
             <div>
                 {{ $this->getSchema('form') }}
