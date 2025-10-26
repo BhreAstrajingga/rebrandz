@@ -54,7 +54,8 @@ class ManageBranches extends Page
         $userId = (int) ($this->selectedMemberId ?? 0);
 
         if ($branchId === 0 || $userId === 0) {
-            Notification::make()->title('Pilih cabang dan member').->danger()->send();
+            Notification::make()->title('Pilih cabang dan member')->danger()->send();
+
             return;
         }
 
@@ -63,6 +64,7 @@ class ManageBranches extends Page
 
         if (! $branch || ! $user) {
             Notification::make()->title('Data tidak valid')->danger()->send();
+
             return;
         }
 
@@ -105,4 +107,3 @@ class ManageBranches extends Page
         return Gate::allows('access-tenant', (int) $user->tenant_id);
     }
 }
-
