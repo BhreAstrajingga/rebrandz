@@ -12,7 +12,7 @@ class TenantOverview extends Page
 
     protected static ?string $navigationLabel = 'My Tenant';
 
-    protected static \UnitEnum|string|null $navigationGroup = 'Tenant';
+    // protected static \UnitEnum|string|null $navigationGroup = 'Tenant';
 
     protected static ?string $slug = 'tenant/overview';
 
