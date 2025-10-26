@@ -1,7 +1,9 @@
 {{-- resources\views\filament\resources\user-subscriptions\widgets\user-subscription-form-widget.blade.php --}}
 <div>
     <x-filament::section collapsible>
-        <x-slot name="heading">New Subscription</x-slot>
+        <x-slot name="heading">
+            {{ $subscriptionId ?'Subscribed' : 'New Form' }}
+        </x-slot>
         <form wire:submit="save">
             <div>
                 {{ $this->getSchema('form') }}

@@ -1,7 +1,9 @@
 {{-- resources\views\filament\resources\services\widgets\service-form-widget.blade.php --}}
 <div>
     <x-filament::section collapsible>
-        <x-slot name="heading">New Service</x-slot>
+        <x-slot name="heading">
+            {{ $serviceId ? ($data['name'] ?? 'Service') : 'New Form' }}
+        </x-slot>
         <form wire:submit="save">
             <div>
                 {{ $this->getSchema('form') }}
