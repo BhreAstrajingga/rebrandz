@@ -59,3 +59,8 @@
 ###  [breaking_changes]
 - None
 
+
+## 0004-pos-foundation-v1.3.0-major
+- Add POS-Schema-Plan.md (tables, migrations, factories outline)
+- Define POS per-tenant, add-on lifetime, invoices & payments structure
+
