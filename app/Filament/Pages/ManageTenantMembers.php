@@ -15,9 +15,9 @@ class ManageTenantMembers extends Page
 {
     protected static BackedEnum|string|null $navigationIcon = null;
 
-    protected static ?string $navigationLabel = 'Tenant Members';
+    protected static ?string $navigationLabel = 'Staff';
 
-    protected static ?string $slug = 'tenant/members';
+    protected static ?string $slug = 'tenant/staff';
 
     protected string $view = 'filament.pages.manage-tenant-members';
 

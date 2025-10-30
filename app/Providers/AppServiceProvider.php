@@ -57,6 +57,11 @@ class AppServiceProvider extends ServiceProvider
             return $limits;
         });
 
+        // Only tenant owner (customer) may access member profiles
+        Gate::define('access-member-profile', function (User $user): bool {
+            return (string) $user->user_type === 'customer';
+        });
+
         Gate::define('access-tenant', function (User $user, int $tenantId): bool {
             $tenant = \App\Models\Tenant::query()->select(['id', 'owner_id'])->find($tenantId);
 

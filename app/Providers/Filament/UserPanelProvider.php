@@ -10,9 +10,11 @@ use App\Filament\Pages\CreateTenant;
 use App\Filament\Pages\ManageBranches;
 use App\Filament\Pages\ManageSessions;
 use App\Filament\Pages\ManageTenantMembers;
+use App\Filament\Pages\MyProfile;
 use App\Filament\Pages\Pricing;
 use App\Filament\Pages\SubscriberHome;
 use App\Filament\Pages\SupportTickets;
+use App\Filament\Pages\TenantOverview;
 use Filament\Actions\Action;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\AuthenticateSession;
@@ -51,6 +53,7 @@ class UserPanelProvider extends PanelProvider
             ])
             ->colors([
                 'primary' => Color::Blue,
+                'gray' => Color::Gray,
             ])
             // ->homeUrl(fn (): ?string => \App\Filament\Pages\SubscriberHome::getUrl(panel: 'user'))
             ->pages([
@@ -62,9 +65,11 @@ class UserPanelProvider extends PanelProvider
                 BillingPaymentMethods::class,
                 AppsSettings::class,
                 SupportTickets::class,
+                TenantOverview::class,
                 ManageTenantMembers::class,
                 ManageSessions::class,
-                ManageBranches::class,
+                MyProfile::class,
+                // ManageBranches::class,
             ])
             ->middleware([
                 EncryptCookies::class,

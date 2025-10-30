@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\CompanyProfileController;
+use App\Http\Controllers\Admin\SampleInvoiceController;
 use App\Http\Controllers\BlogController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -45,3 +46,6 @@ Route::get('/login', \App\Filament\Pages\Auth\Login::class)->name('login');
 Route::get('/register', \App\Filament\Pages\Auth\Register::class)->name('register');
 // Central password reset routes (root-level)
 Route::get('/password-reset/request', \App\Filament\Pages\PasswordReset\RequestPasswordReset::class)->name('password.request');
+
+Route::get('/invoices/download', [SampleInvoiceController::class, 'download'])
+    ->name('invoices.download');

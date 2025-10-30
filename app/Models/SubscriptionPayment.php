@@ -17,6 +17,7 @@ class SubscriptionPayment extends Model
         'note',
     ];
 
+
     public function subscription()
     {
         return $this->belongsTo(UserSubscription::class, 'user_subscription_id');

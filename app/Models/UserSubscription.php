@@ -52,9 +52,9 @@ class UserSubscription extends Model
         'start_date',       // Tanggal mulai subscription (aktif atau trial)
         'end_date',         // Tanggal berakhir subscription
         'status',           // Status subscription: active, expired, cancelled, pending, trial
-        'renewal_type',     // Cara perpanjangan: manual / auto (opsional, sementara bisa diabaikan)
-        'trial_ends_at',    // Tanggal akhir trial (hanya untuk plan free/trial)
-        'cancelled_at',     // Tanggal user/admin membatalkan subscription sebelum berakhir
+        'renewal_type',     // Cara perpanjangan: manual / auto (opsional, sementara diabaikan)
+        'trial_ends_at',    // Tanggal akhir trial (hanya untuk plan free/trial, sementara diabaikan)
+        'cancelled_at',     // Tanggal user/admin membatalkan subscription sebelum berakhir, sementara diabaikan
     ];
 
     protected $casts = [
@@ -123,6 +123,38 @@ class UserSubscription extends Model
         }
 
         return 'EXPIRED';
+    }
+
+    public function activateWithPayment(SubscriptionPayment $payment): void
+    {
+        if ($payment->status !== 'paid') {
+            throw new \Exception('Payment must be marked as paid first.');
+        }
+
+        $plan = $this->plan;
+        $duration = $plan->duration;
+        $interval = $plan->interval;
+
+        $startDate = $this->end_date && $this->end_date->isFuture()
+            ? $this->end_date
+            : now();
+
+        $endDate = $startDate->copy()->add($duration, $interval);
+
+        $this->update([
+            'start_date' => $startDate,
+            'end_date' => $endDate,
+            'cancelled_at' => null,
+        ]);
+    }
+
+    public function getRemainingDurationAttribute(): string
+    {
+        if ($this->end_date && $this->status === 'ACTIVE') {
+            $days = now()->diffInDays($this->end_date);
+            return $days . ' day' . ($days != 1 ? 's' : '');
+        }
+        return 'Expired';
     }
 
     // Subscription milik seorang user
