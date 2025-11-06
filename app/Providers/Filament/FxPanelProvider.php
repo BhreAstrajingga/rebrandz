@@ -3,6 +3,7 @@
 namespace App\Providers\Filament;
 
 use App\Filament\Pages\ManageSessions;
+use App\Filament\Pages\UserDashboard;
 use Filament\Actions\Action;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\AuthenticateSession;
@@ -20,46 +21,52 @@ use Illuminate\Cookie\Middleware\EncryptCookies;
 use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken;
 use Illuminate\Routing\Middleware\SubstituteBindings;
 use Illuminate\Session\Middleware\StartSession;
-use Illuminate\Support\Facades\Gate;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
+use Filament\Support\Enums\Width;
 
-class AdminPanelProvider extends PanelProvider
+class FxPanelProvider extends PanelProvider
 {
     public function panel(Panel $panel): Panel
     {
         return $panel
-            ->default()
-            ->id('admin')
-            ->path('admin')
+            ->id('fx')
+            ->path('fx')
             ->sidebarCollapsibleOnDesktop()
             ->viteTheme('resources/css/filament/admin/theme.css')
             ->login(false)
-            // ->registration()
-            // ->passwordReset()
-            ->colors([
-                'primary' => Color::Amber,
-                'gray' => Color::Slate,
-            ])
-            ->discoverResources(in: app_path('Filament/Resources'), for: 'App\Filament\Resources')
-            ->discoverPages(in: app_path('Filament/Pages'), for: 'App\Filament\Pages')
-            ->pages([
-                Dashboard::class,
-            ])
-            ->discoverWidgets(in: app_path('Filament/Widgets'), for: 'App\Filament\Widgets')
-            ->widgets([
-                AccountWidget::class,
-                FilamentInfoWidget::class,
-            ])
+            ->authGuard('web')
+            ->authPasswordBroker('users')
+			->brandName('Rebrandz FX')
+			->brandLogo('/assets/images/logolight.png')
+			->darkModeBrandLogo('/assets/images/logodark.png')
+			->breadcrumbs()
+			->topNavigation()
+			->maxContentWidth(Width::Full)
             ->userMenuItems([
                 Action::make('browserSessions')
                     ->label('My Sessions')
-                    ->url(fn (): string => ManageSessions::getUrl(panel: 'admin'))
+                    ->url(fn (): string => ManageSessions::getUrl(panel: 'fx'))
                     ->icon(Heroicon::OutlinedDevicePhoneMobile),
-                Action::make('pulse')
-                    ->label('Pulse')
-                    ->url(fn (): string => url(config('pulse.path', 'pulse')))
-                    ->icon(Heroicon::OutlinedChartBar)
-                    ->visible(fn (): bool => Gate::allows('viewPulse')),
+            ])
+            ->colors([
+				'gray' => Color::Gray,
+				'primary' => Color::Indigo,
+				'info' => Color::Blue,
+				'success' => Color::Emerald,
+				'warning' => Color::Orange,
+				'danger' => Color::Rose,
+				'critical' => 'rgb(185, 28, 28)',
+			])
+            ->discoverResources(in: app_path('Filament/Fx/Resources'), for: 'App\Filament\Fx\Resources')
+            ->discoverPages(in: app_path('Filament/Fx/Pages'), for: 'App\Filament\Fx\Pages')
+            ->pages([
+                Dashboard::class,
+                ManageSessions::class,
+            ])
+            ->discoverWidgets(in: app_path('Filament/Fx/Widgets'), for: 'App\Filament\Fx\Widgets')
+            ->widgets([
+                AccountWidget::class,
+                FilamentInfoWidget::class,
             ])
             ->middleware([
                 EncryptCookies::class,

@@ -51,7 +51,7 @@ class ServiceListWidget extends TableWidget
             ->query(fn(): Builder => Service::query())
             ->recordClasses(function (Model $record) {
                 return (int) $record->getKey() === (int) $this->selectedServiceId
-                    ? 'bg-warning-100 dark:bg-warning-900'
+                    ? 'bg-warning-100 dark:bg-warning-900 cursor-pointer'
                     : null;
             })
             ->columns([
