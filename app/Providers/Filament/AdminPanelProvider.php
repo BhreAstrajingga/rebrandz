@@ -20,6 +20,7 @@ use Illuminate\Cookie\Middleware\EncryptCookies;
 use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken;
 use Illuminate\Routing\Middleware\SubstituteBindings;
 use Illuminate\Session\Middleware\StartSession;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
 
@@ -51,6 +52,11 @@ class AdminPanelProvider extends PanelProvider
                 FilamentInfoWidget::class,
             ])
             ->userMenuItems([
+                Action::make('fxPanel')
+                    ->label('FX Panel')
+                    ->url('/fx')
+					->visible(fn (): bool => in_array(Auth::user()->user_type, ['admin', 'super admin', 'system']))
+                    ->icon(Heroicon::OutlinedBuildingOffice),
                 Action::make('browserSessions')
                     ->label('My Sessions')
                     ->url(fn (): string => ManageSessions::getUrl(panel: 'admin'))

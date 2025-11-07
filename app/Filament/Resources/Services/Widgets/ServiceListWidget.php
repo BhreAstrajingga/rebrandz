@@ -12,7 +12,6 @@ use Filament\Tables\Table;
 use Filament\Widgets\TableWidget;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\Log;
 
 class ServiceListWidget extends TableWidget
 {
@@ -48,11 +47,11 @@ class ServiceListWidget extends TableWidget
     public function table(Table $table): Table
     {
         return $table
-            ->query(fn(): Builder => Service::query())
+            ->query(fn (): Builder => Service::query())
             ->recordClasses(function (Model $record) {
                 return (int) $record->getKey() === (int) $this->selectedServiceId
                     ? 'bg-warning-100 dark:bg-warning-900 cursor-pointer'
-                    : null;
+                    : 'cursor-pointer';
             })
             ->columns([
                 TextColumn::make('name')

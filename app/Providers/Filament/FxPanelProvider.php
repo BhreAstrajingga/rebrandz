@@ -23,6 +23,7 @@ use Illuminate\Routing\Middleware\SubstituteBindings;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
 use Filament\Support\Enums\Width;
+use Illuminate\Support\Facades\Auth;
 
 class FxPanelProvider extends PanelProvider
 {
@@ -43,6 +44,11 @@ class FxPanelProvider extends PanelProvider
 			->topNavigation()
 			->maxContentWidth(Width::Full)
             ->userMenuItems([
+                Action::make('backHome')
+                    ->label('Admin Panel')
+                    ->url('/admin')
+					->visible(fn (): bool => in_array(Auth::user()->user_type, ['admin', 'super admin', 'system']))
+                    ->icon(Heroicon::OutlinedHome),
                 Action::make('browserSessions')
                     ->label('My Sessions')
                     ->url(fn (): string => ManageSessions::getUrl(panel: 'fx'))
