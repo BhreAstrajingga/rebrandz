@@ -18,10 +18,13 @@ use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use UnitEnum;
 
 class McAgentResource extends Resource
 {
     protected static ?string $model = McAgent::class;
+
+    protected static string|UnitEnum|null $navigationGroup = 'Master Data';
 
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedBuildingStorefront;
 
@@ -31,7 +34,9 @@ class McAgentResource extends Resource
 
     protected static ?string $modelLabel = 'Agent';
 
-    protected static ?string $pluralModelLabel = 'Agents';    public static function form(Schema $schema): Schema
+    protected static ?string $pluralModelLabel = 'Agents';
+
+    public static function form(Schema $schema): Schema
     {
         return McAgentForm::configure($schema);
     }

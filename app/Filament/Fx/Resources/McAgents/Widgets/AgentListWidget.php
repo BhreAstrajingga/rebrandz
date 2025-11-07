@@ -32,7 +32,6 @@ class AgentListWidget extends TableWidget
     public function setAgentSelected($payload = null)
     {
         $this->selectedAgentId = $payload['id'] ?? null;
-		Log::info('Selected Agent ID: ' . $this->selectedAgentId);
     }
 
     public function refreshAgent(): void

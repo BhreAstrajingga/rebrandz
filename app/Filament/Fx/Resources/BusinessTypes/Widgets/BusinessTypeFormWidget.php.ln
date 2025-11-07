@@ -1,0 +1,202 @@
+1	<?php
+2	
+3	namespace App\Filament\Fx\Resources\BusinessTypes\Widgets;
+4	
+5	use App\Models\FX\BusinessType;
+6	use Filament\Actions\Concerns\InteractsWithActions;
+7	use Filament\Actions\Contracts\HasActions;
+8	use Filament\Forms\Components\Repeater;
+9	use Filament\Forms\Components\Repeater\TableColumn;
+10	use Filament\Forms\Components\RichEditor;
+11	use Filament\Forms\Components\TextInput;
+12	use Filament\Forms\Concerns\InteractsWithForms;
+13	use Filament\Forms\Contracts\HasForms;
+14	use Filament\Notifications\Notification;
+15	use Filament\Schemas\Schema;
+16	use Filament\Widgets\Widget;
+17	use Illuminate\Support\Arr;
+18	
+19	class BusinessTypeFormWidget extends Widget implements HasActions, HasForms
+20	{
+21	    use InteractsWithActions;
+22	    use InteractsWithForms;
+23	
+24	    protected string $view = 'filament.fx.resources.business-types.widgets.business-type-form-widget';
+25	
+26	    public ?int $businessTypeId = null;
+27	
+28	    public ?array $data = [];
+29	
+30	    public function mount(): void
+31	    {
+32	        $this->form->fill();
+33	    }
+34	
+35	    protected $listeners = [
+36	        'businessTypeSelected' => 'onBusinessTypeSelected',
+37	    ];
+38	
+39	    public function onBusinessTypeSelected($payload = null)
+40	    {
+41	        $this->businessTypeId = is_array($payload) ? ($payload['id'] ?? null) : null;
+42	
+43	        if ($this->businessTypeId) {
+44	            $businessType = BusinessType::find($this->businessTypeId);
+45	            if ($businessType) {
+46	                $this->data = $businessType->toArray();
+47	                $this->form->model($businessType);
+48	            }
+49	        } else {
+50	            $this->data = [];
+51	            // Rebind to a fresh model so relationship-based components work
+52	            $this->form->model(new BusinessType);
+53	        }
+54	
+55	        // For new records, call fill() without overriding state so Repeater defaultItems apply
+56	        if ($this->businessTypeId) {
+57	            $this->form->fill($this->data);
+58	        } else {
+59	            $this->form->fill();
+60	        }
+61	    }
+62	
+63	    public function form(Schema $schema): Schema
+64	    {
+65	        return $schema
+66	            ->components([
+67	                TextInput::make('name')
+68	                    ->required()
+69	                    ->minLength(2)
+70	                    ->maxLength(255)
+71	                    ->unique(ignoreRecord: true)
+72	                    ->columnSpanFull()
+73	                    ->rules(['regex:/^[\pL\pN\s\-_]+$/u'])
+74	                    ->helperText('Give unique name. Only letters, numbers, spaces, hyphens, and underscores are allowed.'),
+75	
+76	                Repeater::make('details')
+77	                    ->relationship('details')
+78	                    ->table([
+79	                        TableColumn::make('description')->width('60%'),
+80	                        TableColumn::make('quantity'),
+81	                        TableColumn::make('price'),
+82	                    ])
+83	                    ->schema([
+84	                        RichEditor::make('description')
+85	                            ->extraInputAttributes([
+86	                                'style' => 'resize: vertical;min-height: 2rem; max-height: auto; overflow-y: auto;',
+87	                            ])
+88	                            ->toolbarButtons(['bulletList', 'orderedList'])
+89	                            ->maxLength(500),
+90	                        TextInput::make('quantity')
+91	                            ->required()
+92	                            ->numeric()
+93	                            ->minValue(1),
+94	                        TextInput::make('price')
+95	                            ->required()
+96	                            ->numeric()
+97	                            ->minValue(0)
+98	                            ->step(0.01),
+99	                    ])
+100	                    ->minItems(1)
+101	                    ->columnSpanFull()
+102	                    ->label('Business Type Details')
+103	                    ->helperText('Add one or more details for this Business Type.'),
+104	            ])
+105	            ->model($this->getFormModel())
+106	            ->statePath('data');
+107	    }
+108	
+109	    protected function getFormModel(): BusinessType
+110	    {
+111	        if ($this->businessTypeId) {
+112	            return BusinessType::find($this->businessTypeId) ?? new BusinessType;
+113	        }
+114	
+115	        return new BusinessType;
+116	    }
+117	
+118	    public function create(): void
+119	    {
+120	        $data = $this->form->getState();
+121	        try {
+122	            $attributes = Arr::except($data, ['details']);
+123	            $businessType = new BusinessType;
+124	            $businessType->fill($attributes);
+125	            $businessType->save();
+126	
+127	            $this->businessTypeId = $businessType->id;
+128	            $this->form->model($businessType)->saveRelationships();
+129	            // Clear any mounted actions (e.g., from Repeater add/delete) to avoid leftover redirects/errors
+130	            $this->unmountAction();
+131	            $this->form->fill();
+132	            Notification::make()
+133	                ->title('Business Type created successfully.')
+134	                ->success()
+135	                ->send();
+136	            $this->dispatch('business-type-created');
+137	        } catch (\Exception $e) {
+138	            Notification::make()
+139	                ->title('Failed to create Business Type.')
+140	                ->body($e->getMessage())
+141	                ->danger()
+142	                ->send();
+143	        }
+144	    }
+145	
+146	    public function save(): void
+147	    {
+148	        if ($this->businessTypeId) {
+149	            $this->update();
+150	        } else {
+151	            $this->create();
+152	        }
+153	    }
+154	
+155	    public function update(): void
+156	    {
+157	        $data = $this->form->getState();
+158	        try {
+159	            $businessType = BusinessType::find($this->businessTypeId);
+160	            if ($businessType) {
+161	                $attributes = Arr::except($data, ['details']);
+162	                $businessType->update($attributes);
+163	                $this->form->model($businessType)->saveRelationships();
+164	                // Clear any mounted actions (e.g., from Repeater add/delete) to avoid leftover redirects/errors
+165	                $this->unmountAction();
+166	                Notification::make()
+167	                    ->title('Business Type updated successfully.')
+168	                    ->success()
+169	                    ->send();
+170	                $this->dispatch('business-type-updated');
+171	            }
+172	        } catch (\Exception $e) {
+173	            Notification::make()
+174	                ->title('Failed to update Business Type.')
+175	                ->body($e->getMessage())
+176	                ->danger()
+177	                ->send();
+178	        }
+179	    }
+180	
+181	    public function delete(): void
+182	    {
+183	        try {
+184	            $businessType = BusinessType::find($this->businessTypeId);
+185	            if ($businessType) {
+186	                $businessType->delete();
+187	                $this->form->fill();
+188	                Notification::make()
+189	                    ->title('Business Type deleted successfully.')
+190	                    ->success()
+191	                    ->send();
+192	                $this->dispatch('business-type-deleted');
+193	            }
+194	        } catch (\Exception $e) {
+195	            Notification::make()
+196	                ->title('Failed to delete Business Type.')
+197	                ->body($e->getMessage())
+198	                ->danger()
+199	                ->send();
+200	        }
+201	    }
+202	}

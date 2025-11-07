@@ -3,10 +3,7 @@
 namespace App\Filament\Fx\Resources\McAgents\Widgets;
 
 use App\Models\McAgent;
-use Filament\Forms\Components\Placeholder;
-use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
-use Filament\Forms\Components\Toggle;
 use Filament\Forms\Concerns\InteractsWithForms;
 use Filament\Forms\Contracts\HasForms;
 use Filament\Notifications\Notification;
@@ -15,11 +12,13 @@ use Filament\Widgets\Widget;
 
 class AgentFormWidget extends Widget implements HasForms
 {
-	use InteractsWithForms;
-    protected string $view = 'filament.fx.widgets.agent-form-widget';
-	public ?int $agentId = null;
-    public ?array $data = [];
+    use InteractsWithForms;
 
+    protected string $view = 'filament.fx.widgets.agent-form-widget';
+
+    public ?int $agentId = null;
+
+    public ?array $data = [];
 
     public function mount(): void
     {
@@ -46,7 +45,7 @@ class AgentFormWidget extends Widget implements HasForms
         $this->form->fill($this->data);
     }
 
-	public function form(Schema $schema): Schema
+    public function form(Schema $schema): Schema
     {
         return $schema
             ->components([
@@ -55,26 +54,26 @@ class AgentFormWidget extends Widget implements HasForms
                     ->minLength(2)
                     ->maxLength(255)
                     ->unique()
-					->columnSpanFull()
+                    ->columnSpanFull()
                     ->rules(['regex:/^[\pL\pN\s\-_]+$/u']),
                 TextInput::make('email')
-					->email()
+                    ->email()
                     ->maxLength(1000)
-					->columnSpan(1),
-				TextInput::make('phone')
-					->maxLength(25)
-					->columnSpan(1),
+                    ->columnSpan(1),
+                TextInput::make('phone')
+                    ->maxLength(25)
+                    ->columnSpan(1),
             ])
-			->columns(2)
-			->statePath('data');
+            ->columns(2)
+            ->statePath('data');
     }
 
-	public function create(): void
-	{
-		$data = $this->form->getState();
-		try {
-			$agent = McAgent::create($data);
-			$this->form->fill();
+    public function create(): void
+    {
+        $data = $this->form->getState();
+        try {
+            $agent = McAgent::create($data);
+            $this->form->fill();
             Notification::make()
                 ->title('New Agent')
                 ->body('An agent successfully created.')
@@ -82,20 +81,66 @@ class AgentFormWidget extends Widget implements HasForms
                 ->send();
             $this->dispatch('agent-created');
         } catch (\Exception $e) {
-			Notification::make()
-				->title('Error Creating new agent')
-				->body($e->getMessage())
-				->danger()
-				->send();
-		}
-	}
+            Notification::make()
+                ->title('Error Creating new agent')
+                ->body($e->getMessage())
+                ->danger()
+                ->send();
+        }
+    }
 
-	public function save(): void
-	{
-		if ($this->agentId) {
-			$this->update();
-		} else {
-			$this->create();
-		}
-	}
+    public function save(): void
+    {
+        if ($this->agentId) {
+            $this->update();
+        } else {
+            $this->create();
+        }
+    }
+
+    public function update(): void
+    {
+        $data = $this->form->getState();
+        try {
+            $agent = McAgent::find($this->agentId);
+            if ($agent) {
+                $agent->update($data);
+                $this->form->fill();
+                Notification::make()
+                    ->title('Agent Updated')
+                    ->body('Agent data successfully updated.')
+                    ->success()
+                    ->send();
+                $this->dispatch('agent-updated');
+            }
+        } catch (\Exception $e) {
+            Notification::make()
+                ->title('Error Updating agent')
+                ->body($e->getMessage())
+                ->danger()
+                ->send();
+        }
+    }
+
+    public function delete(): void
+    {
+        $data = $this->form->getState();
+        try {
+            $agent = McAgent::findOrFail($this->agentId);
+            $agent->delete();
+            $this->form->fill();
+            $this->dispatch('agent-deleted');
+            Notification::make()
+                ->title('Agent Deleted')
+                ->body('An agent successfully deleted.')
+                ->success()
+                ->send();
+        } catch (\Exception $e) {
+            Notification::make()
+                ->title('Error Deleting agent')
+                ->body($e->getMessage())
+                ->danger()
+                ->send();
+        }
+    }
 }

@@ -23,9 +23,15 @@ class SampleInvoiceController extends Controller
             abort(400, 'Invalid invoice payload.');
         }
 
+        $invoiceNumber = $invoice['invoice_number'] ?? 'unknown';
+        $hash = hash('sha256', $invoiceNumber);
+        $shortHash = substr($hash, 0, 22);
+        $txnId = 'txn_'.$shortHash;
+        $invoice['txn_id'] = $txnId;
+
         $html = view('sampleinvoice.template', ['invoice' => $invoice])->render();
-        $filename = 'Invoice-' . $invoice['invoice_number'] . '.pdf';
-        $pdfPath = storage_path('app/tmp/' . $filename);
+        $filename = 'Invoice-'.$invoice['invoice_number'].'.pdf';
+        $pdfPath = storage_path('app/tmp/'.$filename);
 
         // pastikan folder tmp ada
         if (! is_dir(dirname($pdfPath))) {
@@ -46,7 +52,7 @@ class SampleInvoiceController extends Controller
             text-align: center;
             padding-top: 5px;
         ">
-            Generated at '. $today .'<br>Page <span class="pageNumber"></span> / <span class="totalPages"></span>
+            Generated at '.$today.'<br>Page <span class="pageNumber"></span> / <span class="totalPages"></span>
         </div>')
             ->savePdf($pdfPath);
 

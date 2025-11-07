@@ -126,7 +126,7 @@
                         <tr>
                             <td class="border border-gray-300 px-4 py-2">{{ \Carbon\Carbon::parse($invoice['invoice_date'])->format('F jS, Y') }}</td>
                             <td class="border border-gray-300 px-4 py-2">Credit Card</td>
-                            <td class="border border-gray-300 px-4 py-2">txn_3Rtnd4JAGjqF0vdY0bYXGSnS</td>
+                            <td class="border border-gray-300 px-4 py-2">${{ $invoice['txn_id'] }}</td>
                             <td class="border border-gray-300 px-4 py-2 text-right">${{ $invoice['total'] }}</td>
                         </tr>
                     </tbody>

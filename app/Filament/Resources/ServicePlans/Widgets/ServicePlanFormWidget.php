@@ -163,7 +163,6 @@ class ServicePlanFormWidget extends Widget implements HasForms
     public function update(): void
     {
         $data = $this->form->getState();
-        Log::info($data);
         try {
             $plan = ServicePlan::findOrFail($this->servicePlanId);
             $plan->update($data);
