@@ -111,7 +111,7 @@ class User extends Authenticatable implements FilamentUser, HasTenants
         }
 
         if ($panelId === 'fx') {
-            return in_array($type, ['system', 'admin','manager','staff'], true);
+            return in_array($type, ['system', 'admin','manager','staff', 'fx'], true);
         }
 
         if ($panelId === 'user') {

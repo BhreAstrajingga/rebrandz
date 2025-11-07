@@ -2,10 +2,13 @@
 
 namespace App\Models\FX;
 
+use Filament\Models\Contracts\FilamentUser;
+use Filament\Panel;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class FxUser extends Model
+class FxUser extends Authenticatable implements FilamentUser
 {
     protected $table = 'users';
 
@@ -17,9 +20,15 @@ class FxUser extends Model
         'user_type',
     ];
 
-    protected function casts(): array
+    protected $hidden = [
+        'password',
+        'remember_token',
+    ];
+
+	protected function casts(): array
     {
         return [
+            'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
     }
@@ -27,7 +36,7 @@ class FxUser extends Model
     protected static function booted(): void
     {
         static::addGlobalScope('fx', function ($builder): void {
-            $builder->where('user_type', 'fx');
+            $builder->whereIn('user_type', ['fx', 'system', 'admin','manager','staff']);
         });
 
         // Set defaults and ensure slug on create
@@ -68,4 +77,17 @@ class FxUser extends Model
     {
         return 'slug';
     }
+
+	public function canAccessPanel(Panel $panel): bool
+	{
+		$panelId = $panel->getId();
+		$type = $this->user_type;
+
+		if ($panelId === 'fx') {
+            return in_array($type, ['system', 'admin','manager','staff', 'fx'], true);
+        }
+
+		return false;
+
+	}
 }
