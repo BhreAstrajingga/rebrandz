@@ -48,13 +48,18 @@ class UserListWidget extends TableWidget
             ->query(fn (): Builder => FxUser::query())
             ->recordClasses(function (Model $record) {
                 return (int) $record->getKey() === (int) $this->selectedUserId
-                    ? 'bg-warning-100 dark:bg-warning-900 cursor-pointer'
+                    ? 'bg-warning-100 dark:bg-transparent text-orange-500 cursor-pointer'
                     : null;
             })
             ->columns([
                 TextColumn::make('name')
                     ->label('User Name')
                     ->searchable()
+                    ->color(function (Model $record) {
+                        return (int) $record->getKey() === (int) $this->selectedUserId
+                            ? 'primary'
+                            : null;
+                    })
                     ->action(function (FxUser $record) {
                         $this->dispatch('userSelected', ['id' => $record->id]);
                     })

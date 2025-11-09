@@ -24,7 +24,10 @@ class DatabaseSeeder extends Seeder
         // $this->call(TenantSeeder::class);
         // $this->call(UsersSeeder::class);
         // $this->call(ServicePosSeeder::class);
-        $this->call(TenantBranchDemoSeeder::class);
+        $this->call([
+            RolesAndPermissionsSeeder::class,
+            TenantBranchDemoSeeder::class,
+        ]);
         // $this->call(PostSeeder::class);
     }
 }

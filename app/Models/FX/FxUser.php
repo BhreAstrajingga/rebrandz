@@ -4,12 +4,14 @@ namespace App\Models\FX;
 
 use Filament\Models\Contracts\FilamentUser;
 use Filament\Panel;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Str;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Support\Str;
+use Spatie\Permission\Traits\HasRoles;
 
 class FxUser extends Authenticatable implements FilamentUser
 {
+    use HasRoles;
+
     protected $table = 'users';
 
     protected $fillable = [
@@ -25,7 +27,9 @@ class FxUser extends Authenticatable implements FilamentUser
         'remember_token',
     ];
 
-	protected function casts(): array
+    protected string $guard_name = 'web';
+
+    protected function casts(): array
     {
         return [
             'email_verified_at' => 'datetime',
@@ -36,7 +40,7 @@ class FxUser extends Authenticatable implements FilamentUser
     protected static function booted(): void
     {
         static::addGlobalScope('fx', function ($builder): void {
-            $builder->whereIn('user_type', ['fx', 'system', 'admin','manager','staff']);
+            $builder->whereIn('user_type', ['fx', 'system', 'admin', 'manager', 'staff']);
         });
 
         // Set defaults and ensure slug on create
@@ -78,16 +82,27 @@ class FxUser extends Authenticatable implements FilamentUser
         return 'slug';
     }
 
-	public function canAccessPanel(Panel $panel): bool
-	{
-		$panelId = $panel->getId();
-		$type = $this->user_type;
+    public function canAccessPanel(Panel $panel): bool
+    {
+        $panelId = $panel->getId();
+        $type = $this->user_type;
 
-		if ($panelId === 'fx') {
-            return in_array($type, ['system', 'admin','manager','staff', 'fx'], true);
+        if ($panelId === 'admin') {
+            return in_array($type, ['system', 'admin'], true);
         }
 
-		return false;
+        if ($panelId === 'fx') {
+            return in_array($type, ['system', 'admin', 'manager', 'staff', 'fx'], true);
+        }
 
-	}
+        if ($panelId === 'user') {
+            return in_array($type, ['customer', 'system', 'admin'], true);
+        }
+
+        if ($panelId === 'tenant') {
+            return in_array($type, ['customer', 'system', 'admin'], true);
+        }
+
+        return false;
+    }
 }

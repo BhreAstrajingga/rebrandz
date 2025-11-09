@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Filament\Pages;
+namespace App\Filament\User\Pages;
 
 use Filament\Actions\Action;
 use Filament\Facades\Filament;
@@ -12,7 +12,24 @@ class UserDashboard extends BaseDashboard
     {
         $user = Filament::auth()->user();
 
-        return $user !== null && ((string) $user->user_type === 'customer');
+        if ($user === null) {
+            return false;
+        }
+
+        // Allow Customer, and ensure System/Admin and Super Admin can access all panels.
+        if ((string) $user->user_type === 'customer') {
+            return true;
+        }
+
+        if (in_array((string) $user->user_type, ['system', 'admin'], true)) {
+            return true;
+        }
+
+        if (method_exists($user, 'hasRole') && $user->hasRole('Super Admin')) {
+            return true;
+        }
+
+        return false;
     }
 
     protected function getHeaderActions(): array

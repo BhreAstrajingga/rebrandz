@@ -3,6 +3,7 @@
 namespace App\Providers\Filament;
 
 use App\Filament\Pages\ManageSessions;
+use BezhanSalleh\FilamentShield\FilamentShieldPlugin;
 use Filament\Actions\Action;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\AuthenticateSession;
@@ -34,6 +35,9 @@ class AdminPanelProvider extends PanelProvider
             ->path('admin')
             ->sidebarCollapsibleOnDesktop()
             ->viteTheme('resources/css/filament/admin/theme.css')
+            ->brandName('Rebrandz FX')
+            ->brandLogo('/assets/images/logolight.png')
+            ->darkModeBrandLogo('/assets/images/logodark.png')
             ->login(false)
             // ->registration()
             // ->passwordReset()
@@ -42,9 +46,10 @@ class AdminPanelProvider extends PanelProvider
                 'gray' => Color::Slate,
             ])
             ->discoverResources(in: app_path('Filament/Resources'), for: 'App\Filament\Resources')
-            ->discoverPages(in: app_path('Filament/Pages'), for: 'App\Filament\Pages')
+                        ->discoverPages(in: app_path('Filament/Admin/Pages'), for: 'App\\Filament\\Admin\\Pages')
             ->pages([
                 Dashboard::class,
+                \App\Filament\Pages\ManageSessions::class,
             ])
             ->discoverWidgets(in: app_path('Filament/Widgets'), for: 'App\Filament\Widgets')
             ->widgets([
@@ -55,7 +60,7 @@ class AdminPanelProvider extends PanelProvider
                 Action::make('fxPanel')
                     ->label('FX Panel')
                     ->url('/fx')
-					->visible(fn (): bool => in_array(Auth::user()->user_type, ['admin', 'super admin', 'system']))
+                    ->visible(fn (): bool => in_array(Auth::user()->user_type, ['admin', 'super admin', 'system']))
                     ->icon(Heroicon::OutlinedBuildingOffice),
                 Action::make('browserSessions')
                     ->label('My Sessions')
@@ -77,6 +82,9 @@ class AdminPanelProvider extends PanelProvider
                 SubstituteBindings::class,
                 DisableBladeIconComponents::class,
                 DispatchServingFilamentEvent::class,
+            ])
+            ->plugins([
+                FilamentShieldPlugin::make(),
             ])
             ->authMiddleware([
                 Authenticate::class,

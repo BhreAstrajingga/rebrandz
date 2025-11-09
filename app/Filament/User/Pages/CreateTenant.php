@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Filament\Pages;
+namespace App\Filament\User\Pages;
 
 use App\Models\Tenant;
 use Filament\Actions\Action;

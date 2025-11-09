@@ -10,6 +10,7 @@ use App\Filament\Fx\Resources\Currencies\Schemas\CurrencyForm;
 use App\Filament\Fx\Resources\Currencies\Tables\CurrenciesTable;
 use App\Models\FX\Currency;
 use BackedEnum;
+use Filament\Facades\Filament;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
@@ -61,5 +62,27 @@ class CurrencyResource extends Resource
             ->withoutGlobalScopes([
                 SoftDeletingScope::class,
             ]);
+    }
+
+    protected static function userHasFxAccess(): bool
+    {
+        $user = Filament::auth()->user();
+
+        return $user !== null && in_array((string) $user->user_type, ['system', 'admin', 'manager', 'staff', 'fx'], true);
+    }
+
+    public static function canAccess(): bool
+    {
+        return static::userHasFxAccess();
+    }
+
+    public static function canView(\Illuminate\Database\Eloquent\Model $record): bool
+    {
+        return static::userHasFxAccess();
+    }
+
+    public static function shouldRegisterNavigation(): bool
+    {
+        return static::userHasFxAccess();
     }
 }

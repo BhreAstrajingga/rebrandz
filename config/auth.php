@@ -40,6 +40,10 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+        'fx' => [
+            'driver' => 'session',
+            'provider' => 'fx_users',
+        ],
     ],
 
     /*
@@ -63,6 +67,10 @@ return [
         'users' => [
             'driver' => 'eloquent',
             'model' => env('AUTH_MODEL', App\Models\User::class),
+        ],
+        'fx_users' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\FX\FxUser::class,
         ],
 
         // 'users' => [

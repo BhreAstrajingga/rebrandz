@@ -5,6 +5,7 @@ namespace App\Filament\Resources\Users\Tables;
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
+use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 
 class UsersTable
@@ -13,7 +14,9 @@ class UsersTable
     {
         return $table
             ->columns([
-                //
+                TextColumn::make('name')->label('Name')->searchable()->sortable(),
+                TextColumn::make('email')->label('Email')->searchable()->sortable(),
+                TextColumn::make('user_type')->label('User Type')->searchable()->sortable(),
             ])
             ->filters([
                 //

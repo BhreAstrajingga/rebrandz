@@ -35,12 +35,13 @@ class Login extends BaseLogin
         /** @var SessionGuard $authGuard */
         $authGuard = Filament::auth();
 
-        $authProvider = $authGuard->getProvider(); /** @phpstan-ignore-line */
         $credentials = $this->getCredentialsFromFormData($data);
 
+        // Retrieve user using the current panel's guard provider only
+        $authProvider = $authGuard->getProvider(); /** @phpstan-ignore-line */
         $user = $authProvider->retrieveByCredentials($credentials);
 
-        if ((! $user) || (! $authProvider->validateCredentials($user, $credentials))) {
+        if ((! $user) || (! $authProvider || ! $authProvider->validateCredentials($user, $credentials))) {
             $this->userUndertakingMultiFactorAuthentication = null;
 
             $this->fireFailedEvent($authGuard, $user, $credentials);
@@ -50,12 +51,17 @@ class Login extends BaseLogin
         // Dynamically select panel based on user_type
         $panelId = match ($user->user_type ?? null) {
             'system' => 'admin',
+            'admin' => 'admin',
             'customer' => 'user',
+            'fx', 'manager', 'staff' => 'fx',
             default => Filament::getDefaultPanel()?->getId(),
         };
 
         if ($panelId) {
             Filament::setCurrentPanel($panelId);
+            // Refresh guard to match selected panel's configuration
+            /** @var SessionGuard $authGuard */
+            $authGuard = Filament::auth();
         }
 
         if (

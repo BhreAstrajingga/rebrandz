@@ -12,6 +12,7 @@ use App\Filament\Fx\Resources\McAgents\Schemas\McAgentInfolist;
 use App\Filament\Fx\Resources\McAgents\Tables\McAgentsTable;
 use App\Models\McAgent;
 use BackedEnum;
+use Filament\Facades\Filament;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
@@ -75,5 +76,27 @@ class McAgentResource extends Resource
             ->withoutGlobalScopes([
                 SoftDeletingScope::class,
             ]);
+    }
+
+    protected static function userHasFxAccess(): bool
+    {
+        $user = Filament::auth()->user();
+
+        return $user !== null && in_array((string) $user->user_type, ['system', 'admin', 'manager', 'staff', 'fx'], true);
+    }
+
+    public static function canAccess(): bool
+    {
+        return static::userHasFxAccess();
+    }
+
+    public static function canView(\Illuminate\Database\Eloquent\Model $record): bool
+    {
+        return static::userHasFxAccess();
+    }
+
+    public static function shouldRegisterNavigation(): bool
+    {
+        return static::userHasFxAccess();
     }
 }

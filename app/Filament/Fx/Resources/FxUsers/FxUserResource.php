@@ -10,10 +10,12 @@ use App\Filament\Fx\Resources\FxUsers\Schemas\FxUserForm;
 use App\Filament\Fx\Resources\FxUsers\Tables\FxUsersTable;
 use App\Models\FX\FxUser;
 use BackedEnum;
+use Filament\Facades\Filament;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
+use Illuminate\Database\Eloquent\Model;
 
 class FxUserResource extends Resource
 {
@@ -54,5 +56,27 @@ class FxUserResource extends Resource
             // 'create' => CreateFxUser::route('/create'),
             // 'edit' => EditFxUser::route('/{record}/edit'),
         ];
+    }
+
+    protected static function userHasFxAdminAccess(): bool
+    {
+        $user = Filament::auth()->user();
+
+        return $user !== null && in_array((string) $user->user_type, ['system', 'admin'], true);
+    }
+
+    public static function canAccess(): bool
+    {
+        return static::userHasFxAdminAccess();
+    }
+
+    public static function canView(Model $record): bool
+    {
+        return static::userHasFxAdminAccess();
+    }
+
+    public static function shouldRegisterNavigation(): bool
+    {
+        return static::userHasFxAdminAccess();
     }
 }

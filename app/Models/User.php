@@ -12,11 +12,12 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
+use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable implements FilamentUser, HasTenants
 {
     /** @use HasFactory<\Database\Factories\UserFactory> */
-    use HasFactory, Notifiable;
+    use HasFactory, HasRoles, Notifiable;
 
     /**
      * The attributes that are mass assignable.
@@ -111,11 +112,11 @@ class User extends Authenticatable implements FilamentUser, HasTenants
         }
 
         if ($panelId === 'fx') {
-            return in_array($type, ['system', 'admin','manager','staff', 'fx'], true);
+            return in_array($type, ['system', 'admin', 'manager', 'staff', 'fx'], true);
         }
 
         if ($panelId === 'user') {
-            return in_array($type, ['customer'], true);
+            return in_array($type, ['customer', 'system', 'admin'], true);
         }
 
         if ($panelId === 'tenant') {

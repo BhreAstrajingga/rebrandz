@@ -13,8 +13,8 @@ use App\Filament\Pages\ManageTenantMembers;
 use App\Filament\Pages\MyProfile;
 use App\Filament\Pages\Pricing;
 use App\Filament\Pages\SubscriberHome;
-use App\Filament\Pages\SupportTickets;
-use App\Filament\Pages\TenantOverview;
+use App\Filament\User\Pages\SupportTickets;
+use App\Filament\User\Pages\TenantOverview;
 use Filament\Actions\Action;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\AuthenticateSession;
@@ -57,9 +57,9 @@ class UserPanelProvider extends PanelProvider
             ])
             // ->homeUrl(fn (): ?string => \App\Filament\Pages\SubscriberHome::getUrl(panel: 'user'))
             ->pages([
-                \App\Filament\Pages\UserDashboard::class,
-                CreateTenant::class,
-                // SubscriberHome::class,
+                \App\Filament\User\Pages\UserDashboard::class,
+                \App\Filament\User\Pages\CreateTenant::class,
+                SubscriberHome::class,
                 Pricing::class,
                 BillingInvoices::class,
                 BillingPaymentMethods::class,

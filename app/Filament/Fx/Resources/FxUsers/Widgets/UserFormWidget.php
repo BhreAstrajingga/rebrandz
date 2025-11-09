@@ -24,6 +24,8 @@ class UserFormWidget extends Widget implements HasForms
 
     public function mount(): void
     {
+        // Bind a model so relationship() components can resolve
+        $this->form->model($this->getFormModel());
         $this->form->fill();
     }
 
@@ -39,9 +41,14 @@ class UserFormWidget extends Widget implements HasForms
             $user = FxUser::find($this->userId);
             if ($user) {
                 $this->data = $user->toArray();
+                $this->data['roles'] = $user->roles()->pluck('id')->all();
+                // Rebind the form to the selected user so relationship() works
+                $this->form->model($user);
             }
         } else {
             $this->data = [];
+            // Bind to a new model when nothing is selected
+            $this->form->model(new FxUser);
         }
 
         $this->form->fill($this->data);
@@ -82,12 +89,25 @@ class UserFormWidget extends Widget implements HasForms
                         ->pluck('user_type', 'user_type')
                         ->toArray()
                     )
-					->dehydrated()
-					->visible(fn ($get) => $get('id') !== null)
+                    ->dehydrated()
+                    ->visible(fn ($get) => $get('id') !== null)
                     ->default('fx')
                     ->required(),
 
-            ])->statePath('data');
+                Select::make('roles')
+                    ->label('Roles')
+                    ->preload()
+                    ->multiple()
+                    ->relationship('roles', 'name', modifyQueryUsing: fn ($query) => $query->where('guard_name', 'web')),
+            ])
+            // Ensure a model is present for relationship-based components
+            ->model($this->getFormModel())
+            ->statePath('data');
+    }
+
+    protected function getFormModel(): FxUser
+    {
+        return $this->userId ? (FxUser::find($this->userId) ?: new FxUser) : new FxUser;
     }
 
     public function create(): void
@@ -95,6 +115,9 @@ class UserFormWidget extends Widget implements HasForms
         $data = $this->form->getState();
         try {
             $user = FxUser::create($data);
+            // Persist relationship-managed fields (e.g., roles)
+            $this->form->model($user)->saveRelationships();
+
             $this->form->fill();
             Notification::make()
                 ->title('Create Font')
@@ -117,6 +140,9 @@ class UserFormWidget extends Widget implements HasForms
         try {
             $user = FxUser::findOrFail($this->userId);
             $user->update($data);
+            // Persist relationship-managed fields (e.g., roles)
+            $this->form->model($user)->saveRelationships();
+
             $this->form->fill();
             $this->dispatch('user-updated');
             Notification::make()
