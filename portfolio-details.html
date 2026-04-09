@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Portfolio Details - Deddy Dwi Raharjo</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Main CSS File -->
+  <link href="assets/css/main.css" rel="stylesheet">
+</head>
+
+<body class="portfolio-details-page">
+
+  <header id="header" class="header dark-background d-flex flex-column">
+    <i class="header-toggle d-xl-none bi bi-list"></i>
+
+    <div class="profile-img">
+      <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Deddy&backgroundColor=b6e3f4" alt="Deddy Dwi Raharjo" class="img-fluid rounded-circle">
+    </div>
+
+    <a href="index.html" class="logo d-flex align-items-center justify-content-center">
+      <h1 class="sitename">Deddy Dwi Raharjo</h1>
+    </a>
+
+    <div class="social-links text-center">
+      <a href="#" class="twitter"><i class="bi bi-twitter-x"></i></a>
+      <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
+      <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
+      <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
+    </div>
+
+    <nav id="navmenu" class="navmenu">
+      <ul>
+        <li><a href="index.html#hero"><i class="bi bi-house navicon"></i>Home</a></li>
+        <li><a href="index.html#about"><i class="bi bi-person navicon"></i> About</a></li>
+        <li><a href="index.html#resume"><i class="bi bi-file-earmark-text navicon"></i> Resume</a></li>
+        <li><a href="index.html#portfolio"><i class="bi bi-images navicon"></i> Portfolio</a></li>
+        <li><a href="index.html#services"><i class="bi bi-hdd-stack navicon"></i> Services</a></li>
+        <li><a href="index.html#clients"><i class="bi bi-people navicon"></i> Clients</a></li>
+        <li><a href="index.html#contact"><i class="bi bi-envelope navicon"></i> Contact</a></li>
+      </ul>
+    </nav>
+
+  </header>
+
+  <main class="main">
+
+    <!-- Page Title -->
+    <div class="page-title dark-background">
+      <div class="container d-lg-flex justify-content-between align-items-center">
+        <h1 class="mb-2 mb-lg-0" id="project-title">Portfolio Details</h1>
+        <nav class="breadcrumbs">
+          <ol>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="index.html#portfolio">Portfolio</a></li>
+            <li class="current" id="project-breadcrumb">Details</li>
+          </ol>
+        </nav>
+      </div>
+    </div><!-- End Page Title -->
+
+    <!-- Portfolio Details Section -->
+    <section id="portfolio-details" class="portfolio-details section">
+
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+        <div class="row gy-4">
+
+          <div class="col-lg-8">
+            <div class="portfolio-details-slider swiper init-swiper">
+
+              <script type="application/json" class="swiper-config">
+                {
+                  "loop": true,
+                  "speed": 600,
+                  "autoplay": {
+                    "delay": 5000
+                  },
+                  "slidesPerView": "auto",
+                  "pagination": {
+                    "el": ".swiper-pagination",
+                    "type": "bullets",
+                    "clickable": true
+                  }
+                }
+              </script>
+
+              <div class="swiper-wrapper align-items-center" id="project-images">
+                <!-- Images will be loaded dynamically -->
+              </div>
+              <div class="swiper-pagination"></div>
+            </div>
+          </div>
+
+          <div class="col-lg-4">
+            <div class="portfolio-info" data-aos="fade-up" data-aos-delay="200">
+              <h3>Project information</h3>
+              <ul id="project-info">
+                <!-- Info will be loaded dynamically -->
+              </ul>
+            </div>
+            <div class="portfolio-description" data-aos="fade-up" data-aos-delay="300">
+              <h2 id="project-subtitle"></h2>
+              <p id="project-description">
+                <!-- Description will be loaded dynamically -->
+              </p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </section><!-- /Portfolio Details Section -->
+
+  </main>
+
+  <footer id="footer" class="footer position-relative light-background">
+
+    <div class="container">
+      <div class="copyright text-center ">
+        <p>© <span>Copyright</span> <strong class="px-1 sitename">Deddy Dwi Raharjo</strong> <span>All Rights Reserved</span></p>
+      </div>
+      <div class="credits">
+        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+      </div>
+    </div>
+
+  </footer>
+
+  <!-- Scroll Top -->
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Preloader -->
+  <div id="preloader"></div>
+
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/vendor/typed.js/typed.umd.js"></script>
+  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
+  <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
+  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
+  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+
+  <!-- Main JS File -->
+  <script src="assets/js/main.js"></script>
+
+  <!-- Project Data Script -->
+  <script>
+    // Project database
+    const projects = {
+      'finance-dashboard': {
+        title: 'Government Finance Dashboard',
+        subtitle: 'Real-time financial monitoring for government agencies',
+        category: 'Web Development',
+        client: 'Government Agency',
+        date: '2023',
+        url: '#',
+        images: [
+          'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&h=800&fit=crop',
+          'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&h=800&fit=crop',
+          'https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=1200&h=800&fit=crop'
+        ],
+        description: 'A comprehensive financial dashboard built for government agencies to monitor budget allocation, expenditure, and financial reporting in real-time. Built with Laravel backend and modern frontend technologies.\n\nThe system provides automated financial reports, budget tracking with alerts, and interactive charts that help decision-makers understand financial flows at a glance. It serves thousands of government employees across multiple departments.\n\nKey features include multi-level approval workflows, role-based access control, and integration with existing government financial systems. The dashboard has significantly reduced manual reporting time and improved financial transparency.'
+      },
+      'agraria-platform': {
+        title: 'Agraria Information Platform',
+        subtitle: 'Digital platform for agricultural data management',
+        category: 'Web Development',
+        client: 'Agraria Magazine',
+        date: '2024',
+        url: 'https://majalahagraria.today',
+        images: [
+          'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&h=800&fit=crop',
+          'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&h=800&fit=crop',
+          'https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=1200&h=800&fit=crop'
+        ],
+        description: 'A digital information platform dedicated to agricultural data, news, and insights. Built for Majalah Agraria to serve the Indonesian agricultural community with reliable and up-to-date information.\n\nThe platform features a content management system with article publishing, data visualization for agricultural statistics, and a responsive design that works seamlessly across devices. It includes search functionality, category filtering, and social media integration.\n\nThe system has become a trusted source of agricultural information for farmers, researchers, and policymakers in Indonesia, contributing to better-informed agricultural decisions.'
+      },
+      'fund-management-ui': {
+        title: 'Community Fund Management UI',
+        subtitle: 'Modern interface for community fund tracking',
+        category: 'Web Design',
+        client: 'Community Organization',
+        date: '2023',
+        url: '#',
+        images: [
+          'https://images.unsplash.com/photo-1559028012-481c04fa702d?w=1200&h=800&fit=crop',
+          'https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?w=1200&h=800&fit=crop',
+          'https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=1200&h=800&fit=crop'
+        ],
+        description: 'A clean and intuitive user interface designed for community organizations to manage their funds transparently. The design focuses on clarity, ease of use, and accessibility.\n\nThe UI features interactive charts for fund allocation, transaction history with filtering options, and a dashboard that provides quick insights into financial health. Special attention was given to mobile responsiveness to ensure field workers can access the system on the go.\n\nThe design system includes reusable components, consistent color schemes, and accessibility features that make it usable for people with varying levels of technical literacy.'
+      },
+      'gaming-app': {
+        title: 'Mobile Gaming Companion App',
+        subtitle: 'Cross-platform mobile app for gaming community',
+        category: 'Mobile Application',
+        client: 'Gaming Community',
+        date: '2024',
+        url: '#',
+        images: [
+          'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=1200&h=800&fit=crop',
+          'https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=1200&h=800&fit=crop',
+          'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&h=800&fit=crop'
+        ],
+        description: 'A Flutter-based mobile application built for gaming enthusiasts to track their gaming activities, connect with fellow gamers, and stay updated with gaming news and events.\n\nThe app features user profiles with gaming statistics, friend lists with chat functionality, event calendars for gaming tournaments, and push notifications for important updates. The cross-platform approach allowed us to deploy on both iOS and Android from a single codebase.\n\nBuilt with performance in mind, the app loads quickly, caches data efficiently, and provides smooth animations and transitions that enhance the user experience.'
+      },
+      'dsm-website': {
+        title: 'DSM Corporate Website',
+        subtitle: 'Professional corporate web presence',
+        category: 'Web Design',
+        client: 'DSM Corporation',
+        date: '2022',
+        url: '#',
+        images: [
+          'https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?w=1200&h=800&fit=crop',
+          'https://images.unsplash.com/photo-1559028012-481c04fa702d?w=1200&h=800&fit=crop',
+          'https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=1200&h=800&fit=crop'
+        ],
+        description: 'A professional corporate website designed to showcase DSM\'s services, portfolio, and company culture. The design emphasizes clean aesthetics, fast loading times, and intuitive navigation.\n\nThe website features a modern layout with hero sections, service showcases, portfolio galleries, team profiles, and a contact form. It\'s built with responsive design principles to ensure optimal viewing experience across all devices.\n\nSEO best practices were implemented throughout, including semantic HTML structure, optimized meta tags, fast page load times, and clean URL structures that help with search engine visibility.'
+      },
+      'metaspark-platform': {
+        title: 'MetaSpark Collaboration Platform',
+        subtitle: 'Team collaboration and project management tool',
+        category: 'Web Design',
+        client: 'MetaSpark',
+        date: '2023',
+        url: '#',
+        images: [
+          'https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=1200&h=800&fit=crop',
+          'https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?w=1200&h=800&fit=crop',
+          'https://images.unsplash.com/photo-1559028012-481c04fa702d?w=1200&h=800&fit=crop'
+        ],
+        description: 'A web-based collaboration platform that helps teams manage projects, share files, and communicate effectively. The platform combines project management tools with real-time collaboration features.\n\nThe interface includes Kanban boards for task management, team chat functionality, file sharing with version control, and project timelines with milestone tracking. The design prioritizes user experience to ensure team members can adopt the platform quickly.\n\nBuilt with scalability in mind, the platform supports multiple teams working simultaneously, with role-based permissions and project isolation to maintain data security.'
+      },
+      'analytics-tool': {
+        title: 'Data Summary & Analytics Tool',
+        subtitle: 'Automated data analysis and reporting system',
+        category: 'Web Development',
+        client: 'Internal Tool',
+        date: '2024',
+        url: '#',
+        images: [
+          'https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=1200&h=800&fit=crop',
+          'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&h=800&fit=crop',
+          'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&h=800&fit=crop'
+        ],
+        description: 'An automated analytics tool that processes large datasets and generates comprehensive summary reports. Built to help teams quickly understand data patterns and make informed decisions.\n\nThe tool features automated data ingestion from multiple sources, statistical analysis with visualizations, customizable report templates, and scheduled report generation. It handles millions of records efficiently and provides insights that would take hours to compile manually.\n\nThe backend uses optimized database queries and caching strategies to ensure fast response times even with large datasets. Reports can be exported in multiple formats including PDF, Excel, and interactive HTML dashboards.'
+      },
+      'task-manager': {
+        title: 'Team Task Manager App',
+        subtitle: 'Mobile-first task management solution',
+        category: 'Mobile Application',
+        client: 'Startup Team',
+        date: '2024',
+        url: '#',
+        images: [
+          'https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=1200&h=800&fit=crop',
+          'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=1200&h=800&fit=crop',
+          'https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=1200&h=800&fit=crop'
+        ],
+        description: 'A mobile-first task management application designed for small teams to organize work, set priorities, and track progress efficiently. Built with Flutter for cross-platform compatibility.\n\nThe app features intuitive task creation with priority levels, assignment and deadline tracking, team collaboration with comments and attachments, and notification systems to keep everyone in sync. The offline-first approach ensures productivity even without internet connection.\n\nThe clean, minimal interface reduces cognitive load and helps team members focus on what matters most. Synchronization happens seamlessly when connection is restored, ensuring data consistency across all devices.'
+      },
+      'arrival-system': {
+        title: 'Spatial Data Arrival System',
+        subtitle: 'Geospatial data processing and visualization',
+        category: 'Web Development',
+        client: 'Government Project',
+        date: '2023',
+        url: '#',
+        images: [
+          'https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=1200&h=800&fit=crop',
+          'https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=1200&h=800&fit=crop',
+          'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&h=800&fit=crop'
+        ],
+        description: 'A geospatial data processing system that handles location-based data arrival, verification, and visualization. Built for government projects requiring spatial data management with high accuracy.\n\nThe system processes GeoJSON data, validates location coordinates against predefined boundaries, and displays results on interactive maps. It includes automated data validation, spatial queries, and integration with external mapping services.\n\nThis system demonstrates my expertise in spatial systems and geospatial data processing. It handles complex geographic calculations efficiently and presents the results in an intuitive visual format that non-technical users can understand and work with.'
+      }
+    };
+
+    // Get project from URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const projectKey = urlParams.get('project') || 'finance-dashboard';
+
+    // Load project data
+    const project = projects[projectKey] || projects['finance-dashboard'];
+
+    // Update page content
+    document.getElementById('project-title').textContent = project.title;
+    document.getElementById('project-breadcrumb').textContent = project.title;
+    document.getElementById('project-subtitle').textContent = project.subtitle;
+
+    // Update images
+    const imagesContainer = document.getElementById('project-images');
+    project.images.forEach(img => {
+      const slide = document.createElement('div');
+      slide.className = 'swiper-slide';
+      slide.innerHTML = `<img src="${img}" alt="${project.title}">`;
+      imagesContainer.appendChild(slide);
+    });
+
+    // Update info
+    const infoList = document.getElementById('project-info');
+    const infoItems = [
+      { label: 'Category', value: project.category },
+      { label: 'Client', value: project.client },
+      { label: 'Project date', value: project.date },
+    ];
+    
+    if (project.url !== '#') {
+      infoItems.push({ label: 'Project URL', value: `<a href="${project.url}" target="_blank">${project.url}</a>` });
+    }
+
+    infoItems.forEach(item => {
+      const li = document.createElement('li');
+      li.innerHTML = `<strong>${item.label}</strong>: ${item.value}`;
+      infoList.appendChild(li);
+    });
+
+    // Update description
+    document.getElementById('project-description').innerHTML = project.description.replace(/\n\n/g, '</p><p>');
+
+    // Update page title
+    document.title = `${project.title} - Deddy Dwi Raharjo`;
+  </script>
+
+</body>
+
+</html>
