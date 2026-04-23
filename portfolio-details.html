@@ -56,7 +56,7 @@
         <li><a href="index.html#portfolio"><i class="bi bi-images navicon"></i> Case Studies</a></li>
         <li><a href="index.html#services"><i class="bi bi-hdd-stack navicon"></i> Services</a></li>
         <li><a href="index.html#clients"><i class="bi bi-people navicon"></i> Clients</a></li>
-        <li><a href="index.html#contact"><i class="bi bi-envelope navicon"></i> Business Inquiry</a></li>
+        <li><a href="index.html#contact"><i class="bi bi-envelope navicon"></i> Business Enquiry</a></li>
       </ul>
     </nav>
 
@@ -171,131 +171,105 @@
   <script>
     // Project database
     const projects = {
-      'finance-dashboard': {
-        title: 'Government Finance Dashboard',
-        subtitle: 'Real-time financial monitoring for government agencies',
-        category: 'Web Development',
-        client: 'Government Agency',
-        date: '2023',
-        url: '#',
+      'simethris': {
+        title: 'SIMETHRIS',
+        subtitle: 'Sistem Monitoring Tanam Hortikultura Strategis',
+        category: 'Government',
+        client: 'Direktorat Jenderal Hortikultura Kementerian Pertanian RI',
+        date: '2019 - sekarang',
+        url: 'https://simethris.hortikultura.pertanian.go.id/',
         images: [
-          'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&h=800&fit=crop',
-          'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&h=800&fit=crop',
-          'https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=1200&h=800&fit=crop'
+          'assets/img/simethris.png'
         ],
-        description: 'A comprehensive financial dashboard built for government agencies to monitor budget allocation, expenditure, and financial reporting in real-time. Built with Laravel backend and modern frontend technologies.\n\nThe system provides automated financial reports, budget tracking with alerts, and interactive charts that help decision-makers understand financial flows at a glance. It serves thousands of government employees across multiple departments.\n\nKey features include multi-level approval workflows, role-based access control, and integration with existing government financial systems. The dashboard has significantly reduced manual reporting time and improved financial transparency.'
+        description: 'SIMETHRIS (Sistem Monitoring Tanam Hortikultura Strategis) adalah platform digital yang dikembangkan oleh Direktorat Jenderal Hortikultura Kementerian Pertanian Republik Indonesia untuk memantau dan mengevaluasi realisasi tanam dan produksi bawang putih bagi pemegang Rekomendasi Impor Produk Hortikultura (RIPH) atau Pertimbangan Penetapan Rencana Kebutuhan (PPRK).\n\nPlatform ini menyediakan monitoring real-time terhadap kegiatan tanam hortikultura strategis, dengan fokus pada komoditas bawang putih. Sistem ini membantu pemerintah dalam pengambilan keputusan berbasis data untuk mengelola impor dan produksi hortikultura nasional.\n\nFitur utama meliputi pelaporan real-time, dashboard analitik, dan integrasi dengan sistem pertanian lainnya untuk mendukung kebijakan pangan nasional.'
       },
-      'agraria-platform': {
-        title: 'Agraria Information Platform',
-        subtitle: 'Digital platform for agricultural data management',
-        category: 'Web Development',
-        client: 'Agraria Magazine',
-        date: '2024',
-        url: 'https://majalahagraria.today',
+      'simevi': {
+        title: 'Simevi',
+        subtitle: 'Sistem Monitoring dan Evaluasi Direktorat Jenderal Hortikultura',
+        category: 'Government',
+        client: 'Direktorat Jenderal Hortikultura Kementerian Pertanian RI',
+        date: '2021-2022',
+        url: 'https://simevi.hortikultura.pertanian.go.id',
         images: [
-          'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&h=800&fit=crop',
-          'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&h=800&fit=crop',
-          'https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=1200&h=800&fit=crop'
+          'assets/img/simevi.png'
         ],
-        description: 'A digital information platform dedicated to agricultural data, news, and insights. Built for Majalah Agraria to serve the Indonesian agricultural community with reliable and up-to-date information.\n\nThe platform features a content management system with article publishing, data visualization for agricultural statistics, and a responsive design that works seamlessly across devices. It includes search functionality, category filtering, and social media integration.\n\nThe system has become a trusted source of agricultural information for farmers, researchers, and policymakers in Indonesia, contributing to better-informed agricultural decisions.'
+        description: 'Aplikasi berbasis web yang ditujukan untuk memantau dan evaluasi kegiatan-kegiatan di lingkungan Direktorat Jenderal Hortikultura. Selain itu, Simevi juga merupakan rintisan rancangan digitalisasi satu data hortikultura.\n\nPlatform ini mengintegrasikan berbagai data hortikultura dari seluruh Indonesia menjadi satu sistem terpadu. Dengan digitalisasi satu data, pemerintah dapat memiliki gambaran yang lebih akurat tentang kondisi pertanian hortikultura nasional.\n\nFitur monitoring dan evaluasi membantu dalam pengambilan keputusan strategis untuk pengembangan sektor hortikultura yang lebih efektif dan efisien.'
       },
-      'fund-management-ui': {
-        title: 'Community Fund Management UI',
-        subtitle: 'Modern interface for community fund tracking',
-        category: 'Web Design',
-        client: 'Community Organization',
-        date: '2023',
-        url: '#',
+      'katalis-iaskills': {
+        title: 'KATALIS IASkills-Exchange',
+        subtitle: 'Platform Pertukaran Pengetahuan TIK Indonesia-Australia',
+        category: 'Education',
+        client: 'IASkills-Exchange',
+        date: '2023-2024',
+        url: 'https://iaskills-exchange.org/',
         images: [
-          'https://images.unsplash.com/photo-1559028012-481c04fa702d?w=1200&h=800&fit=crop',
-          'https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?w=1200&h=800&fit=crop',
-          'https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=1200&h=800&fit=crop'
+          'assets/img/iaskills.png'
         ],
-        description: 'A clean and intuitive user interface designed for community organizations to manage their funds transparently. The design focuses on clarity, ease of use, and accessibility.\n\nThe UI features interactive charts for fund allocation, transaction history with filtering options, and a dashboard that provides quick insights into financial health. Special attention was given to mobile responsiveness to ensure field workers can access the system on the go.\n\nThe design system includes reusable components, consistent color schemes, and accessibility features that make it usable for people with varying levels of technical literacy.'
+        description: 'KATALIS IASkills-Exchange adalah platform digital yang dikembangkan oleh IASkills-Exchange untuk memfasilitasi pertukaran pengetahuan, pengalaman, dan sumber daya antara para profesional di bidang teknologi informasi dan komunikasi (TIK) di Indonesia.\n\nThe Indonesia-Australia Skills Exchange is a platform connecting Australian education providers with Indonesian businesses to boost workplace skills. Platform ini menghubungkan penyedia pendidikan Australia dengan bisnis Indonesia untuk meningkatkan keterampilan di tempat kerja.\n\nFitur platform meliputi pertukaran pengetahuan, networking profesional, dan akses ke sumber daya pendidikan berkualitas untuk mendukung pengembangan kompetensi TIK di Indonesia.'
       },
-      'gaming-app': {
-        title: 'Mobile Gaming Companion App',
-        subtitle: 'Cross-platform mobile app for gaming community',
-        category: 'Mobile Application',
-        client: 'Gaming Community',
+      'jalin-platform': {
+        title: 'Jalin Platform',
+        subtitle: 'Platform Konektivitas dan Kolaborasi Bisnis Indonesia',
+        category: 'Government',
+        client: 'Prospera, Australia-Indonesia Partnership for Economic Development',
         date: '2024',
         url: '#',
         images: [
-          'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=1200&h=800&fit=crop',
-          'https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=1200&h=800&fit=crop',
-          'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&h=800&fit=crop'
+          'https://images.unsplash.com/photo-1552664730-d307ca884978?w=1200&h=800&fit=crop',
+          'https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=1200&h=800&fit=crop',
+          'https://images.unsplash.com/photo-1586953208448-b95a79798f07?w=1200&h=800&fit=crop'
         ],
-        description: 'A Flutter-based mobile application built for gaming enthusiasts to track their gaming activities, connect with fellow gamers, and stay updated with gaming news and events.\n\nThe app features user profiles with gaming statistics, friend lists with chat functionality, event calendars for gaming tournaments, and push notifications for important updates. The cross-platform approach allowed us to deploy on both iOS and Android from a single codebase.\n\nBuilt with performance in mind, the app loads quickly, caches data efficiently, and provides smooth animations and transitions that enhance the user experience.'
+        description: 'Jalin adalah platform digital yang dikembangkan oleh Prospera, Australia-Indonesia Partnership for Economic Development, untuk memfasilitasi konektivitas dan kolaborasi antara pelaku usaha di Indonesia.\n\nPlatform ini bertujuan untuk memperkuat ekosistem bisnis di Indonesia dengan menyediakan layanan yang mendukung pertumbuhan dan pengembangan usaha. Jalin menghubungkan berbagai pemangku kepentingan bisnis untuk menciptakan kolaborasi yang saling menguntungkan.\n\nDikembangkan sebagai prototype production-level, platform ini menunjukkan komitmen untuk membangun infrastruktur digital yang mendukung pertumbuhan ekonomi Indonesia melalui kemitraan strategis.'
       },
-      'dsm-website': {
-        title: 'DSM Corporate Website',
-        subtitle: 'Professional corporate web presence',
-        category: 'Web Design',
-        client: 'DSM Corporation',
+      'wahana-website': {
+        title: 'Wahana Tatar Corporate Website',
+        subtitle: 'Corporate Learning Specialist Platform',
+        category: 'Corporate',
+        client: 'PT. Wahana Tatar Wirakelola',
         date: '2022',
-        url: '#',
+        url: 'https://wahanatar.com',
         images: [
-          'https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?w=1200&h=800&fit=crop',
-          'https://images.unsplash.com/photo-1559028012-481c04fa702d?w=1200&h=800&fit=crop',
-          'https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=1200&h=800&fit=crop'
+          'assets/img/wahanatatar.png'
         ],
-        description: 'A professional corporate website designed to showcase DSM\'s services, portfolio, and company culture. The design emphasizes clean aesthetics, fast loading times, and intuitive navigation.\n\nThe website features a modern layout with hero sections, service showcases, portfolio galleries, team profiles, and a contact form. It\'s built with responsive design principles to ensure optimal viewing experience across all devices.\n\nSEO best practices were implemented throughout, including semantic HTML structure, optimized meta tags, fast page load times, and clean URL structures that help with search engine visibility.'
+        description: 'Wahana Tatar Wirakelola is Corporate Learning Specialist, founded by professionals who have deep passion and focus to help and educate organizations to develop comprehensive corporate education and training, which is called Corporate University, to be more efficient and strategic.\n\nWebsite korporat ini menampilkan layanan spesialisasi pembelajaran korporat, termasuk pengembangan Corporate University yang komprehensif. Platform ini membantu organisasi dalam membangun sistem pendidikan dan pelatihan internal yang efektif.\n\nFokus utama adalah membantu perusahaan menjadi lebih efisien dan strategis melalui pendidikan korporat yang terstruktur dan berkualitas tinggi.'
       },
-      'metaspark-platform': {
-        title: 'MetaSpark Collaboration Platform',
-        subtitle: 'Team collaboration and project management tool',
-        category: 'Web Design',
-        client: 'MetaSpark',
+      'adorama-erp': {
+        title: 'ADORAMA ERP',
+        subtitle: 'Sistem ERP untuk Industri Percetakan Lifestyle',
+        category: 'Corporate',
+        client: 'ADORAMA, your lifestyle printing',
+        date: '2024',
+        url: 'https://adorama.com',
+        images: [
+          'https://images.unsplash.com/photo-1586953208448-b95a79798f07?w=1200&h=800&fit=crop',
+          'https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=1200&h=800&fit=crop',
+          'https://images.unsplash.com/photo-1507003211169-0a1dd7228f07?w=1200&h=800&fit=crop'
+        ],
+        description: 'Adorama is a lifestyle printing company that offers a wide range of printing services, including photo printing, canvas printing, and custom printing solutions. They provide high-quality prints for personal and professional use, catering to customers who want to preserve their memories and create personalized products.\n\nSistem ERP yang dikembangkan membantu Adorama dalam mengelola operasional percetakan secara terintegrasi, mulai dari pemesanan hingga pengiriman. Sistem ini meningkatkan efisiensi operasional dan kualitas layanan kepada pelanggan.\n\nPlatform ini mendukung berbagai jenis layanan percetakan lifestyle dengan fokus pada kualitas tinggi dan personalisasi produk.'
+      },
+      'agraria-today': {
+        title: 'Agraria.today',
+        subtitle: 'Platform Informasi Agraria dan Pertanian Indonesia',
+        category: 'Corporate',
+        client: 'Agraria.today (d/h Majalah Agraria)',
+        date: '2018',
+        url: 'https://agraria.today',
+        images: [
+          'assets/img/agrariatoday.png'
+        ],
+        description: 'Agraria.today adalah platform digital yang menyediakan informasi, berita, dan analisis terkait agraria, pertanian, dan isu-isu terkait di Indonesia. Platform ini bertujuan untuk memberikan wawasan mendalam tentang perkembangan sektor agraria dan pertanian.\n\nSebagai sumber informasi terpercaya, platform ini melayani para pemangku kepentingan di bidang pertanian dengan konten berkualitas tinggi dan analisis mendalam. Platform ini berkontribusi pada pengambilan keputusan yang lebih baik di sektor agraria.\n\nFitur platform meliputi berita terkini, analisis pasar, data statistik pertanian, dan forum diskusi untuk komunitas agraria Indonesia.'
+      },
+      'naura-medika': {
+        title: 'Klinik Naura Medika',
+        subtitle: 'CRM dan Engagement Melalui Media Sosial',
+        category: 'Healthcare',
+        client: 'Klinik Naura Medika, Depok',
         date: '2023',
         url: '#',
         images: [
-          'https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=1200&h=800&fit=crop',
-          'https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?w=1200&h=800&fit=crop',
-          'https://images.unsplash.com/photo-1559028012-481c04fa702d?w=1200&h=800&fit=crop'
+          'assets/img/nauramedika.png'
         ],
-        description: 'A web-based collaboration platform that helps teams manage projects, share files, and communicate effectively. The platform combines project management tools with real-time collaboration features.\n\nThe interface includes Kanban boards for task management, team chat functionality, file sharing with version control, and project timelines with milestone tracking. The design prioritizes user experience to ensure team members can adopt the platform quickly.\n\nBuilt with scalability in mind, the platform supports multiple teams working simultaneously, with role-based permissions and project isolation to maintain data security.'
-      },
-      'analytics-tool': {
-        title: 'Data Summary & Analytics Tool',
-        subtitle: 'Automated data analysis and reporting system',
-        category: 'Web Development',
-        client: 'Internal Tool',
-        date: '2024',
-        url: '#',
-        images: [
-          'https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=1200&h=800&fit=crop',
-          'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&h=800&fit=crop',
-          'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&h=800&fit=crop'
-        ],
-        description: 'An automated analytics tool that processes large datasets and generates comprehensive summary reports. Built to help teams quickly understand data patterns and make informed decisions.\n\nThe tool features automated data ingestion from multiple sources, statistical analysis with visualizations, customizable report templates, and scheduled report generation. It handles millions of records efficiently and provides insights that would take hours to compile manually.\n\nThe backend uses optimized database queries and caching strategies to ensure fast response times even with large datasets. Reports can be exported in multiple formats including PDF, Excel, and interactive HTML dashboards.'
-      },
-      'task-manager': {
-        title: 'Team Task Manager App',
-        subtitle: 'Mobile-first task management solution',
-        category: 'Mobile Application',
-        client: 'Startup Team',
-        date: '2024',
-        url: '#',
-        images: [
-          'https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=1200&h=800&fit=crop',
-          'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=1200&h=800&fit=crop',
-          'https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=1200&h=800&fit=crop'
-        ],
-        description: 'A mobile-first task management application designed for small teams to organize work, set priorities, and track progress efficiently. Built with Flutter for cross-platform compatibility.\n\nThe app features intuitive task creation with priority levels, assignment and deadline tracking, team collaboration with comments and attachments, and notification systems to keep everyone in sync. The offline-first approach ensures productivity even without internet connection.\n\nThe clean, minimal interface reduces cognitive load and helps team members focus on what matters most. Synchronization happens seamlessly when connection is restored, ensuring data consistency across all devices.'
-      },
-      'arrival-system': {
-        title: 'Spatial Data Arrival System',
-        subtitle: 'Geospatial data processing and visualization',
-        category: 'Web Development',
-        client: 'Government Project',
-        date: '2023',
-        url: '#',
-        images: [
-          'https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=1200&h=800&fit=crop',
-          'https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=1200&h=800&fit=crop',
-          'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&h=800&fit=crop'
-        ],
-        description: 'A geospatial data processing system that handles location-based data arrival, verification, and visualization. Built for government projects requiring spatial data management with high accuracy.\n\nThe system processes GeoJSON data, validates location coordinates against predefined boundaries, and displays results on interactive maps. It includes automated data validation, spatial queries, and integration with external mapping services.\n\nThis system demonstrates my expertise in spatial systems and geospatial data processing. It handles complex geographic calculations efficiently and presents the results in an intuitive visual format that non-technical users can understand and work with.'
+        description: 'Klinik Naura Medika di Depok, dengan fokus pada Customer Relationship Management (CRM) melalui media sosial dan engagement yang efektif.\n\nImplementasi strategi digital untuk membangun hubungan yang kuat dengan pasien melalui platform media sosial. Sistem CRM ini membantu klinik dalam mengelola komunikasi dengan pasien, meningkatkan engagement, dan membangun loyalitas pelanggan.\n\nPendekatan ini mencakup pengembangan konten yang relevan, interaksi aktif dengan komunitas, dan pemantauan respons pasien untuk meningkatkan kualitas layanan kesehatan.'
       }
     };
 
