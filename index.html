@@ -1,711 +1,865 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
 <head>
-  <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>rebrandz - PT TRANSNIAGA SUKSES MAKMUR</title>
-  <meta content="Corporate profile PT. Transniaga Sukses Makmur with rebrandz brand: re-branding your imagination and creativity." name="description">
-  <meta content="PT Transniaga Sukses Makmur, rebrandz, corporate profile, digital solutions, branding" name="keywords">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Rebrandz — PT Transniaga Sukses Makmur | Digital Platform & Technology Partner</title>
+<meta name="description" content="Rebrandz (PT Transniaga Sukses Makmur) is a digital platform and technology partner for business applications, system integration, data, IoT, telemetry, and operational solutions." />
+<meta name="author" content="PT Transniaga Sukses Makmur" />
+<meta property="og:title" content="Rebrandz — Digital Platform & Technology Partner" />
+<meta property="og:description" content="Business applications, integrated platforms, operational data, IoT, telemetry, and system integration for institutional and enterprise needs." />
+<meta property="og:type" content="website" />
+<link rel="canonical" href="https://rebrandz.xyz/" />
 
-  <!-- Favicons -->
-  <link href="assets/img/favicon.png" rel="icon">
-  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com" rel="preconnect">
-  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        fontFamily: { sans: ['Inter', 'ui-sans-serif', 'system-ui'] },
+        colors: {
+          'brand-deep': '#0a1f24',
+          'brand-base': '#0f3a44',
+          'brand-mid':  '#1aa6b7',
+          'brand-light':'#7df0e6',
+          'accent':     '#ff8a3d',
+          'accent-soft':'#ffb37a',
+          'ink-100':    '#e8eef0',
+          'ink-300':    '#aab8bc',
+          'ink-500':    '#6b7a7e',
+          'surface':    '#0c2329',
+          'surface-2':  '#13343c',
+        },
+        boxShadow: {
+          'glow-brand':  '0 20px 60px -20px rgba(125,240,230,0.35)',
+          'glow-accent': '0 20px 60px -20px rgba(255,138,61,0.45)',
+        },
+        animation: { 'pulse-slow': 'pulse 6s cubic-bezier(0.4,0,0.6,1) infinite' },
+      }
+    }
+  }
+</script>
 
-  <!-- Vendor CSS Files -->
-  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
-  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
-
-  <!-- Main CSS File -->
-  <link href="assets/css/main.css" rel="stylesheet">
-
-  <!-- =======================================================
-  * Template Name: iPortfolio
-  * Template URL: https://bootstrapmade.com/iportfolio-bootstrap-portfolio-websites-template/
-  * Updated: Jun 29 2024 with Bootstrap v5.3.3
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
+<style>
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Inter', sans-serif; background: #0a1f24; color: #e8eef0; -webkit-font-smoothing: antialiased; }
+  .glass { background: rgba(15,58,68,0.45); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border: 1px solid rgba(125,240,230,0.12); }
+  .gradient-text { background: linear-gradient(135deg,#7df0e6 0%,#ffb37a 100%); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .grid-bg {
+    background-image:
+      linear-gradient(rgba(125,240,230,0.06) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(125,240,230,0.06) 1px, transparent 1px);
+    background-size: 48px 48px;
+  }
+  .page { display: none; }
+  .page.active { display: block; animation: fadeIn .35s ease both; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+  .nav-link.active { color: #7df0e6; }
+</style>
 </head>
+<body class="min-h-screen">
 
-<body class="index-page">
-
-  <header id="header" class="header dark-background d-flex flex-column">
-    <i class="header-toggle d-xl-none bi bi-list"></i>
-
-    <a href="index.html" class="d-flex align-items-center justify-content-center">
-      <h1 class="sitename">
-        <img src="assets/img/apple-touch-icon.png" class="img-fluid" alt="rebrandz" style="width: 150px; height: auto;">
-      </h1>
+<!-- =========================== HEADER =========================== -->
+<header class="fixed top-0 inset-x-0 z-50 glass">
+  <nav class="max-w-7xl mx-auto px-6 lg:px-10 h-16 flex items-center justify-between">
+    <a href="#/" class="flex items-center gap-2">
+      <span class="w-8 h-8 rounded-lg bg-gradient-to-br from-brand-light to-accent grid place-items-center font-bold text-brand-deep">R</span>
+      <span class="font-bold tracking-tight text-lg">Rebrandz</span>
     </a>
+    <ul id="nav-links" class="hidden md:flex items-center gap-7 text-sm font-medium text-ink-300">
+      <li><a href="#/" class="nav-link hover:text-brand-light transition" data-route="home">Home</a></li>
+      <li><a href="#/company" class="nav-link hover:text-brand-light transition" data-route="company">Company</a></li>
+      <li><a href="#/profile" class="nav-link hover:text-brand-light transition" data-route="profile">Corporate Profile</a></li>
+      <li><a href="#/services" class="nav-link hover:text-brand-light transition" data-route="services">Services</a></li>
+      <li><a href="#/case-studies" class="nav-link hover:text-brand-light transition" data-route="case-studies">Case Studies</a></li>
+      <li><a href="#/clients" class="nav-link hover:text-brand-light transition" data-route="clients">Clients</a></li>
+    </ul>
+    <a href="#/contact" class="hidden md:inline-flex px-5 py-2.5 rounded-md bg-accent text-brand-deep font-semibold text-sm shadow-glow-accent hover:bg-accent-soft transition">Start a Project</a>
+    <button id="mobile-toggle" class="md:hidden text-ink-100" aria-label="Toggle menu">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+    </button>
+  </nav>
+  <div id="mobile-menu" class="hidden md:hidden border-t border-brand-light/10 px-6 py-4 space-y-3 text-sm font-medium text-ink-300">
+    <a href="#/" class="block nav-link" data-route="home">Home</a>
+    <a href="#/company" class="block nav-link" data-route="company">Company</a>
+    <a href="#/profile" class="block nav-link" data-route="profile">Corporate Profile</a>
+    <a href="#/services" class="block nav-link" data-route="services">Services</a>
+    <a href="#/case-studies" class="block nav-link" data-route="case-studies">Case Studies</a>
+    <a href="#/clients" class="block nav-link" data-route="clients">Clients</a>
+    <a href="#/contact" class="block px-4 py-2 rounded-md bg-accent text-brand-deep font-semibold text-center">Start a Project</a>
+  </div>
+</header>
 
-    <nav id="navmenu" class="navmenu">
-      <ul>
-        <li><a href="#hero" class="active"><i class="bi bi-house navicon"></i>Home</a></li>
-        <li><a href="#about"><i class="bi bi-person navicon"></i> Company</a></li>
-        <li><a href="#resume"><i class="bi bi-file-earmark-text navicon"></i> Corporate Profile</a></li>
-        <li><a href="#portfolio"><i class="bi bi-images navicon"></i> Case Studies</a></li>
-        <li><a href="#services"><i class="bi bi-hdd-stack navicon"></i> Services</a></li>
-        <li><a href="#clients"><i class="bi bi-people navicon"></i> Clients</a></li>
-        <li><a href="#contact"><i class="bi bi-envelope navicon"></i> Business Enquiry</a></li>
+<main id="app" class="pt-16"></main>
+
+<!-- =========================== FOOTER =========================== -->
+<footer class="border-t border-brand-light/10 mt-24 bg-surface">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10 py-14 grid md:grid-cols-4 gap-10">
+    <div class="md:col-span-2">
+      <div class="flex items-center gap-2 mb-4">
+        <span class="w-8 h-8 rounded-lg bg-gradient-to-br from-brand-light to-accent grid place-items-center font-bold text-brand-deep">R</span>
+        <span class="font-bold text-lg">Rebrandz</span>
+      </div>
+      <p class="text-ink-300 max-w-md text-sm leading-relaxed">PT Transniaga Sukses Makmur — digital platform and technology partner for institutions, enterprises, and operationally focused organizations across Indonesia.</p>
+    </div>
+    <div>
+      <h4 class="font-semibold text-ink-100 mb-3 text-sm">Explore</h4>
+      <ul class="space-y-2 text-sm text-ink-300">
+        <li><a href="#/services" class="hover:text-brand-light">Services</a></li>
+        <li><a href="#/case-studies" class="hover:text-brand-light">Case Studies</a></li>
+        <li><a href="#/clients" class="hover:text-brand-light">Clients</a></li>
+        <li><a href="#/profile" class="hover:text-brand-light">Profile</a></li>
       </ul>
-    </nav>
+    </div>
+    <div>
+      <h4 class="font-semibold text-ink-100 mb-3 text-sm">Contact</h4>
+      <ul class="space-y-2 text-sm text-ink-300">
+        <li>Bogor, West Java, Indonesia</li>
+        <li>info@rebrandz.xyz</li>
+        <li>+62 81 8088 0507</li>
+      </ul>
+    </div>
+  </div>
+  <div class="border-t border-brand-light/10 py-5 text-center text-xs text-ink-500">© <span id="yr"></span> PT Transniaga Sukses Makmur. All rights reserved.</div>
+</footer>
 
-  </header>
+<!-- =========================== DATA + ROUTER =========================== -->
+<script>
+document.getElementById('yr').textContent = new Date().getFullYear();
 
-  <main class="main">
+const SERVICES = [
+  { slug: 'platform-architecture-consulting', title: 'Platform Architecture & Consulting', tagline: 'Perancangan arsitektur solusi dan roadmap teknologi yang selaras dengan prioritas bisnis dan kebutuhan operasional.', icon: '🎯',
+    desc: 'Kami membantu organisasi merumuskan kebutuhan, menyusun arsitektur solusi, dan menentukan arah implementasi teknologi yang tepat. Setiap rekomendasi disusun berdasarkan konteks bisnis, kesiapan operasional, dan keberlanjutan sistem.',
+    features: ['Business & operational discovery','Solution architecture & technical roadmap','Technology stack advisory','Delivery planning & governance']
+  },
+  { slug: 'digital-platform-development', title: 'Digital Platform Development', tagline: 'Pengembangan aplikasi dan platform digital yang dirancang untuk mendukung proses bisnis secara aman, terukur, dan berkelanjutan.', icon: '💻',
+    desc: 'Layanan pengembangan platform mencakup aplikasi web, aplikasi mobile, portal bisnis, sistem internal, dan modul digital lain yang dibangun sesuai kebutuhan klien. Implementasi dapat menggunakan stack seperti PHP, Laravel, Node.js, Flutter, MySQL, dan MariaDB.',
+    features: ['Web & enterprise application','Mobile application','API & system integration','Security & performance hardening']
+  },
+  { slug: 'iot-sensor-telemetry', title: 'IoT, Sensor & Telemetry Systems', tagline: 'Solusi akuisisi data lapangan dan monitoring operasional untuk organisasi yang membutuhkan visibilitas kondisi secara lebih presisi.', icon: '📡',
+    desc: 'Kami merancang sistem yang menghubungkan perangkat, sensor, dan sumber data lapangan ke dalam platform digital. Cakupan dapat meliputi perangkat edge, gateway telemetri, dashboard pemantauan, notifikasi, serta integrasi dengan sistem bisnis yang sudah berjalan.',
+    features: ['Sensor data acquisition','Telemetry gateway & data pipeline','Operational monitoring dashboard','Alerting, reporting & integration']
+  },
+  { slug: 'data-dashboard-intelligence', title: 'Data Dashboard & Operational Intelligence', tagline: 'Dashboard, pelaporan, dan analitik operasional untuk mendukung pengambilan keputusan yang lebih terukur.', icon: '📊',
+    desc: 'Pembangunan dashboard dan sistem pelaporan berbasis data untuk memantau kinerja proses, aktivitas lapangan, progres program, dan indikator operasional. Solusi ini disusun agar manajemen memiliki visibilitas yang jelas terhadap kondisi aktual dan tren kinerja.',
+    features: ['KPI dashboard & analytics','Operational reporting','Data model & integration','Decision support views']
+  },
+  { slug: 'system-integration', title: 'System Integration', tagline: 'Integrasi proses, data, aplikasi, dan kanal operasional agar ekosistem digital bekerja sebagai satu kesatuan.', icon: '🔗',
+    desc: 'Kami membantu organisasi menghubungkan sistem yang terpisah melalui integrasi data, API, workflow automation, dan implementasi platform pendukung seperti ERP berbasis Frappe/ERPNext. Tujuannya adalah mengurangi duplikasi, meningkatkan visibilitas, dan memperkuat tata kelola proses.',
+    features: ['ERP implementation (Frappe/ERPNext)','Data & API integration','Workflow automation','Cross-channel orchestration']
+  },
+  { slug: 'performance-optimization', title: 'Performance Optimization', tagline: 'Peningkatan berkelanjutan untuk performa aplikasi, reliabilitas sistem, dan efektivitas proses digital.', icon: '📈',
+    desc: 'Evaluasi dan penyempurnaan sistem dilakukan berdasarkan indikator teknis dan bisnis. Cakupannya meliputi review performa aplikasi, monitoring, reliability improvement, optimasi proses, dan perbaikan berkelanjutan setelah sistem berjalan.',
+    features: ['Application performance review','Reliability & monitoring','Process optimization','Continuous improvement cycle']
+  },
+];
 
-    <!-- Hero Section -->
-    <section id="hero" class="hero section dark-background">
+const CASES = [
+  { slug: 'simethris', title: 'SIMETHRIS — Sistem Monitoring Tanam Hortikultura Strategis', client: 'Direktorat Jenderal Hortikultura Kementerian Pertanian RI', industry: 'Government',
+    image: 'https://rebrandz.xyz/assets/img/simethris.png',
+    images: ['assets/img/simethris.png','assets/img/locationpicker.png','assets/img/location.png'],
+    url: 'https://simethris.hortikultura.pertanian.go.id/',
+    period: '2019 — sekarang',
+    summary: 'Platform monitoring real-time realisasi tanam dan produksi bawang putih bagi pemegang RIPH dan PPRK.',
+    challenge: 'Pemerintah memerlukan visibilitas real-time terhadap realisasi tanam komoditas hortikultura strategis seperti bawang putih, sebagai dasar pengambilan kebijakan impor dan produksi nasional.',
+    solution: 'Membangun platform digital end-to-end mencakup pelaporan real-time, dashboard analitik, location picker geospasial, dan integrasi dengan sistem pertanian lainnya untuk mendukung kebijakan pangan nasional.',
+    results: ['Monitoring real-time tanam hortikultura','Dashboard analitik untuk pengambilan keputusan','Integrasi dengan sistem pertanian nasional','Mendukung kebijakan pangan & impor']
+  },
+  { slug: 'simevi', title: 'Simevi', client: 'Pemerintah / Kementerian', industry: 'Government',
+    image: 'https://rebrandz.xyz/assets/img/simevi.png',
+    images: ['assets/img/simevi.png'],
+    period: 'Multi-year',
+    summary: 'Sistem informasi sektor publik untuk mendukung tata kelola program dan pelaporan internal.',
+    challenge: 'Kebutuhan sistem terstandar untuk evaluasi dan pelaporan program pemerintah secara terstruktur.',
+    solution: 'Membangun sistem informasi berbasis web dengan modul evaluasi, pelaporan, dan dashboard untuk pemangku kepentingan.',
+    results: ['Pelaporan program terstandar','Dashboard pemangku kepentingan','Tata kelola data terpusat','Audit trail evaluasi']
+  },
+  { slug: 'katalis-iaskills', title: 'KATALIS IASkills-Exchange', client: 'KATALIS (Indonesia–Australia Partnership)', industry: 'Education',
+    image: 'https://rebrandz.xyz/assets/img/iaskills.png',
+    images: ['assets/img/iaskills.png'],
+    period: 'Multi-year',
+    summary: 'Platform pertukaran keterampilan vokasi dalam kerangka kemitraan Indonesia–Australia.',
+    challenge: 'Memfasilitasi pertukaran pengetahuan dan keterampilan vokasi antar institusi di Indonesia dan Australia secara terstruktur dan terukur.',
+    solution: 'Platform digital dengan modul katalog skills, manajemen partisipan, dan tracking program exchange.',
+    results: ['Katalog skills lintas negara','Manajemen partisipan terpadu','Tracking outcome program','Mendukung kemitraan bilateral']
+  },
+  { slug: 'jalin-platform', title: 'Jalin Platform', client: 'Sektor Publik', industry: 'Government',
+    image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=1200&h=800&fit=crop',
+    images: ['https://images.unsplash.com/photo-1552664730-d307ca884978?w=1200&h=800&fit=crop','https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=1200&h=800&fit=crop','https://images.unsplash.com/photo-1586953208448-b95a79798f07?w=1200&h=800&fit=crop'],
+    period: 'Multi-year',
+    summary: 'Platform kolaborasi sektor publik untuk menghubungkan stakeholder lintas instansi.',
+    challenge: 'Koordinasi antar instansi dan stakeholder publik membutuhkan platform yang terstruktur dan dapat diaudit.',
+    solution: 'Platform berbasis web untuk kolaborasi, manajemen inisiatif, dan pelaporan lintas stakeholder.',
+    results: ['Kolaborasi lintas instansi','Manajemen inisiatif terpadu','Pelaporan stakeholder','Tata kelola transparan']
+  },
+  { slug: 'studiorenang-sensor-monitoring', title: 'StudioRenang Sensor Monitoring Platform', client: 'StudioRenang', industry: 'IoT / Operations',
+    image: 'assets/img/portfolio/studiorenang-dashboard.png',
+    images: ['assets/img/portfolio/studiorenang-dashboard.png','assets/img/portfolio/studiorenang-sensor-logs.png','assets/img/portfolio/studiorenang-alert-logs.png'],
+    period: 'Sample case study',
+    summary: 'Platform monitoring operasional berbasis sensor untuk memantau kualitas air, suhu, pH, chlorine, oxidation agent, dan kondisi ruang secara terpusat.',
+    challenge: 'Operasional kolam renang membutuhkan pemantauan parameter kualitas air dan kondisi lingkungan secara konsisten, termasuk pencatatan data sensor serta notifikasi ketika parameter tertentu melewati ambang yang ditentukan.',
+    solution: 'Membangun dashboard monitoring yang menampilkan ringkasan kondisi terkini, histori sensor logs, serta alert logs untuk membantu operator membaca status lapangan dan melakukan tindak lanjut lebih cepat.',
+    results: ['Dashboard operasional berbasis parameter sensor','Pencatatan histori kualitas air dan kondisi ruang','Alert logs untuk kondisi yang membutuhkan perhatian','Fondasi integrasi perangkat, data, dan monitoring lapangan']
+  },
+  { slug: 'wahana-website', title: 'Wahana Tatar Corporate Website', client: 'Wahana Tatar', industry: 'Corporate',
+    image: 'https://rebrandz.xyz/assets/img/wahanatatar.png',
+    images: ['assets/img/wahanatatar.png'],
+    period: 'Project',
+    summary: 'Website korporat untuk memperkuat positioning brand dan komunikasi bisnis Wahana Tatar.',
+    challenge: 'Wahana Tatar membutuhkan kanal digital yang merepresentasikan kapabilitas bisnis dan portofolio secara profesional.',
+    solution: 'Perancangan ulang corporate website dengan struktur informasi yang jelas, identitas visual yang konsisten, dan optimasi performa.',
+    results: ['Identitas brand yang konsisten','Struktur informasi yang jelas','Performa & SEO yang optimal','Touchpoint korporat profesional']
+  },
+  { slug: 'adorama-erp', title: 'ADORAMA ERP', client: 'Adorama', industry: 'Corporate',
+    image: 'https://rebrandz.xyz/assets/img/adoramafrappe.png',
+    images: ['assets/img/adoramafilament.png','assets/img/adoramafrappe.png'],
+    period: 'Multi-year',
+    summary: 'Implementasi sistem ERP berbasis Frappe/ERPNext untuk mendukung operasional bisnis Adorama.',
+    challenge: 'Adorama membutuhkan sistem terintegrasi untuk mengelola operasional, inventory, dan workflow bisnis dalam satu platform.',
+    solution: 'Implementasi dan kustomisasi ERP berbasis Frappe/ERPNext, mencakup modul operasional inti dan integrasi dengan sistem internal.',
+    results: ['Operasional terintegrasi','Visibilitas inventory & finance','Workflow otomatisasi','Single source of truth']
+  },
+  { slug: 'agraria-today', title: 'Agraria.today', client: 'Majalah Agraria', industry: 'Corporate',
+    image: 'https://rebrandz.xyz/assets/img/agrariatoday.png',
+    images: ['assets/img/agrariatoday.png'],
+    url: 'https://majalahagraria.today/',
+    period: 'Project',
+    summary: 'Platform media digital untuk Majalah Agraria — distribusi konten dan engagement pembaca.',
+    challenge: 'Majalah Agraria membutuhkan kanal digital modern untuk menjangkau pembaca dan memperkuat distribusi konten.',
+    solution: 'Pengembangan platform media digital dengan CMS yang fleksibel, desain editorial yang kuat, dan optimasi performa.',
+    results: ['Kanal distribusi konten digital','CMS editorial yang fleksibel','Engagement pembaca','Identitas editorial yang kuat']
+  },
+  { slug: 'naura-medika', title: 'Profil Mitra Klinis — Klinik Naura Medika', client: 'Klinik Naura Medika', industry: 'Healthcare',
+    image: 'https://rebrandz.xyz/assets/img/nauramedika.png',
+    images: ['assets/img/nauramedika.png'],
+    period: 'Project',
+    summary: 'Profil mitra klinis untuk Klinik Naura Medika — komunikasi layanan dan kepercayaan pasien.',
+    challenge: 'Klinik Naura Medika perlu menampilkan profil layanan dan kapabilitas klinis secara profesional kepada mitra dan pasien.',
+    solution: 'Perancangan profil mitra klinis yang menonjolkan layanan, kapabilitas, dan kredibilitas klinik dalam format komunikasi yang profesional.',
+    results: ['Profil layanan yang jelas','Kredibilitas klinis terkomunikasikan','Touchpoint mitra profesional','Identitas brand healthcare']
+  },
+];
 
-      <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=1920&h=1080&fit=crop" alt="Corporate Workspace" data-aos="fade-in" class="">
+const CLIENTS = [
+  { slug: 'agraria', name: 'Agraria', industry: 'Media / Corporate', since: '—',
+    logo: 'https://rebrandz.xyz/assets/img/clients/argraria.png',
+    url: 'https://majalahagraria.today/',
+    bio: 'Majalah Agraria — media yang fokus pada isu-isu agraria dan pertanian, berkolaborasi dengan rebrandz untuk platform digital agraria.today.',
+    engagements: ['Platform media digital agraria.today','Distribusi konten editorial','Identitas digital editorial']
+  },
+  { slug: 'adorama', name: 'Adorama', industry: 'Corporate', since: '—',
+    logo: 'https://rebrandz.xyz/assets/img/clients/adorama.png',
+    bio: 'Adorama berkolaborasi dengan rebrandz dalam implementasi sistem ERP berbasis Frappe/ERPNext untuk operasional bisnisnya.',
+    engagements: ['Implementasi ERP Frappe/ERPNext','Integrasi sistem internal','Kustomisasi modul operasional']
+  },
+  { slug: 'katalis', name: 'KATALIS', industry: 'Education / Bilateral Partnership', since: '—',
+    logo: 'https://rebrandz.xyz/assets/img/clients/katalis.png',
+    bio: 'KATALIS — kemitraan Indonesia–Australia untuk pengembangan keterampilan vokasi. rebrandz mengembangkan platform IASkills-Exchange.',
+    engagements: ['Platform IASkills-Exchange','Manajemen partisipan program','Tracking outcome bilateral']
+  },
+  { slug: 'prospera', name: 'Prospera', industry: 'Public Sector / Development', since: '—',
+    logo: 'https://rebrandz.xyz/assets/img/clients/prospera1.webp',
+    bio: 'Prospera — program kemitraan pembangunan ekonomi Indonesia–Australia, bekerja sama dengan rebrandz pada inisiatif digital sektor publik.',
+    engagements: ['Inisiatif digital sektor publik','Komunikasi program','Dukungan platform kolaboratif']
+  },
+  { slug: 'pertanian', name: 'Kementerian Pertanian RI', industry: 'Government', since: '2019',
+    logo: 'https://rebrandz.xyz/assets/img/clients/pertanian.png',
+    bio: 'Direktorat Jenderal Hortikultura Kementerian Pertanian RI — partner long-term rebrandz dalam pengembangan SIMETHRIS dan inisiatif digital sektor pertanian.',
+    engagements: ['SIMETHRIS — monitoring hortikultura strategis','Sistem pelaporan & dashboard','Integrasi sistem pertanian nasional']
+  },
+  { slug: 'wahana', name: 'Wahana Tatar', industry: 'Corporate', since: '—',
+    logo: 'https://rebrandz.xyz/assets/img/clients/wahana.png',
+    bio: 'Wahana Tatar berkolaborasi dengan rebrandz untuk merancang ulang corporate website dan memperkuat positioning brand digital.',
+    engagements: ['Corporate website redesign','Identitas digital brand','Komunikasi korporat']
+  },
+];
 
-      <div class="container" data-aos="fade-up" data-aos-delay="100">
-        <h2>PT. TRANSNIAGA SUKSES MAKMUR</h2>
-        <p><span class="typed" data-typed-items="rebrandz, re-branding your imagination and creativity, Strategic Digital Solutions">rebrandz</span><span class="typed-cursor typed-cursor--blink" aria-hidden="true"></span><span class="typed-cursor typed-cursor--blink" aria-hidden="true"></span></p>
+// ---------- VIEW HELPERS ----------
+const el = (h) => { const t = document.createElement('template'); t.innerHTML = h.trim(); return t.content.firstChild; };
+
+function heroBg() {
+  return `
+  <div class="absolute inset-0 grid-bg opacity-40 pointer-events-none"></div>
+  <div class="absolute -top-20 -left-24 w-[420px] h-[420px] rounded-full bg-brand-mid/30 blur-3xl animate-pulse-slow"></div>
+  <div class="absolute -bottom-32 right-0 w-[520px] h-[520px] rounded-full bg-accent/20 blur-3xl animate-pulse-slow"></div>`;
+}
+
+function pageWrap(inner) {
+  return `<section class="relative overflow-hidden">${heroBg()}<div class="relative max-w-7xl mx-auto px-6 lg:px-10 py-20">${inner}</div></section>`;
+}
+
+function caseMedia(c) {
+  const media = c.images || [c.image];
+
+  if (media.length === 1) {
+    return `
+      <div class="aspect-[16/9] rounded-2xl overflow-hidden bg-surface-2 mb-8">
+        <img src="${media[0]}" alt="${c.title}" class="w-full h-full object-cover" onerror="this.style.display='none'" />
+      </div>`;
+  }
+
+  return `
+    <div class="case-slider relative rounded-2xl overflow-hidden bg-surface-2 mb-8" data-slider>
+      <div class="aspect-[16/9]">
+        ${media.map((img, idx)=>`
+          <img src="${img}" alt="${c.title} screenshot ${idx + 1}" loading="${idx === 0 ? 'eager' : 'lazy'}" class="case-slide absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ${idx === 0 ? 'opacity-100' : 'opacity-0 pointer-events-none'}" data-slide="${idx}" onerror="this.style.display='none'" />`
+        ).join('')}
       </div>
+      <button type="button" class="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full glass text-ink-100 hover:text-brand-light transition" data-slider-prev aria-label="Previous image">‹</button>
+      <button type="button" class="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full glass text-ink-100 hover:text-brand-light transition" data-slider-next aria-label="Next image">›</button>
+      <div class="absolute bottom-4 left-0 right-0 flex justify-center gap-2">
+        ${media.map((_, idx)=>`<button type="button" class="case-dot w-2.5 h-2.5 rounded-full ${idx === 0 ? 'bg-brand-light' : 'bg-ink-300/50'}" data-slider-dot="${idx}" aria-label="Show image ${idx + 1}"></button>`).join('')}
+      </div>
+    </div>`;
+}
 
-    </section><!-- /Hero Section -->
-
-    <!-- About Section -->
-    <section id="about" class="about section">
-
-      <!-- Section Title -->
-      <div class="container section-title" data-aos="fade-up">
-        <h2>Company Overview</h2>
-        <p>PT. Transniaga Sukses Makmur melalui brand rebrandz berfokus pada transformasi branding, produk digital, dan komunikasi bisnis yang relevan untuk pertumbuhan perusahaan.</p>
-      </div><!-- End Section Title -->
-
-      <div class="container" data-aos="fade-up" data-aos-delay="100">
-
-        <div class="row gy-4 justify-content-center">
-          <div class="col-lg-4">
-            <img src="assets/img/logo.png" class="img-fluid" alt="rebrandz company profile">
+// ---------- PAGES ----------
+function homeView() {
+  return `
+  <section class="relative overflow-hidden">
+    ${heroBg()}
+    <div class="relative max-w-7xl mx-auto px-6 lg:px-10 pt-20 pb-28 grid lg:grid-cols-2 gap-14 items-center">
+      <div>
+        <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full glass text-xs font-medium text-brand-light mb-6">
+          <span class="w-1.5 h-1.5 rounded-full bg-brand-light"></span> PT. Transniaga Sukses Makmur
+        </span>
+        <h1 class="text-4xl md:text-6xl font-bold leading-[1.05] tracking-tight mb-6">
+          Building reliable digital platforms for <span class="gradient-text">business and operations.</span>
+        </h1>
+        <p class="text-lg text-ink-300 max-w-xl mb-10 leading-relaxed">
+          Rebrandz mendampingi organisasi dalam merancang dan membangun aplikasi bisnis, platform digital, integrasi sistem, serta solusi data dan teknologi operasional yang disesuaikan dengan kebutuhan klien.
+        </p>
+        <div class="flex flex-wrap gap-4">
+          <a href="#/contact" class="px-7 py-4 rounded-lg bg-accent text-brand-deep font-bold shadow-glow-accent hover:bg-accent-soft transition">Business Enquiry</a>
+          <a href="#/services" class="px-7 py-4 rounded-lg glass font-semibold text-ink-100 hover:text-brand-light transition">Lihat Services</a>
+        </div>
+        <div class="mt-12 grid grid-cols-3 gap-6 max-w-md">
+          <div><div class="text-2xl font-bold text-brand-light">B2B</div><div class="text-xs text-ink-300 mt-1">Strategic Partnership</div></div>
+          <div><div class="text-2xl font-bold text-brand-light">End-to-end</div><div class="text-xs text-ink-300 mt-1">Digital Delivery</div></div>
+          <div><div class="text-2xl font-bold text-brand-light">Bogor</div><div class="text-xs text-ink-300 mt-1">West Java, Indonesia</div></div>
+        </div>
+      </div>
+      <div class="relative">
+        <div class="glass rounded-2xl p-6 shadow-glow-brand">
+          <div class="flex items-center gap-2 mb-4">
+            <span class="w-3 h-3 rounded-full bg-accent"></span>
+            <span class="w-3 h-3 rounded-full bg-brand-light/50"></span>
+            <span class="w-3 h-3 rounded-full bg-brand-light/30"></span>
+            <span class="ml-3 text-xs text-ink-300 font-mono">rebrandz.capabilities</span>
           </div>
-          <div class="col-lg-8 content">
-            <h2>rebrandz - re-branding your imagination and creativity.</h2>
-            <p class="fst-italic py-3">Kami membantu organisasi membangun identitas, pengalaman digital, dan eksekusi teknologi yang terukur.</p>
-            <div class="row">
-              <div class="col-lg-6">
-                <ul>
-                  <li><i class="bi bi-chevron-right"></i> <strong>Company:</strong> <span>PT. Transniaga Sukses Makmur</span></li>
-                  <li><i class="bi bi-chevron-right"></i> <strong>Brand:</strong> <span>rebrandz</span></li>
-                  <li><i class="bi bi-chevron-right"></i> <strong>Head Office:</strong> <span>Bogor, West Java, Indonesia</span></li>
-                </ul>
-              </div>
-              <div class="col-lg-6">
-                <ul>
-                  <li><i class="bi bi-chevron-right"></i> <strong>Core Focus:</strong> <span>Brand & Digital Transformation</span></li>
-                  <li><i class="bi bi-chevron-right"></i> <strong>Email:</strong> <span>info@rebrandz.xyz</span></li>
-                  <li><i class="bi bi-chevron-right"></i> <strong>Engagement:</strong> <span>B2B & Strategic Partnership</span></li>
-                </ul>
+          <div class="grid grid-cols-3 gap-3">
+            <div class="bg-surface-2 rounded-lg p-4">
+              <div class="text-[10px] uppercase tracking-wider text-brand-light font-semibold">Laravel</div>
+              <div class="text-2xl font-bold mt-2 tabular-nums">95%</div>
+            </div>
+            <div class="col-span-2 bg-surface-2 rounded-lg p-4">
+              <div class="text-[10px] uppercase tracking-wider text-accent font-semibold">PHP & SQL Stack</div>
+              <div class="text-2xl font-bold mt-2 tabular-nums">90% / 85%</div>
+            </div>
+            <div class="col-span-2 bg-surface-2 rounded-lg p-4">
+              <div class="text-[10px] uppercase tracking-wider text-brand-light font-semibold">Operational Data</div>
+              <div class="text-2xl font-bold mt-2 tabular-nums">IoT Ready</div>
+            </div>
+            <div class="bg-surface-2 rounded-lg p-4">
+              <div class="text-[10px] uppercase tracking-wider text-accent font-semibold">JS</div>
+              <div class="text-2xl font-bold mt-2 tabular-nums">70%</div>
+            </div>
+            <div class="col-span-3 bg-surface-2 rounded-lg p-4">
+              <div class="text-[10px] uppercase tracking-wider text-ink-300 font-semibold mb-3">Selected platforms</div>
+              <div class="space-y-2 text-xs font-mono text-ink-300">
+                <div class="flex justify-between"><span class="text-brand-light">▲</span> SIMETHRIS · Kementan RI <span>Gov</span></div>
+                <div class="flex justify-between"><span class="text-brand-light">▲</span> ADORAMA ERP · Frappe/ERPNext <span>Corp</span></div>
+                <div class="flex justify-between"><span class="text-accent">●</span> KATALIS IASkills-Exchange <span>Edu</span></div>
               </div>
             </div>
-            <p class="py-3">
-              Sebagai entitas corporate, rebrandz mengintegrasikan perspektif branding, teknologi, dan operasional bisnis untuk menghasilkan solusi yang tidak hanya menarik secara visual, tetapi juga berdampak pada performa organisasi.
-            </p>
-            <p class="py-3">
-              Pendekatan kami menekankan riset, ketepatan strategi, dan implementasi end-to-end agar setiap inisiatif klien memiliki arah yang jelas, eksekusi yang disiplin, dan hasil yang berkelanjutan.
-            </p>
           </div>
         </div>
-
       </div>
+    </div>
+  </section>
 
-    </section><!-- /About Section -->
-
-    <!-- Stats Section -->
-    <section id="stats" class="stats section">
-
-      <div class="container" data-aos="fade-up" data-aos-delay="100">
-
-        <div class="row gy-4">
-
-          <div class="col-lg-3 col-md-6">
-            <div class="stats-item">
-              <i class="bi bi-emoji-smile"></i>
-              <span data-purecounter-start="0" data-purecounter-end="50" data-purecounter-duration="1" class="purecounter"></span>
-              <p><strong>Clients</strong> <span>across business and public sectors</span></p>
-            </div>
-          </div><!-- End Stats Item -->
-
-          <div class="col-lg-3 col-md-6">
-            <div class="stats-item">
-              <i class="bi bi-journal-richtext"></i>
-              <span data-purecounter-start="0" data-purecounter-end="120" data-purecounter-duration="1" class="purecounter"></span>
-              <p><strong>Projects</strong> <span>executed with measurable outcomes</span></p>
-            </div>
-          </div><!-- End Stats Item -->
-
-          <div class="col-lg-3 col-md-6">
-            <div class="stats-item">
-              <i class="bi bi-code-square"></i>
-              <span data-purecounter-start="0" data-purecounter-end="15" data-purecounter-duration="1" class="purecounter"></span>
-              <p><strong>Years</strong> <span>of strategic digital execution</span></p>
-            </div>
-          </div><!-- End Stats Item -->
-
-          <div class="col-lg-3 col-md-6">
-            <div class="stats-item">
-              <i class="bi bi-people"></i>
-              <span data-purecounter-start="0" data-purecounter-end="8" data-purecounter-duration="1" class="purecounter"></span>
-              <p><strong>Partners</strong> <span>in long-term collaboration</span></p>
-            </div>
-          </div><!-- End Stats Item -->
-
-        </div>
-
+  <!-- Services preview -->
+  <section class="max-w-7xl mx-auto px-6 lg:px-10 py-20">
+    <div class="flex items-end justify-between flex-wrap gap-4 mb-10">
+      <div>
+        <div class="text-sm text-brand-light font-semibold uppercase tracking-wider mb-2">Services</div>
+        <h2 class="text-3xl md:text-4xl font-bold tracking-tight">Layanan teknologi terintegrasi</h2>
+        <p class="text-ink-300 mt-3 max-w-2xl">Solusi digital yang menghubungkan kebutuhan bisnis, proses operasional, data, dan ekosistem teknologi klien.</p>
       </div>
+      <a href="#/services" class="text-sm font-semibold text-brand-light hover:text-accent">Semua services →</a>
+    </div>
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+      ${SERVICES.slice(0,6).map(s=>`
+        <a href="#/services/${s.slug}" class="glass rounded-2xl p-6 hover:border-brand-light/40 transition group">
+          <div class="text-3xl mb-4">${s.icon}</div>
+          <h3 class="font-bold text-lg text-ink-100 mb-2 group-hover:text-brand-light transition">${s.title}</h3>
+          <p class="text-sm text-ink-300 leading-relaxed">${s.tagline}</p>
+        </a>`).join('')}
+    </div>
+  </section>
 
-    </section><!-- /Stats Section -->
-
-    <!-- Skills Section -->
-    <section id="skills" class="skills section light-background" style="display: none;">
-
-      <!-- Section Title -->
-      <div class="container section-title" data-aos="fade-up">
-        <h2>Core Capabilities</h2>
-        <p>Kombinasi kapabilitas strategis, kreatif, dan teknis untuk mendukung pertumbuhan brand dan bisnis.</p>
-      </div><!-- End Section Title -->
-
-      <div class="container" data-aos="fade-up" data-aos-delay="100">
-
-        <div class="row skills-content skills-animation">
-
-          <div class="col-lg-6">
-
-            <div class="progress">
-              <span class="skill"><span>PHP</span> <i class="val">90%</i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-            </div><!-- End Skills Item -->
-
-            <div class="progress">
-              <span class="skill"><span>SQL (MySQL/MariaDB)</span> <i class="val">85%</i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-            </div><!-- End Skills Item -->
-
-            <div class="progress">
-              <span class="skill"><span>Laravel</span> <i class="val">95%</i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-            </div><!-- End Skills Item -->
-
+  <!-- Case studies preview -->
+  <section class="max-w-7xl mx-auto px-6 lg:px-10 py-20">
+    <div class="flex items-end justify-between flex-wrap gap-4 mb-10">
+      <div>
+        <div class="text-sm text-brand-light font-semibold uppercase tracking-wider mb-2">Case Studies</div>
+        <h2 class="text-3xl md:text-4xl font-bold tracking-tight">Implementasi lintas industri</h2>
+        <p class="text-ink-300 mt-3 max-w-2xl">Contoh implementasi platform, sistem informasi, integrasi data, dan transformasi digital di berbagai sektor.</p>
+      </div>
+      <a href="#/case-studies" class="text-sm font-semibold text-brand-light hover:text-accent">Semua case studies →</a>
+    </div>
+    <div class="grid md:grid-cols-2 gap-6">
+      ${CASES.slice(0,4).map(c=>`
+        <a href="#/case-studies/${c.slug}" class="glass rounded-2xl overflow-hidden hover:border-brand-light/40 transition group">
+          <div class="aspect-[16/9] overflow-hidden bg-surface-2">
+            <img src="${c.image}" alt="${c.title}" loading="lazy" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" onerror="this.style.display='none'" />
           </div>
-
-          <div class="col-lg-6">
-
-            <div class="progress">
-              <span class="skill"><span>JavaScript</span> <i class="val">70%</i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-            </div><!-- End Skills Item -->
-
-            <div class="progress">
-              <span class="skill"><span>Flutter (Dart)</span> <i class="val">65%</i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-            </div><!-- End Skills Item -->
-
-            <div class="progress">
-              <span class="skill"><span>Node.js</span> <i class="val">75%</i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-            </div><!-- End Skills Item -->
-
+          <div class="p-7">
+            <div class="text-xs uppercase tracking-wider text-accent font-semibold mb-3">${c.industry}</div>
+            <h3 class="text-xl font-bold mb-3 group-hover:text-brand-light transition">${c.title}</h3>
+            <p class="text-sm text-ink-300 leading-relaxed mb-4 line-clamp-2">${c.summary}</p>
+            <div class="text-sm text-brand-light font-semibold">More details →</div>
           </div>
+        </a>`).join('')}
+    </div>
+  </section>
 
-        </div>
+  <!-- Clients strip -->
+  <section class="max-w-7xl mx-auto px-6 lg:px-10 py-20">
+    <div class="text-center mb-10">
+      <div class="text-sm text-brand-light font-semibold uppercase tracking-wider mb-2">Clients</div>
+      <h2 class="text-3xl md:text-4xl font-bold tracking-tight">Kolaborasi lintas sektor</h2>
+      <p class="text-ink-300 mt-3 max-w-2xl mx-auto">Perusahaan dan organisasi yang telah berkolaborasi bersama Rebrandz dalam inisiatif digital, sistem bisnis, dan pengembangan platform.</p>
+    </div>
+    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
+      ${CLIENTS.map(c=>`
+        <a href="#/clients/${c.slug}" class="glass rounded-xl p-5 flex items-center justify-center min-h-[88px] hover:border-brand-light/40 transition group" title="${c.name}">
+          <img src="${c.logo}" alt="${c.name}" loading="lazy" class="max-h-10 max-w-full object-contain opacity-80 group-hover:opacity-100 transition" onerror="this.outerHTML='<span class=\\'text-sm font-semibold text-ink-100\\'>${c.name}</span>'" />
+        </a>
+      `).join('')}
+    </div>
+  </section>
 
+  <!-- CTA -->
+  <section class="max-w-7xl mx-auto px-6 lg:px-10 py-20">
+    <div class="relative overflow-hidden glass rounded-3xl p-10 md:p-16 text-center">
+      <div class="absolute -top-20 -left-20 w-72 h-72 bg-brand-mid/30 blur-3xl rounded-full"></div>
+      <div class="absolute -bottom-20 -right-20 w-72 h-72 bg-accent/30 blur-3xl rounded-full"></div>
+      <div class="relative">
+        <h2 class="text-3xl md:text-5xl font-bold mb-4">Business Enquiry</h2>
+        <p class="text-ink-300 max-w-xl mx-auto mb-8">Hubungi tim kami untuk mendiskusikan kebutuhan pengembangan platform, aplikasi bisnis, integrasi sistem, data, dan teknologi operasional.</p>
+        <a href="#/contact" class="inline-block px-8 py-4 rounded-lg bg-accent text-brand-deep font-bold shadow-glow-accent hover:bg-accent-soft transition">Hubungi Kami</a>
       </div>
+    </div>
+  </section>`;
+}
 
-    </section><!-- /Skills Section -->
+function companyView() {
+  return pageWrap(`
+    <div class="max-w-3xl">
+      <div class="text-sm text-brand-light font-semibold uppercase tracking-wider mb-3">Company Overview</div>
+      <h1 class="text-4xl md:text-5xl font-bold tracking-tight mb-6">PT. Transniaga Sukses Makmur</h1>
+      <p class="text-lg text-ink-300 leading-relaxed mb-4">PT. Transniaga Sukses Makmur melalui brand <strong class="text-ink-100">Rebrandz</strong> berfokus pada pengembangan platform digital, aplikasi bisnis, integrasi sistem, dan solusi teknologi untuk kebutuhan institusi maupun korporasi.</p>
+      <p class="text-lg text-ink-300 leading-relaxed">Kami membantu organisasi menerjemahkan proses bisnis dan kebutuhan operasional menjadi sistem digital yang terstruktur, terukur, dan siap dikembangkan.</p>
+    </div>
 
-    <!-- Resume Section -->
-    <section id="resume" class="resume section">
+    <div class="grid md:grid-cols-3 gap-6 mt-14">
+      ${[
+        ['Company','PT. Transniaga Sukses Makmur'],
+        ['Brand','rebrandz'],
+        ['Head Office','Bogor, West Java, Indonesia'],
+        ['Core Focus','Digital Platform & Technology Solutions'],
+        ['Email','info@rebrandz.xyz'],
+        ['Engagement','B2B & Strategic Partnership']
+      ].map(([t,d])=>`
+        <div class="glass rounded-2xl p-6">
+          <div class="text-xs uppercase tracking-wider text-brand-light font-semibold mb-2">${t}</div>
+          <div class="text-base font-semibold text-ink-100">${d}</div>
+        </div>`).join('')}
+    </div>
 
-      <!-- Section Title -->
-      <div class="container section-title" data-aos="fade-up">
-        <h2>Corporate Profile</h2>
-        <p>Profil kemampuan PT. Transniaga Sukses Makmur melalui rebrandz dalam membangun identitas brand, platform digital, dan sistem bisnis terintegrasi.</p>
-      </div><!-- End Section Title -->
-
-      <div class="container">
-
-        <div class="row">
-
-          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
-            <h3 class="resume-title">Company Foundation</h3>
-            
-            <div class="resume-item">
-              <h4>PT. Transniaga Sukses Makmur</h4>
-              <h5>Established</h5>
-              <p><em>Corporate entity for integrated digital and brand solutions</em></p>
-              <p>Perusahaan dibangun untuk menjembatani kebutuhan strategi brand, teknologi, dan komunikasi bisnis dalam satu ekosistem layanan yang terpadu.</p>
-            </div><!-- Edn Resume Item -->
-
-            <div class="resume-item">
-              <h4>rebrandz Business Unit</h4>
-              <h5>Operational</h5>
-              <p><em>Brand arm focused on re-branding and creative execution</em></p>
-              <p>rebrandz dikembangkan sebagai lini strategis perusahaan untuk menghadirkan pengalaman brand yang relevan, modern, dan berorientasi pertumbuhan.</p>
-            </div><!-- Edn Resume Item -->
-
-          </div>
-
-          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
-            <h3 class="resume-title">Corporate Experience</h3>
-            
-            <div class="resume-item">
-              <h4>Integrated Digital &amp; Brand Delivery</h4>
-              <h5>Ongoing</h5>
-              <p><em>PT. Transniaga Sukses Makmur - rebrandz</em></p>
-              <ul>
-                <li>Merancang strategi brand dan roadmap digital untuk organisasi skala menengah hingga enterprise</li>
-                <li>Mengeksekusi pengembangan web, aplikasi, dan sistem internal yang mendukung efisiensi operasional</li>
-                <li>Menyatukan proses kreatif dan teknologi untuk memperkuat pengalaman pelanggan lintas kanal</li>
-                <li>Membangun kolaborasi jangka panjang berbasis target bisnis dan indikator performa</li>
-              </ul>
-            </div><!-- Edn Resume Item -->
-
-            <div class="resume-item">
-              <h4>Cross-Industry Collaboration</h4>
-              <h5>Multi-year Portfolio</h5>
-              <p><em>Business, public sector, and community initiatives</em></p>
-              <ul>
-                <li>Mendampingi klien dalam reposisi brand, pembaruan identitas visual, dan penyusunan komunikasi</li>
-                <li>Menghasilkan platform digital yang menghubungkan kebutuhan bisnis dengan kebutuhan pengguna akhir</li>
-                <li>Menjalankan proyek dengan tata kelola yang jelas, timeline terukur, dan standar kualitas corporate</li>
-              </ul>
-            </div><!-- Edn Resume Item -->
-
-          </div>
-
-        </div>
-
+    <div class="mt-16 grid md:grid-cols-2 gap-10 items-start">
+      <div class="glass rounded-2xl p-8">
+        <h3 class="text-2xl font-bold mb-4">Pendekatan kami</h3>
+        <p class="text-ink-300 text-sm leading-relaxed mb-4">Sebagai entitas corporate, Rebrandz menggabungkan pemahaman proses bisnis, rekayasa perangkat lunak, data, dan teknologi operasional untuk menghasilkan solusi yang relevan dengan kebutuhan organisasi.</p>
+        <p class="text-ink-300 text-sm leading-relaxed">Pendekatan kami menekankan kejelasan kebutuhan, ketepatan desain solusi, serta implementasi yang disiplin agar setiap inisiatif memiliki arah, tata kelola, dan hasil yang dapat dievaluasi.</p>
       </div>
-
-    </section><!-- /Resume Section -->
-
-    <!-- Portfolio Section -->
-    <section id="portfolio" class="portfolio section light-background">
-
-      <!-- Section Title -->
-      <div class="container section-title" data-aos="fade-up">
-        <h2>Case Studies</h2>
-        <p>Contoh implementasi solusi rebrandz untuk mendukung transformasi brand dan digital di berbagai konteks industri.</p>
-      </div><!-- End Section Title -->
-
-      <div class="container">
-
-        <div class="isotope-layout" data-default-filter="*" data-layout="masonry" data-sort="original-order">
-
-          <ul class="portfolio-filters isotope-filters" data-aos="fade-up" data-aos-delay="100">
-            <li data-filter="*" class="filter-active">All</li>
-            <li data-filter=".filter-government">Government</li>
-            <li data-filter=".filter-education">Education</li>
-            <li data-filter=".filter-corporate">Corporate</li>
-            <li data-filter=".filter-healthcare">Healthcare</li>
-          </ul><!-- End Portfolio Filters -->
-
-          <div class="row gy-4 isotope-container" data-aos="fade-up" data-aos-delay="200">
-
-            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-government">
-              <div class="portfolio-content h-100">
-                <img src="assets/img/simethris.png" class="img-fluid" alt="SIMETHRIS">
-                <div class="portfolio-info">
-                  <h4>SIMETHRIS</h4>
-                  <p>Government</p>
-                  <a href="assets/img/simethris.png" title="SIMETHRIS" data-gallery="portfolio-gallery" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-                  <a href="portfolio-details.html?project=simethris" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
-                </div>
-              </div>
-            </div><!-- End Portfolio Item -->
-
-            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-government">
-              <div class="portfolio-content h-100">
-                <img src="assets/img/simevi.png" class="img-fluid" alt="Simevi">
-                <div class="portfolio-info">
-                  <h4>Simevi</h4>
-                  <p>Government</p>
-                  <a href="assets/img/simevi.png" title="Simevi" data-gallery="portfolio-gallery" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-                  <a href="portfolio-details.html?project=simevi" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
-                </div>
-              </div>
-            </div><!-- End Portfolio Item -->
-
-            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-education">
-              <div class="portfolio-content h-100">
-                <img src="assets/img/iaskills.png" class="img-fluid" alt="KATALIS IASkills-Exchange">
-                <div class="portfolio-info">
-                  <h4>KATALIS IASkills-Exchange</h4>
-                  <p>Education</p>
-                  <a href="assets/img/iaskills.png" title="KATALIS IASkills-Exchange" data-gallery="portfolio-gallery" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-                  <a href="portfolio-details.html?project=katalis-iaskills" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
-                </div>
-              </div>
-            </div><!-- End Portfolio Item -->
-
-            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-government">
-              <div class="portfolio-content h-100">
-                <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&h=400&fit=crop" class="img-fluid" alt="Jalin Platform">
-                <div class="portfolio-info">
-                  <h4>Jalin Platform</h4>
-                  <p>Government</p>
-                  <a href="https://images.unsplash.com/photo-1552664730-d307ca884978?w=1200" title="Jalin Platform" data-gallery="portfolio-gallery" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-                  <a href="portfolio-details.html?project=jalin-platform" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
-                </div>
-              </div>
-            </div><!-- End Portfolio Item -->
-
-            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-corporate">
-              <div class="portfolio-content h-100">
-                <img src="assets/img/wahanatatar.png" class="img-fluid" alt="Wahana Tatar Corporate Website">
-                <div class="portfolio-info">
-                  <h4>Wahana Tatar Corporate Website</h4>
-                  <p>Corporate</p>
-                  <a href="assets/img/wahanatatar.png" title="Wahana Tatar Corporate Website" data-gallery="portfolio-gallery" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-                  <a href="portfolio-details.html?project=wahana-website" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
-                </div>
-              </div>
-            </div><!-- End Portfolio Item -->
-
-            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-corporate">
-              <div class="portfolio-content h-100">
-                <img src="assets/img/adoramafrappe.png" class="img-fluid" alt="ADORAMA ERP">
-                <div class="portfolio-info">
-                  <h4>ADORAMA ERP</h4>
-                  <p>Corporate</p>
-                  <a href="assets/img/adoramafrappe.png" title="ADORAMA ERP" data-gallery="portfolio-gallery" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-                  <a href="portfolio-details.html?project=adorama-erp" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
-                </div>
-              </div>
-            </div><!-- End Portfolio Item -->
-
-            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-corporate">
-              <div class="portfolio-content h-100">
-                <img src="assets/img/agrariatoday.png" class="img-fluid" alt="Agraria.today">
-                <div class="portfolio-info">
-                  <h4>Agraria.today</h4>
-                  <p>Corporate</p>
-                  <a href="assets/img/agrariatoday.png" title="Agraria.today" data-gallery="portfolio-gallery" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-                  <a href="portfolio-details.html?project=agraria-today" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
-                </div>
-              </div>
-            </div><!-- End Portfolio Item -->
-
-            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-healthcare">
-              <div class="portfolio-content h-100">
-                <img src="assets/img/nauramedika.png" class="img-fluid" alt="Klinik Naura Medika">
-                <div class="portfolio-info">
-                  <h4>Profil Mitra Klinis - Klinik Naura Medika</h4>
-                  <p>Healthcare</p>
-                  <a href="assets/img/nauramedika.png" title="Klinik Naura Medika" data-gallery="portfolio-gallery" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-                  <a href="portfolio-details.html?project=naura-medika" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
-                </div>
-              </div>
-            </div><!-- End Portfolio Item -->
-
-          </div><!-- End Portfolio Container -->
-
-        </div>
-
-      </div>
-
-    </section><!-- /Portfolio Section -->
-
-    <!-- Services Section -->
-    <section id="services" class="services section">
-
-      <!-- Section Title -->
-      <div class="container section-title" data-aos="fade-up">
-        <h2>Services</h2>
-        <p>Layanan corporate terintegrasi untuk memperkuat identitas brand, performa digital, dan efektivitas operasional bisnis.</p>
-      </div><!-- End Section Title -->
-
-      <div class="container">
-
-        <div class="row gy-4">
-
-          <div class="col-lg-4 col-md-6 service-item d-flex" data-aos="fade-up" data-aos-delay="100">
-            <div class="icon flex-shrink-0"><i class="bi bi-palette"></i></div>
+      <div class="glass rounded-2xl p-8">
+        <h3 class="text-2xl font-bold mb-4">Core Capabilities</h3>
+        <p class="text-ink-300 text-sm mb-5">Kombinasi kapabilitas strategis dan teknis untuk mendukung platform digital, aplikasi, integrasi, data, dan sistem bisnis.</p>
+        <div class="space-y-3">
+          ${[
+            ['Laravel',95],['PHP',90],['SQL (MySQL/MariaDB)',85],
+            ['Node.js',75],['IoT / Sensor Integration',70],['Flutter (Dart)',65]
+          ].map(([k,v])=>`
             <div>
-              <h4 class="title"><a href="service-details.html" class="stretched-link">Brand Strategy</a></h4>
-              <p class="description">Perumusan strategi brand, positioning, dan message architecture yang selaras dengan arah bisnis perusahaan.</p>
-            </div>
-          </div>
-          <!-- End Service Item -->
-
-          <div class="col-lg-4 col-md-6 service-item d-flex" data-aos="fade-up" data-aos-delay="200">
-            <div class="icon flex-shrink-0"><i class="bi bi-code-slash"></i></div>
-            <div>
-              <h4 class="title"><a href="service-details.html" class="stretched-link">Digital Platform Development</a></h4>
-              <p class="description">Pengembangan website dan aplikasi bisnis yang scalable, aman, dan siap mendukung pertumbuhan enterprise.</p>
-            </div>
-          </div><!-- End Service Item -->
-
-          <div class="col-lg-4 col-md-6 service-item d-flex" data-aos="fade-up" data-aos-delay="300">
-            <div class="icon flex-shrink-0"><i class="bi bi-phone"></i></div>
-            <div>
-              <h4 class="title"><a href="service-details.html" class="stretched-link">Creative Production</a></h4>
-              <p class="description">Eksekusi aset kreatif lintas media untuk menjaga konsistensi identitas dan memperkuat daya tarik brand.</p>
-            </div>
-          </div><!-- End Service Item -->
-
-          <div class="col-lg-4 col-md-6 service-item d-flex" data-aos="fade-up" data-aos-delay="400">
-            <div class="icon flex-shrink-0"><i class="bi bi-geo-alt"></i></div>
-            <div>
-              <h4 class="title"><a href="service-details.html" class="stretched-link">Corporate Communication Design</a></h4>
-              <p class="description">Perancangan komunikasi visual dan naratif untuk profil perusahaan, presentasi bisnis, dan materi stakeholder.</p>
-            </div>
-          </div><!-- End Service Item -->
-
-          <div class="col-lg-4 col-md-6 service-item d-flex" data-aos="fade-up" data-aos-delay="500">
-            <div class="icon flex-shrink-0"><i class="bi bi-diagram-3"></i></div>
-            <div>
-              <h4 class="title"><a href="service-details.html" class="stretched-link">System Integration</a></h4>
-              <p class="description">Integrasi proses, data, dan kanal digital agar aktivitas brand, pemasaran, dan operasional berjalan sinkron.</p>
-            </div>
-          </div><!-- End Service Item -->
-
-          <div class="col-lg-4 col-md-6 service-item d-flex" data-aos="fade-up" data-aos-delay="600">
-            <div class="icon flex-shrink-0"><i class="bi bi-airplane"></i></div>
-            <div>
-              <h4 class="title"><a href="service-details.html" class="stretched-link">Performance Optimization</a></h4>
-              <p class="description">Peningkatan berkelanjutan berbasis data untuk memastikan inisiatif digital dan branding memberi hasil terukur.</p>
-            </div>
-          </div><!-- End Service Item -->
-
+              <div class="flex justify-between text-xs mb-1.5"><span class="text-ink-100 font-medium">${k}</span><span class="text-brand-light tabular-nums">${v}%</span></div>
+              <div class="h-1.5 bg-surface-2 rounded-full overflow-hidden"><div class="h-full bg-gradient-to-r from-brand-mid to-brand-light" style="width:${v}%"></div></div>
+            </div>`).join('')}
         </div>
-
       </div>
+    </div>
+  `);
+}
 
-    </section><!-- /Services Section -->
+function profileView() {
+  return pageWrap(`
+    <div class="max-w-3xl">
+      <div class="text-sm text-brand-light font-semibold uppercase tracking-wider mb-3">Corporate Profile</div>
+      <h1 class="text-4xl md:text-5xl font-bold tracking-tight mb-6">Profil kemampuan PT. Transniaga Sukses Makmur</h1>
+      <p class="text-lg text-ink-300 leading-relaxed">Membangun platform digital, aplikasi bisnis, integrasi data, dan sistem operasional terintegrasi melalui brand <strong class="text-ink-100">Rebrandz</strong>.</p>
+    </div>
 
-    <!-- Clients Section -->
-    <section id="clients" class="clients section light-background">
-
-      <!-- Section Title -->
-      <div class="container section-title" data-aos="fade-up">
-        <h2>Clients</h2>
-        <p>Perusahaan dan organisasi yang telah berkolaborasi bersama rebrandz dalam proyek transformasi brand dan digital.</p>
-      </div><!-- End Section Title -->
-
-      <div class="container" data-aos="fade-up" data-aos-delay="100">
-
-        <div class="swiper init-swiper">
-          <script type="application/json" class="swiper-config">
-            {
-              "loop": true,
-              "speed": 600,
-              "autoplay": {
-                "delay": 3000
-              },
-              "slidesPerView": "auto",
-              "pagination": {
-                "el": ".swiper-pagination",
-                "type": "bullets",
-                "clickable": true
-              },
-              "breakpoints": {
-                "320": {
-                  "slidesPerView": 2,
-                  "spaceBetween": 40
-                },
-                "768": {
-                  "slidesPerView": 4,
-                  "spaceBetween": 40
-                },
-                "1200": {
-                  "slidesPerView": 6,
-                  "spaceBetween": 40
-                }
-              }
-            }
-          </script>
-          <div class="swiper-wrapper align-items-center">
-
-            <div class="swiper-slide">
-              <a href="https://majalahagraria.today" target="_blank">
-                <img src="assets/img/clients/argraria.png" class="img-fluid" alt="Agraria">
-              </a>
-            </div>
-
-            <div class="swiper-slide">
-              <a href="#">
-                <img src="assets/img/clients/adorama.png" class="img-fluid" alt="Adorama">
-              </a>
-            </div>
-
-            <div class="swiper-slide">
-              <a href="#">
-                <img src="assets/img/clients/katalis.png" class="img-fluid" alt="Katalis">
-              </a>
-            </div>
-
-            <div class="swiper-slide">
-              <a href="#">
-                <img src="assets/img/clients/prospera1.webp" class="img-fluid" alt="Prospera">
-              </a>
-            </div>
-
-            <div class="swiper-slide">
-              <a href="#">
-                <img src="assets/img/clients/pertanian.png" class="img-fluid" alt="Pertanian">
-              </a>
-            </div>
-
-            <div class="swiper-slide">
-              <a href="#">
-                <img src="assets/img/clients/wahana.png" class="img-fluid" alt="Wahana">
-              </a>
-            </div>
-
-          </div>
-          <div class="swiper-pagination"></div>
-        </div>
-
+    <h2 class="text-2xl font-bold mt-16 mb-6 text-brand-light">Company Foundation</h2>
+    <div class="grid md:grid-cols-2 gap-6">
+      <div class="glass rounded-2xl p-8">
+        <div class="text-xs uppercase tracking-wider text-accent font-semibold mb-2">Established</div>
+        <h3 class="text-xl font-bold mb-3">PT. Transniaga Sukses Makmur</h3>
+        <p class="text-sm text-ink-300 italic mb-3">Corporate entity for digital platform and technology solutions</p>
+        <p class="text-sm text-ink-300 leading-relaxed">Perusahaan dibangun untuk menjembatani kebutuhan proses bisnis, pengembangan aplikasi, integrasi data, dan teknologi pendukung operasional dalam satu ekosistem layanan yang terpadu.</p>
       </div>
-
-    </section><!-- /Clients Section -->
-
-    <!-- Contact Section -->
-    <section id="contact" class="contact section">
-
-      <!-- Section Title -->
-      <div class="container section-title" data-aos="fade-up">
-        <h2>Business Enquiry</h2>
-        <p>Hubungi tim kami untuk mendiskusikan kebutuhan re-branding, pengembangan digital, dan kolaborasi corporate.</p>
-      </div><!-- End Section Title -->
-
-      <div class="container" data-aos="fade-up" data-aos-delay="100">
-
-        <div class="row gy-4">
-
-          <div class="col-lg-5">
-
-            <div class="info-wrap">
-              <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="200">
-                <i class="bi bi-geo-alt flex-shrink-0"></i>
-                <div>
-                  <h3>Address</h3>
-                  <p>Bogor, West Java, Indonesia</p>
-                </div>
-              </div><!-- End Info Item -->
-
-              <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="300">
-                <i class="bi bi-telephone flex-shrink-0"></i>
-                <div>
-                  <h3>Phone</h3>
-                  <p>+62 81 8088 0507</p>
-                </div>
-              </div><!-- End Info Item -->
-
-              <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="400">
-                <i class="bi bi-envelope flex-shrink-0"></i>
-                <div>
-                  <h3>Email</h3>
-                  <p>info@rebrandz.xyz</p>
-                </div>
-              </div><!-- End Info Item -->
-
-              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d126745.52815641937!2d106.6894!3d-6.5892!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69c5d2e521a859%3A0x1b9c3f3c3f3c3f3c!2sBogor%2C%20West%20Java%2C%20Indonesia!5e0!3m2!1sen!2sid!4v1676961268712!5m2!1sen!2sid" frameborder="0" style="border:0; width: 100%; height: 270px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-            </div>
-          </div>
-
-          <div class="col-lg-7">
-            <form action="forms/contact.php" method="post" class="php-email-form" data-aos="fade-up" data-aos-delay="200">
-              <div class="row gy-4">
-
-                <div class="col-md-6">
-                  <label for="name-field" class="pb-2">Company / PIC Name</label>
-                  <input type="text" name="name" id="name-field" class="form-control" required="">
-                </div>
-
-                <div class="col-md-6">
-                  <label for="email-field" class="pb-2">Business Email</label>
-                  <input type="email" class="form-control" name="email" id="email-field" required="">
-                </div>
-
-                <div class="col-md-12">
-                  <label for="subject-field" class="pb-2">Inquiry Topic</label>
-                  <input type="text" class="form-control" name="subject" id="subject-field" required="">
-                </div>
-
-                <div class="col-md-12">
-                  <label for="message-field" class="pb-2">Project Brief</label>
-                  <textarea class="form-control" name="message" rows="10" id="message-field" required=""></textarea>
-                </div>
-
-                <div class="col-md-12 text-center">
-                  <div class="loading">Loading</div>
-                  <div class="error-message"></div>
-                  <div class="sent-message">Terima kasih. Tim rebrandz akan segera menghubungi Anda.</div>
-
-                  <button type="submit">Submit Inquiry</button>
-                </div>
-
-              </div>
-            </form>
-          </div><!-- End Contact Form -->
-
-        </div>
-
-      </div>
-
-    </section><!-- /Contact Section -->
-
-  </main>
-
-  <footer id="footer" class="footer position-relative light-background">
-
-    <div class="container">
-      <div class="copyright text-center ">
-        <p>&copy; <span>Copyright</span> <strong class="px-1 sitename">PT. Transniaga Sukses Makmur - rebrandz</strong> <span>All Rights Reserved</span></p>
-      </div>
-      <div class="credits">
-        <a href="https://rebrandz.xyz/">PT. TRANSNIAGA SUKSES MAKMUR</a>
+      <div class="glass rounded-2xl p-8">
+        <div class="text-xs uppercase tracking-wider text-accent font-semibold mb-2">Operational</div>
+        <h3 class="text-xl font-bold mb-3">rebrandz Business Unit</h3>
+        <p class="text-sm text-ink-300 italic mb-3">Business unit focused on digital platform and technology delivery</p>
+        <p class="text-sm text-ink-300 leading-relaxed">Rebrandz dikembangkan sebagai lini strategis perusahaan untuk menghadirkan solusi digital yang relevan, modern, dan berorientasi pada kebutuhan nyata klien.</p>
       </div>
     </div>
 
-  </footer>
+    <h2 class="text-2xl font-bold mt-16 mb-6 text-brand-light">Corporate Experience</h2>
+    <div class="grid md:grid-cols-2 gap-6">
+      <div class="glass rounded-2xl p-8">
+        <div class="text-xs uppercase tracking-wider text-accent font-semibold mb-2">Ongoing</div>
+        <h3 class="text-xl font-bold mb-2">Integrated Platform & Technology Delivery</h3>
+        <p class="text-sm text-ink-300 italic mb-4">PT. Transniaga Sukses Makmur — rebrandz</p>
+        <ul class="space-y-2 text-sm text-ink-300">
+          ${['Merancang roadmap platform dan aplikasi untuk organisasi skala menengah hingga enterprise','Mengeksekusi pengembangan web, aplikasi, dan sistem internal yang mendukung efisiensi operasional','Mengintegrasikan data, API, ERP, perangkat lapangan, dan kanal digital sesuai kebutuhan implementasi','Membangun kolaborasi jangka panjang berbasis target bisnis dan indikator performa'].map(i=>`<li class="flex gap-2"><span class="text-brand-light mt-1">▹</span>${i}</li>`).join('')}
+        </ul>
+      </div>
+      <div class="glass rounded-2xl p-8">
+        <div class="text-xs uppercase tracking-wider text-accent font-semibold mb-2">Multi-year Portfolio</div>
+        <h3 class="text-xl font-bold mb-2">Cross-Industry Collaboration</h3>
+        <p class="text-sm text-ink-300 italic mb-4">Business, public sector, and community initiatives</p>
+        <ul class="space-y-2 text-sm text-ink-300">
+          ${['Mendampingi klien dalam analisis kebutuhan sistem, perancangan solusi, dan prioritas implementasi','Menghasilkan platform digital yang menghubungkan kebutuhan bisnis, pengguna akhir, dan data operasional','Menjalankan proyek dengan tata kelola yang jelas, timeline terukur, dan standar kualitas corporate'].map(i=>`<li class="flex gap-2"><span class="text-brand-light mt-1">▹</span>${i}</li>`).join('')}
+        </ul>
+      </div>
+    </div>
+  `);
+}
 
-  <!-- Scroll Top -->
-  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+function servicesView() {
+  return pageWrap(`
+    <div class="max-w-3xl">
+      <div class="text-sm text-brand-light font-semibold uppercase tracking-wider mb-3">Services</div>
+      <h1 class="text-4xl md:text-5xl font-bold tracking-tight mb-6">Layanan teknologi terintegrasi</h1>
+      <p class="text-lg text-ink-300 leading-relaxed">Mendukung kebutuhan digital klien melalui pengembangan aplikasi, platform operasional, integrasi sistem, data, dashboard, teknologi lapangan, dan optimasi performa.</p>
+    </div>
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 mt-12">
+      ${SERVICES.map(s=>`
+        <a href="#/services/${s.slug}" class="glass rounded-2xl p-7 hover:border-brand-light/40 transition group">
+          <div class="text-3xl mb-4">${s.icon}</div>
+          <h3 class="font-bold text-lg text-ink-100 mb-2 group-hover:text-brand-light transition">${s.title}</h3>
+          <p class="text-sm text-ink-300 leading-relaxed mb-4">${s.tagline}</p>
+          <div class="text-sm font-semibold text-brand-light">Selengkapnya →</div>
+        </a>`).join('')}
+    </div>
+  `);
+}
 
-  <!-- Preloader -->
-  <div id="preloader"></div>
+function serviceDetailView(slug) {
+  const s = SERVICES.find(x=>x.slug===slug);
+  if(!s) return notFoundView();
+  return pageWrap(`
+    <a href="#/services" class="text-sm text-brand-light hover:text-accent">← Kembali ke Services</a>
+    <div class="grid lg:grid-cols-3 gap-12 mt-6">
+      <div class="lg:col-span-2">
+        <div class="text-5xl mb-5">${s.icon}</div>
+        <h1 class="text-4xl md:text-5xl font-bold tracking-tight mb-5">${s.title}</h1>
+        <p class="text-xl text-ink-300 mb-8">${s.tagline}</p>
+        <p class="text-ink-300 leading-relaxed mb-10">${s.desc}</p>
+        <h3 class="text-xl font-bold mb-4 text-brand-light">Cakupan layanan</h3>
+        <ul class="grid sm:grid-cols-2 gap-3 mb-10">
+          ${s.features.map(f=>`<li class="glass rounded-lg px-4 py-3 text-sm flex items-center gap-3"><span class="text-brand-light">▹</span>${f}</li>`).join('')}
+        </ul>
+        <div class="glass rounded-2xl p-7">
+          <h4 class="font-bold mb-3">Integrated service model</h4>
+          <p class="text-sm text-ink-300 leading-relaxed mb-4">Kami menggabungkan analisis bisnis, arsitektur solusi, rekayasa aplikasi, integrasi data, dan implementasi teknologi ke dalam alur kerja yang terstruktur. Dengan pendekatan ini, keputusan teknis dapat diarahkan pada kebutuhan bisnis yang jelas.</p>
+          <ul class="space-y-2 text-sm text-ink-300">
+            <li class="flex gap-2"><span class="text-brand-light">▹</span>Roadmap solusi berdasarkan tujuan bisnis, proses operasional, dan kondisi teknologi</li>
+            <li class="flex gap-2"><span class="text-brand-light">▹</span>Eksekusi aplikasi, integrasi, dashboard, dan teknologi pendukung dengan standar corporate delivery</li>
+            <li class="flex gap-2"><span class="text-brand-light">▹</span>Evaluasi performa berkelanjutan untuk hasil yang terukur</li>
+          </ul>
+        </div>
+      </div>
+      <aside class="glass rounded-2xl p-7 h-fit lg:sticky lg:top-24">
+        <h3 class="font-bold text-lg mb-3">Diskusikan kebutuhan Anda</h3>
+        <p class="text-sm text-ink-300 mb-5">Hubungi tim rebrandz untuk mendiskusikan engagement ${s.title.toLowerCase()} yang sesuai dengan objective bisnis Anda.</p>
+        <a href="#/contact" class="block text-center px-5 py-3 rounded-lg bg-accent text-brand-deep font-bold shadow-glow-accent hover:bg-accent-soft transition">Business Enquiry</a>
+        <div class="mt-6 pt-6 border-t border-brand-light/10">
+          <h4 class="text-xs uppercase tracking-wider text-ink-300 font-semibold mb-3">Layanan terkait</h4>
+          <ul class="space-y-2 text-sm">
+            ${SERVICES.filter(x=>x.slug!==slug).slice(0,4).map(x=>`<li><a href="#/services/${x.slug}" class="text-ink-100 hover:text-brand-light">${x.title}</a></li>`).join('')}
+          </ul>
+        </div>
+      </aside>
+    </div>
+  `);
+}
 
-  <!-- Vendor JS Files -->
-  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/vendor/php-email-form/validate.js"></script>
-  <script src="assets/vendor/aos/aos.js"></script>
-  <script src="assets/vendor/typed.js/typed.umd.js"></script>
-  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
-  <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
-  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
-  <script src="assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
-  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+function casesView() {
+  return pageWrap(`
+    <div class="max-w-3xl">
+      <div class="text-sm text-brand-light font-semibold uppercase tracking-wider mb-3">Case Studies</div>
+      <h1 class="text-4xl md:text-5xl font-bold tracking-tight mb-6">Implementasi solusi rebrandz</h1>
+      <p class="text-lg text-ink-300 leading-relaxed">Contoh implementasi platform, sistem informasi, integrasi data, dan transformasi digital di berbagai konteks industri — pemerintahan, korporat, edukasi, dan kesehatan.</p>
+    </div>
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mt-12">
+      ${CASES.map(c=>`
+        <a href="#/case-studies/${c.slug}" class="glass rounded-2xl overflow-hidden hover:border-brand-light/40 transition group">
+          <div class="aspect-[16/10] overflow-hidden bg-surface-2">
+            <img src="${c.image}" alt="${c.title}" loading="lazy" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" onerror="this.style.display='none'" />
+          </div>
+          <div class="p-6">
+            <div class="text-xs uppercase tracking-wider text-accent font-semibold mb-2">${c.industry}</div>
+            <h3 class="text-lg font-bold mb-2 group-hover:text-brand-light transition">${c.title.split(' — ')[0]}</h3>
+            <p class="text-sm text-ink-300 leading-relaxed line-clamp-2 mb-3">${c.summary}</p>
+            <div class="text-xs font-semibold text-brand-light">More details →</div>
+          </div>
+        </a>`).join('')}
+    </div>
+  `);
+}
 
-  <!-- Main JS File -->
-  <script src="assets/js/main.js"></script>
+function caseDetailView(slug) {
+  const c = CASES.find(x=>x.slug===slug);
+  if(!c) return notFoundView();
+  return pageWrap(`
+    <a href="#/case-studies" class="text-sm text-brand-light hover:text-accent">← Semua case studies</a>
+    <div class="mt-6 grid lg:grid-cols-3 gap-10">
+      <div class="lg:col-span-2">
+        ${caseMedia(c)}
+        <div class="text-xs uppercase tracking-wider text-accent font-semibold mb-3">${c.industry}</div>
+        <h1 class="text-3xl md:text-5xl font-bold tracking-tight mb-6">${c.title}</h1>
+        <p class="text-xl text-ink-300 leading-relaxed mb-10">${c.summary}</p>
+        <div class="grid sm:grid-cols-2 gap-6 mb-10">
+          <div class="glass rounded-2xl p-7">
+            <h3 class="text-lg font-bold mb-3 text-brand-light">Tantangan</h3>
+            <p class="text-sm text-ink-300 leading-relaxed">${c.challenge}</p>
+          </div>
+          <div class="glass rounded-2xl p-7">
+            <h3 class="text-lg font-bold mb-3 text-brand-light">Solusi Rebrandz</h3>
+            <p class="text-sm text-ink-300 leading-relaxed">${c.solution}</p>
+          </div>
+        </div>
+        <h3 class="text-xl font-bold mb-4 text-brand-light">Outcome</h3>
+        <div class="grid sm:grid-cols-2 gap-3">
+          ${c.results.map(r=>`<div class="glass rounded-lg px-4 py-3 text-sm flex items-start gap-3"><span class="text-brand-light mt-0.5">✓</span><span>${r}</span></div>`).join('')}
+        </div>
+      </div>
+      <aside class="glass rounded-2xl p-7 h-fit lg:sticky lg:top-24">
+        <h3 class="font-bold text-lg mb-4">Project Information</h3>
+        <dl class="space-y-3 text-sm">
+          <div><dt class="text-xs uppercase tracking-wider text-ink-300 font-semibold">Category</dt><dd class="text-ink-100 font-medium mt-1">${c.industry}</dd></div>
+          <div><dt class="text-xs uppercase tracking-wider text-ink-300 font-semibold">Client</dt><dd class="text-ink-100 font-medium mt-1">${c.client}</dd></div>
+          <div><dt class="text-xs uppercase tracking-wider text-ink-300 font-semibold">Project date</dt><dd class="text-ink-100 font-medium mt-1">${c.period}</dd></div>
+          ${c.url ? `<div><dt class="text-xs uppercase tracking-wider text-ink-300 font-semibold">Project URL</dt><dd class="mt-1"><a href="${c.url}" target="_blank" rel="noopener" class="text-brand-light hover:text-accent break-all">${c.url}</a></dd></div>` : ''}
+        </dl>
+        <a href="#/contact" class="mt-6 block text-center px-5 py-3 rounded-lg bg-accent text-brand-deep font-bold shadow-glow-accent hover:bg-accent-soft transition">Diskusikan project serupa</a>
+      </aside>
+    </div>
+  `);
+}
 
+function clientsView() {
+  return pageWrap(`
+    <div class="max-w-3xl">
+      <div class="text-sm text-brand-light font-semibold uppercase tracking-wider mb-3">Clients</div>
+      <h1 class="text-4xl md:text-5xl font-bold tracking-tight mb-6">Kolaborasi lintas sektor</h1>
+      <p class="text-lg text-ink-300 leading-relaxed">Perusahaan dan organisasi yang telah berkolaborasi bersama Rebrandz dalam pengembangan platform, aplikasi, integrasi sistem, dan transformasi digital.</p>
+    </div>
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 mt-12">
+      ${CLIENTS.map(c=>`
+        <a href="#/clients/${c.slug}" class="glass rounded-2xl p-7 hover:border-brand-light/40 transition group">
+          <div class="h-16 mb-5 flex items-center">
+            <img src="${c.logo}" alt="${c.name}" loading="lazy" class="max-h-12 max-w-[160px] object-contain opacity-90" onerror="this.style.display='none'" />
+          </div>
+          <div class="text-xs uppercase tracking-wider text-accent font-semibold mb-2">${c.industry}</div>
+          <h3 class="font-bold text-xl text-ink-100 mb-3 group-hover:text-brand-light transition">${c.name}</h3>
+          <p class="text-sm text-ink-300 leading-relaxed line-clamp-3">${c.bio}</p>
+        </a>`).join('')}
+    </div>
+  `);
+}
+
+function clientDetailView(slug) {
+  const c = CLIENTS.find(x=>x.slug===slug);
+  if(!c) return notFoundView();
+  const k = c.name.split(' ')[0].toLowerCase();
+  const related = CASES.filter(x => x.client.toLowerCase().includes(k) || x.title.toLowerCase().includes(k) || x.slug.includes(k));
+  return pageWrap(`
+    <a href="#/clients" class="text-sm text-brand-light hover:text-accent">← Semua clients</a>
+    <div class="mt-6 grid lg:grid-cols-3 gap-10 items-start">
+      <div class="glass rounded-2xl p-8 lg:sticky lg:top-24">
+        <div class="h-20 flex items-center mb-6">
+          <img src="${c.logo}" alt="${c.name}" class="max-h-16 max-w-full object-contain" onerror="this.style.display='none'" />
+        </div>
+        <div class="text-xs uppercase tracking-wider text-accent font-semibold mb-2">${c.industry}</div>
+        <h1 class="text-2xl font-bold mb-2">${c.name}</h1>
+        <div class="text-xs text-ink-300 mb-4">Partner since ${c.since}</div>
+        ${c.url ? `<a href="${c.url}" target="_blank" rel="noopener" class="text-sm text-brand-light hover:text-accent break-all">${c.url} →</a>` : ''}
+      </div>
+      <div class="lg:col-span-2 space-y-6">
+        <div class="glass rounded-2xl p-8">
+          <h3 class="text-xl font-bold mb-4 text-brand-light">Tentang client</h3>
+          <p class="text-ink-300 leading-relaxed">${c.bio}</p>
+        </div>
+        <div class="glass rounded-2xl p-8">
+          <h3 class="text-xl font-bold mb-4 text-brand-light">Engagements</h3>
+          <ul class="space-y-3">
+            ${c.engagements.map(e=>`<li class="flex items-start gap-3 text-ink-300 text-sm"><span class="text-brand-light mt-1">▹</span>${e}</li>`).join('')}
+          </ul>
+        </div>
+        <div class="glass rounded-2xl p-8">
+          <h3 class="text-xl font-bold mb-4 text-brand-light">Case studies terkait</h3>
+          ${related.length ? `<ul class="space-y-3">${related.map(x=>`<li><a href="#/case-studies/${x.slug}" class="text-ink-100 hover:text-brand-light text-sm font-semibold">${x.title} →</a></li>`).join('')}</ul>` : '<p class="text-sm text-ink-300">Case study akan ditambahkan.</p>'}
+        </div>
+      </div>
+    </div>
+  `);
+}
+
+function contactView() {
+  return pageWrap(`
+    <div class="grid lg:grid-cols-2 gap-14">
+      <div>
+        <div class="text-sm text-brand-light font-semibold uppercase tracking-wider mb-3">Business Enquiry</div>
+        <h1 class="text-4xl md:text-5xl font-bold tracking-tight mb-6">Diskusikan kebutuhan digital organisasi Anda</h1>
+        <p class="text-lg text-ink-300 leading-relaxed mb-10">Sampaikan kebutuhan organisasi Anda. Tim kami akan meninjau konteks proyek dan menyiapkan langkah diskusi yang sesuai.</p>
+        <div class="space-y-5 text-sm">
+          <div><div class="text-xs uppercase tracking-wider text-ink-300 font-semibold mb-1">Email</div><div class="text-ink-100">info@rebrandz.xyz</div></div>
+          <div><div class="text-xs uppercase tracking-wider text-ink-300 font-semibold mb-1">Office</div><div class="text-ink-100">Bogor, West Java, Indonesia</div></div>
+          <div><div class="text-xs uppercase tracking-wider text-ink-300 font-semibold mb-1">Phone</div><div class="text-ink-100">+62 81 8088 0507</div></div>
+        </div>
+      </div>
+      <form id="contact-form" class="glass rounded-2xl p-8 space-y-5">
+        <div class="grid sm:grid-cols-2 gap-4">
+          <label class="block">
+            <span class="text-xs font-semibold text-ink-300 uppercase tracking-wider">Full name</span>
+            <input required name="name" class="mt-2 w-full bg-surface-2 border border-brand-light/10 rounded-lg px-4 py-3 text-sm text-ink-100 focus:outline-none focus:border-brand-light" placeholder="Jane Doe" />
+          </label>
+          <label class="block">
+            <span class="text-xs font-semibold text-ink-300 uppercase tracking-wider">Company</span>
+            <input name="company" class="mt-2 w-full bg-surface-2 border border-brand-light/10 rounded-lg px-4 py-3 text-sm text-ink-100 focus:outline-none focus:border-brand-light" placeholder="Acme Corp" />
+          </label>
+        </div>
+        <label class="block">
+          <span class="text-xs font-semibold text-ink-300 uppercase tracking-wider">Work email</span>
+          <input required type="email" name="email" class="mt-2 w-full bg-surface-2 border border-brand-light/10 rounded-lg px-4 py-3 text-sm text-ink-100 focus:outline-none focus:border-brand-light" placeholder="jane@acme.com" />
+        </label>
+        <label class="block">
+          <span class="text-xs font-semibold text-ink-300 uppercase tracking-wider">Service of interest</span>
+          <select name="service" class="mt-2 w-full bg-surface-2 border border-brand-light/10 rounded-lg px-4 py-3 text-sm text-ink-100 focus:outline-none focus:border-brand-light">
+            ${SERVICES.map(s=>`<option value="${s.slug}">${s.title}</option>`).join('')}
+          </select>
+        </label>
+        <label class="block">
+          <span class="text-xs font-semibold text-ink-300 uppercase tracking-wider">Tell us about your project</span>
+          <textarea required name="message" rows="5" class="mt-2 w-full bg-surface-2 border border-brand-light/10 rounded-lg px-4 py-3 text-sm text-ink-100 focus:outline-none focus:border-brand-light" placeholder="Goals, timeline, constraints…"></textarea>
+        </label>
+        <button type="submit" class="w-full px-6 py-4 rounded-lg bg-accent text-brand-deep font-bold shadow-glow-accent hover:bg-accent-soft transition">Send enquiry</button>
+        <div id="contact-status" class="text-sm text-brand-light hidden">✓ Thanks — your message has been queued. We'll reply soon.</div>
+      </form>
+    </div>
+  `);
+}
+
+function notFoundView() {
+  return pageWrap(`
+    <div class="text-center py-20">
+      <h1 class="text-6xl font-bold mb-4 gradient-text">404</h1>
+      <p class="text-ink-300 mb-8">That page does not exist.</p>
+      <a href="#/" class="px-6 py-3 rounded-lg bg-accent text-brand-deep font-bold shadow-glow-accent">Back to home</a>
+    </div>
+  `);
+}
+
+// ---------- ROUTER ----------
+function parseHash() {
+  const h = (location.hash || '#/').replace(/^#/, '');
+  const parts = h.split('/').filter(Boolean);
+  return parts;
+}
+
+function initCaseSliders() {
+  document.querySelectorAll('[data-slider]').forEach((slider) => {
+    const slides = Array.from(slider.querySelectorAll('[data-slide]'));
+    const dots = Array.from(slider.querySelectorAll('[data-slider-dot]'));
+    let active = 0;
+
+    const show = (next) => {
+      active = (next + slides.length) % slides.length;
+      slides.forEach((slide, idx) => {
+        slide.classList.toggle('opacity-100', idx === active);
+        slide.classList.toggle('opacity-0', idx !== active);
+        slide.classList.toggle('pointer-events-none', idx !== active);
+      });
+      dots.forEach((dot, idx) => {
+        dot.classList.toggle('bg-brand-light', idx === active);
+        dot.classList.toggle('bg-ink-300/50', idx !== active);
+      });
+    };
+
+    slider.querySelector('[data-slider-prev]')?.addEventListener('click', () => show(active - 1));
+    slider.querySelector('[data-slider-next]')?.addEventListener('click', () => show(active + 1));
+    dots.forEach((dot, idx) => dot.addEventListener('click', () => show(idx)));
+  });
+}
+
+function render() {
+  const parts = parseHash();
+  const app = document.getElementById('app');
+  let html = '', activeRoute = 'home';
+
+  if (parts.length === 0) { html = homeView(); activeRoute='home'; }
+  else if (parts[0] === 'company') { html = companyView(); activeRoute='company'; }
+  else if (parts[0] === 'profile') { html = profileView(); activeRoute='profile'; }
+  else if (parts[0] === 'services') { html = parts[1] ? serviceDetailView(parts[1]) : servicesView(); activeRoute='services'; }
+  else if (parts[0] === 'case-studies') { html = parts[1] ? caseDetailView(parts[1]) : casesView(); activeRoute='case-studies'; }
+  else if (parts[0] === 'clients') { html = parts[1] ? clientDetailView(parts[1]) : clientsView(); activeRoute='clients'; }
+  else if (parts[0] === 'contact') { html = contactView(); activeRoute='contact'; }
+  else { html = notFoundView(); }
+
+  app.innerHTML = `<div class="page active">${html}</div>`;
+
+  document.querySelectorAll('.nav-link').forEach(a => {
+    a.classList.toggle('active', a.dataset.route === activeRoute);
+  });
+  document.getElementById('mobile-menu').classList.add('hidden');
+  window.scrollTo({ top: 0, behavior: 'instant' });
+  initCaseSliders();
+
+  const cf = document.getElementById('contact-form');
+  if (cf) {
+    cf.addEventListener('submit', (e) => {
+      e.preventDefault();
+      cf.reset();
+      document.getElementById('contact-status').classList.remove('hidden');
+    });
+  }
+}
+
+document.getElementById('mobile-toggle').addEventListener('click', () => {
+  document.getElementById('mobile-menu').classList.toggle('hidden');
+});
+
+window.addEventListener('hashchange', render);
+window.addEventListener('DOMContentLoaded', render);
+render();
+</script>
 </body>
-
 </html>
