@@ -158,6 +158,8 @@ const SERVICES = [
   },
 ];
 
+const GOOGLE_APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzwMpHA0aBIoXAH5uTV2sxxIcX9hl0Yfl0zcrFKzycESrPzx4Jbz-ppB1oeOlUs2Q_VXw/exec';
+
 const CASES = [
   { slug: 'simethris', title: 'SIMETHRIS — Sistem Monitoring Tanam Hortikultura Strategis', client: 'Direktorat Jenderal Hortikultura Kementerian Pertanian RI', industry: 'Government',
     image: 'https://rebrandz.xyz/assets/img/simethris.png',
@@ -845,10 +847,37 @@ function render() {
 
   const cf = document.getElementById('contact-form');
   if (cf) {
-    cf.addEventListener('submit', (e) => {
+    cf.addEventListener('submit', async (e) => {
       e.preventDefault();
-      cf.reset();
-      document.getElementById('contact-status').classList.remove('hidden');
+
+      const button = cf.querySelector('button[type="submit"]');
+      const status = document.getElementById('contact-status');
+      const data = new FormData(cf);
+      const payload = new URLSearchParams();
+
+      data.forEach((value, key) => payload.append(key, value));
+      button.disabled = true;
+      button.textContent = 'Sending…';
+      status.classList.add('hidden');
+
+      try {
+        // Apps Script does not expose CORS headers, so use a simple form POST.
+        await fetch(GOOGLE_APPS_SCRIPT_URL, {
+          method: 'POST',
+          mode: 'no-cors',
+          body: payload
+        });
+
+        cf.reset();
+        status.textContent = '✓ Thanks — your message has been sent. We\'ll reply soon.';
+        status.classList.remove('hidden');
+      } catch (error) {
+        status.textContent = 'Unable to send your message. Please email info@rebrandz.xyz.';
+        status.classList.remove('hidden');
+      } finally {
+        button.disabled = false;
+        button.textContent = 'Send enquiry';
+      }
     });
   }
 }
